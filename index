@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Superprompt Studio — AI-Powered Design, Websites & Apps</title>
+  <meta name="description" content="Async AI design studio for branding, landing pages and simple apps. JSON-first prompts, no calls, one short brief and 1–2 fast email iterations to launch your product." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta property="og:title" content="AI Superprompt Studio — AI-Powered Design, Websites & Apps" />
+  <meta property="og:description" content="Design, websites and apps powered by AI and JSON superprompting. No meetings. One brief, 1–2 email feedback loops — built to help you finally ship." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-domain.com" />
+  <meta property="og:image" content="https://your-domain.com/og-image.jpg" />
+
+  <style>
+    :root {
+      --bg: #f5f3ef;
+      --surface: #ffffff;
+      --fg: #111827;
+      --muted: #6b7280;
+      --accent: #d5f20e;
+      --accent-soft: rgba(213, 242, 14, 0.14);
+      --border-subtle: #e5e7eb;
+      --border-soft: #d1d5db;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
+
+      --max-width: 1120px;
+      --radius: 16px;
+      --radius-pill: 999px;
+
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+
+      --fs-xs: 12px;
+      --fs-sm: 14px;
+      --fs-base: 16px;
+      --fs-lg: 18px;
+      --fs-xl: 22px;
+      --fs-2xl: 28px;
+      --fs-3xl: 40px;
+
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 40px;
+      --space-2xl: 64px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      font-size: var(--fs-base);
+      line-height: 1.6;
+      color: var(--fg);
+      background: radial-gradient(circle at top, #fdfdfb 0, #f5f3ef 40%, #eee6dd 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--fg);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(245, 243, 239, 0.94);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+      backdrop-filter: blur(16px);
+    }
+
+    .shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding: 14px 0;
+    }
+
+    .logo {
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      font-size: var(--fs-sm);
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 4px;
+      color: var(--muted);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      transition: width 0.18s ease-out;
+    }
+
+    nav a:hover {
+      color: var(--fg);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    main.shell {
+      padding-top: var(--space-xl);
+      padding-bottom: var(--space-2xl);
+    }
+
+    section {
+      margin-bottom: calc(1.5 * var(--space-2xl));
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0 0 var(--space-sm);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: var(--fs-3xl);
+    }
+
+    h2 {
+      font-size: var(--fs-2xl);
+    }
+
+    h3 {
+      font-size: var(--fs-xl);
+    }
+
+    p {
+      margin: 0 0 var(--space-sm);
+      color: var(--muted);
+      font-size: var(--fs-base);
+    }
+
+    .section-header {
+      margin-bottom: var(--space-md);
+    }
+
+    .section-lead {
+      max-width: 640px;
+      font-size: var(--fs-base);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .hero-main {
+      padding-right: var(--space-md);
+    }
+
+    .eyebrow {
+      font-size: var(--fs-xs);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--space-xs);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      box-shadow: 0 10px 30px rgba(17, 24, 39, 0.06);
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: var(--space-sm);
+    }
+
+    .pill span:last-child {
+      padding-left: 10px;
+      border-left: 1px solid rgba(209, 213, 219, 0.9);
+    }
+
+    .hero-kicker {
+      margin-top: var(--space-sm);
+      font-size: var(--fs-base);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: var(--space-md);
+      margin-bottom: var(--space-xs);
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      padding: 10px 20px;
+      font-size: var(--fs-sm);
+      border: 1px solid transparent;
+      background: var(--accent);
+      color: #18181b;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition:
+        background-color 0.16s ease-out,
+        color 0.16s ease-out,
+        border-color 0.16s ease-out,
+        box-shadow 0.16s ease-out,
+        transform 0.12s ease-out;
+    }
+
+    .btn:hover {
+      background: #e3ff43;
+      box-shadow: 0 12px 30px rgba(148, 163, 184, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .btn.secondary {
+      background: #111827;
+      color: #f9fafb;
+      border-color: #111827;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.35);
+    }
+
+    .btn.secondary:hover {
+      background: #020617;
+      border-color: #020617;
+    }
+
+    .hero-note {
+      font-size: var(--fs-sm);
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .hero-side {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 20px 20px 18px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      font-size: var(--fs-sm);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: var(--space-sm);
+    }
+
+    .hero-side ul {
+      padding-left: 20px;
+      margin: 0 0 var(--space-sm);
+      color: var(--muted);
+      font-size: var(--fs-sm);
+    }
+
+    .badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: var(--space-xs);
+      font-size: var(--fs-xs);
+      color: var(--muted);
+    }
+
+    .badge {
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      background: #f9fafb;
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+      margin-top: var(--space-md);
+    }
+
+    .step-item {
+      display: flex;
+      gap: 12px;
+      font-size: var(--fs-base);
+      color: var(--muted);
+    }
+
+    .step-bullet {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--fs-xs);
+      flex-shrink: 0;
+      background: var(--accent-soft);
+      color: #3f3f46;
+    }
+
+    .step-item strong {
+      color: var(--fg);
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+
+    .grid {
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 20px 20px 18px;
+      border-radius: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      font-size: var(--fs-base);
+      transition:
+        box-shadow 0.16s ease-out,
+        transform 0.12s ease-out,
+        border-color 0.16s ease-out;
+    }
+
+    .card:hover {
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+      transform: translateY(-2px);
+      border-color: var(--border-soft);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: var(--fs-sm);
+    }
+
+    .pricing-grid {
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: var(--space-md);
+    }
+
+    .price {
+      font-size: var(--fs-xl);
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--fg);
+    }
+
+    .contact-box {
+      padding: 24px 22px 22px;
+      border-radius: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      font-size: var(--fs-base);
+    }
+
+    .contact-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+
+    .contact-text {
+      font-size: var(--fs-sm);
+    }
+
+    .contact-email {
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
+      font-size: var(--fs-sm);
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-soft);
+      background: #f9fafb;
+      color: #111827;
+      white-space: nowrap;
+    }
+
+    .contact-email:hover {
+      border-color: var(--accent);
+      background: #fefce8;
+    }
+
+    .contact-inline-link {
+      font-size: var(--fs-sm);
+      margin-top: 4px;
+    }
+
+    .contact-inline-link a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      color: var(--fg);
+    }
+
+    .brief-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .field-row {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: var(--fs-sm);
+    }
+
+    .field-primary {
+      padding: 10px 12px 12px;
+      border-radius: 14px;
+      background: #fefce8;
+      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.14);
+      border: 1px solid rgba(234, 179, 8, 0.6);
+    }
+
+    .field-primary label {
+      font-weight: 600;
+    }
+
+    .field-primary input {
+      background: #fffbeb;
+      border-color: rgba(234, 179, 8, 0.9);
+    }
+
+    .field-primary .field-hint {
+      color: #92400e;
+      font-size: var(--fs-xs);
+    }
+
+    .field label {
+      font-size: var(--fs-xs);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: #f9fafb;
+      color: var(--fg);
+      padding: 10px 12px;
+      font-size: var(--fs-sm);
+      outline: none;
+      font-family: inherit;
+      transition:
+        border-color 0.14s ease-out,
+        box-shadow 0.14s ease-out,
+        background-color 0.14s ease-out;
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #9ca3af;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--accent);
+      background: #fefce8;
+      box-shadow: 0 0 0 1px rgba(213, 242, 14, 0.4);
+    }
+
+    .file-field input[type="file"] {
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: var(--fs-sm);
+      cursor: pointer;
+      background: #f9fafb;
+      color: var(--muted);
+    }
+
+    .file-field input[type="file"]::file-selector-button {
+      margin-right: 10px;
+      border: 1px solid var(--border-soft);
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: #111827;
+      color: #f9fafb;
+      font-size: var(--fs-xs);
+      cursor: pointer;
+      transition:
+        background-color 0.14s ease-out,
+        border-color 0.14s ease-out,
+        transform 0.1s ease-out;
+    }
+
+    .file-field input[type="file"]::file-selector-button:hover {
+      background: #020617;
+      border-color: #020617;
+      transform: translateY(-0.5px);
+    }
+
+    .field-hint {
+      font-size: var(--fs-xs);
+      color: var(--muted);
+      margin: 4px 0 0;
+    }
+
+    .brief-actions {
+      margin-top: var(--space-sm);
+    }
+
+    .brief-actions .btn {
+      min-width: 170px;
+      justify-content: center;
+    }
+
+    footer {
+      border-top: 1px solid rgba(229, 231, 235, 0.9);
+      font-size: var(--fs-xs);
+      color: var(--muted);
+      padding: 14px var(--space-md) 18px;
+      text-align: center;
+      background: rgba(245, 243, 239, 0.96);
+    }
+
+    .cta-band {
+      margin: calc(1.5 * var(--space-lg)) 0 calc(1.5 * var(--space-2xl));
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .cta-band-text {
+      max-width: 520px;
+      font-size: var(--fs-sm);
+      color: var(--fg);
+    }
+
+    .cta-band-eyebrow {
+      font-size: var(--fs-xs);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .cta-band .btn {
+      flex-shrink: 0;
+    }
+
+
+
+    /* Services section inverted style */
+    #services {
+      background: #020617;
+      border-radius: 24px;
+      padding: var(--space-xl) var(--space-md);
+      color: #f9fafb;
+    }
+
+    #services .section-header h2 {
+      color: #f9fafb;
+    }
+
+    #services .section-lead {
+      color: #e5e7eb;
+    }
+
+    #services .card {
+      background: #020617;
+      border-color: #4b5563;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.75);
+    }
+
+    #services .card:hover {
+      border-color: #9ca3af;
+    }
+
+    #services .card h3 {
+      color: #f9fafb;
+    }
+
+    #services .card p {
+      color: #e5e7eb;
+    }
+
+    #services a {
+      color: #facc15;
+    }
+
+    #services a:hover {
+      color: #fef9c3;
+    }
+
+    /* Pricing highlights */
+    #pricing .pricing-grid .card:nth-child(2) {
+      background: #ecfdf3;
+      border-color: #22c55e;
+    }
+
+    #pricing .pricing-grid .card:nth-child(2) .price {
+      color: #166534;
+    }
+
+    #pricing .pricing-grid .card:nth-child(2) p {
+      color: #14532d;
+    }
+
+    #pricing .pricing-grid .card:nth-child(3) {
+      background: #020617;
+      border-color: #020617;
+      color: #f9fafb;
+    }
+
+    #pricing .pricing-grid .card:nth-child(3) .price {
+      color: #facc15;
+    }
+
+    #pricing .pricing-grid .card:nth-child(3) p {
+      color: #e5e7eb;
+    }
+
+.ua-strip {
+  background: linear-gradient(to bottom, #0057b7 0 50%, #ffd500 50% 100%);
+  color: #020617;
+}
+
+.ua-strip-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 6px 0;
+}
+
+.ua-strip-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.ua-strip-marquee-inner {
+  display: inline-block;
+  padding-left: 100%;
+  animation: ua-marquee 28s linear infinite;
+}
+
+@keyframes ua-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.btn-donate-strip {
+  background: #020617;
+  color: #f9fafb;
+  border-color: #020617;
+  padding-inline: 27px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: calc(1.5 * var(--fs-xs));
+}
+
+.btn-donate-strip:hover {
+  background: #f9fafb;
+  color: #020617;
+  border-color: #020617;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 14px var(--space-md) 18px;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  text-align: center;
+  background: rgba(245, 243, 239, 0.96);
+}
+
+.donate-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+}
+
+.donate-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.has-donate-modal {
+  overflow: hidden;
+}
+
+.donate-modal {
+  background: #ffffff;
+  border-radius: 24px;
+  max-width: 520px;
+  width: 100%;
+  margin: 0 16px;
+  box-shadow: 0 30px 120px rgba(15, 23, 42, 0.85);
+  position: relative;
+  overflow: hidden;
+}
+
+.donate-flag {
+  height: 10px;
+  background: linear-gradient(to bottom, #0057b7 0 50%, #ffd500 50% 100%);
+}
+
+.donate-body {
+  padding: 22px 22px 20px;
+}
+
+.donate-kicker {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4b5563;
+  margin-bottom: 4px;
+}
+
+.donate-title {
+  font-size: var(--fs-xl);
+  margin: 0 0 8px;
+  letter-spacing: -0.03em;
+}
+
+.donate-subtitle {
+  font-size: var(--fs-sm);
+  color: #4b5563;
+  margin-bottom: 12px;
+}
+
+.donate-list {
+  font-size: var(--fs-sm);
+  color: #374151;
+  margin: 0 0 12px;
+  padding-left: 20px;
+}
+
+.donate-note {
+  font-size: var(--fs-xs);
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+.btn-donate-main {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding: 15px 36px;
+  font-size: calc(1.5 * var(--fs-sm));
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #16a34a;
+  color: #f9fafb;
+  border: 1px solid #15803d;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 14px 40px rgba(22, 163, 74, 0.55);
+  transition: background 0.18s ease-out, transform 0.12s ease-out, box-shadow 0.18s ease-out;
+}
+
+.btn-donate-main:hover {
+  background: #22c55e;
+  transform: translateY(-1px);
+  box-shadow: 0 18px 60px rgba(22, 163, 74, 0.75);
+}
+
+.donate-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #4b5563;
+}
+
+.donate-close:hover {
+  background: #f3f4f6;
+}
+
+
+    @media (max-width: 960px) {
+      .hero-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-lg);
+      }
+
+      .hero-main {
+        padding-right: 0;
+      }
+
+      .hero-side {
+        max-width: 460px;
+      }
+
+      .pricing-grid,
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .contact-email {
+        align-self: flex-start;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-row {
+        padding: 12px 0;
+      }
+
+      nav {
+        display: none;
+      }
+
+      main.shell {
+        padding-top: var(--space-lg);
+      }
+
+      section {
+        margin-bottom: var(--space-xl);
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .hero-side,
+      .card,
+      .contact-box {
+        border-radius: 18px;
+      }
+
+      .pricing-grid,
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  
+    .transparency-section {
+      margin-bottom: calc(1.5 * var(--space-2xl));
+    }
+
+    .transparency-note {
+      margin-top: 8px;
+      padding: 14px 16px;
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      border: 1px dashed rgba(15, 23, 42, 0.14);
+      font-size: var(--fs-sm);
+      color: var(--muted);
+    }
+
+    .donate-transparency {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #fffbeb;
+      border: 1px solid rgba(234, 179, 8, 0.6);
+      font-size: var(--fs-xs);
+      color: #78350f;
+    }
+</style>
+</head>
+<body>
+  <header>
+    <div class="ua-strip ua-strip--header">
+      <div class="shell ua-strip-inner">
+        <div class="ua-strip-marquee" aria-label="Support Ukraine front-line defenders">
+          <div class="ua-strip-marquee-inner">
+            I’m a Ukrainian designer supporting fellow soldiers, medics and volunteers at the front — if you can, donate any amount to help close urgent needs in equipment, drones and medical supplies.
+          </div>
+        </div>
+        <button class="btn btn-donate-strip donate-trigger" type="button">DONATE</button>
+      </div>
+    </div>
+    <div class="shell header-row">
+      <div class="logo">AI Superprompt Studio</div>
+      <nav>
+        <a href="#workflow">Workflow</a>
+        <a href="#services">Services</a>
+        <a href="#superprompting">JSON</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#brief">Project Brief</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="hero">
+      <div class="hero-layout">
+        <div class="hero-main">
+          <div class="pill">
+            <span>JSON-first studio</span>
+            <span>No calls, all async</span>
+          </div>
+          <div class="eyebrow">AI design, websites &amp; products</div>
+          <h1>Design and development powered by AI — one brief, 1–2 email rounds, and you’re live. ⚡️</h1>
+          <p class="hero-kicker">
+            If you can describe your idea in a few sentences, I can turn it into a clear brand, landing page or simple product using precise JSON superprompts.
+            Everything happens async — no calls, just a focused written workflow that nudges you from “thinking about it” to “it’s online”.
+          </p>
+          <div class="hero-actions">
+            <a href="#brief" class="btn" aria-label="Fill a short project brief to start your AI-powered design project">Start with a short brief →</a>
+            <a href="#services" class="btn secondary">Explore services</a>
+          </div>
+          <div class="hero-note">
+            One streamlined pipeline: brief → first version → 1–2 email feedback loops → final files and prompts, designed to help you ship instead of postponing.
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="tag">What you actually receive</div>
+          <ul>
+            <li>AI-crafted visual concepts, layouts and user flows ready for real users — not just pretty mockups.</li>
+            <li>Production-ready JSON prompts for images, video and code that your team can reuse instead of starting from zero.</li>
+            <li>Exportable assets for web, mobile and social in clean, organized folders your future self will thank you for.</li>
+          </ul>
+          <div class="badge-list">
+            <span class="badge">Brand &amp; logo systems</span>
+            <span class="badge">Landing pages</span>
+            <span class="badge">Simple AI-powered apps</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-header">
+        <h2>Services ✨</h2>
+        <p class="section-lead">
+          Three tracks you can book separately or combine into one streamlined engagement, depending on where your product is today.
+        </p>
+        <p class="section-lead">
+          Rates are intentionally friendly and flexible — <a href="#brief">send a short brief</a> and I’ll adapt scope, timing and price to your stage and goals, so you don’t overpay for what you don’t need.
+        </p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>AI Design &amp; Branding 🎨</h3>
+          <p>
+            Compact visual identity, logo, brand system and UI kit aligned with your product and audience, so every touchpoint feels like the same story.
+          </p>
+          <p><strong>Output:</strong> Figma files, exports, and JSON prompts for generating on-brand images and motion.</p>
+        </div>
+        <div class="card">
+          <h3>AI Websites 🌐</h3>
+          <p>
+            Clear landing pages and microsites with messaging hierarchy and layout that show visitors what to do next instead of making them guess.
+          </p>
+          <p><strong>Output:</strong> Responsive layout plus clean code or component structure, adapted for Framer, Webflow or static hosting.</p>
+        </div>
+        <div class="card">
+          <h3>AI-powered Apps 🤖</h3>
+          <p>
+            Simple apps, MVP demos and prototypes that use AI APIs and structured prompts for real interactions — so stakeholders can feel the product, not just read about it.
+          </p>
+          <p><strong>Output:</strong> UX flow, UI screens, JSON prompt library and starter code so your devs can move quickly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="superprompting">
+      <div class="section-header">
+        <h2>JSON superprompting as a service 🧠</h2>
+        <p class="section-lead">
+          Instead of vague prompts, you get structured JSON templates with clear fields for style, behavior and content — making AI output feel predictable instead of random.
+        </p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>Structured prompts, not magic words 📐</h3>
+          <p>
+            Prompts are delivered as JSON schemas with slots for camera, composition, character behavior, layout and UI states.
+            Your team can read them, version them and plug them into your tools without guessing what to type next.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Reusable prompt libraries ♻️</h3>
+          <p>
+            You get a small but robust library of presets. Change parameters, languages or formats without breaking quality, consistency or style, so your content scales with you.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="section-header">
+        <h2>Async-first workflow. No calls needed. 📬</h2>
+        <p class="section-lead">
+          The whole project runs in writing. You share a brief, I ship work, and we iterate through clear, time-boxed email feedback so you stay in control without calendar overload.
+        </p>
+      </div>
+      <div class="steps">
+        <div class="step-item">
+          <div class="step-bullet">1</div>
+          <div>
+            <strong>Short written brief.</strong>
+            <p>You fill in a compact form or send an email with your task, goals and references. No calls or presentations — even a rough draft is enough to start moving.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-bullet">2</div>
+          <div>
+            <strong>First concept.</strong>
+            <p>I prepare an AI-driven concept and JSON prompts, then send you the first version of the design, site or app experience, so you react to something real instead of a blank page.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-bullet">3</div>
+          <div>
+            <strong>1–2 feedback loops.</strong>
+            <p>You respond with comments by email. I refine, finalize the files and prompt library, and hand over everything ready for production, so your team knows the next concrete step.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+
+    <div class="cta-band">
+      <div class="cta-band-text">
+        <div class="cta-band-eyebrow">Make AI work like a system</div>
+        <p>Use the brief to outline your product and I’ll build reusable JSON prompt libraries for design, video and code, so your team stops reinventing prompts every week.</p>
+      </div>
+      <a href="#brief" class="btn">Request your JSON system →</a>
+    </div>
+
+    <section class="transparency-section" aria-label="Transparency and dialogue">
+      <div class="section-header">
+        <h2>Transparency, dialogue &amp; safety 🛡️</h2>
+        <p class="transparency-note">
+          I am always open to a direct conversation if you need more detailed reporting on how project payments or donations are used,
+          or if you want to clarify any part of our collaboration. You can reach me via the contact email on this page and ask for
+          additional context, documents or updates.
+        </p>
+        <p class="transparency-note">
+          At the same time, please keep in mind that in the context of the ongoing war against Ukraine, any public information,
+          screenshots or fragments of our communication can be misused by hostile actors, propagandists or people acting in bad faith.
+          If you have concerns, reach out first and we will choose a safe and respectful format for discussion.
+        </p>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="section-header">
+        <h2>Pricing snapshots 💸</h2>
+        <p class="section-lead">
+          Transparent “from” ranges. Exact scope, price and timing are confirmed in writing before we start, so you know exactly what you’re saying yes to.
+        </p>
+      </div>
+      <div class="pricing-grid">
+        <div class="card">
+          <h3>Starter 🌱</h3>
+          <div class="price">from $880</div>
+          <p>One key page or screen plus a focused JSON prompt set to support it — ideal when you want to test one clear offer fast.</p>
+        </div>
+        <div class="card">
+          <h3>Pro 🚀</h3>
+          <div class="price">from $2,100</div>
+          <p>Small site or mini-app with a compact design system and reusable prompt library, so you can run real traffic and learn from it.</p>
+        </div>
+        <div class="card">
+          <h3>Full Setup 🏁</h3>
+          <div class="price">from $4,500</div>
+          <p>Brand, website and AI-first prompt infrastructure configured for your product and team when you’re ready to commit and scale.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-band">
+      <div class="cta-band-text">
+        <div class="cta-band-eyebrow">Development made lighter</div>
+        <p>Fill in a quick brief, get a clear proposal by email and let a specialist handle the AI design and build for you, so you don’t lose weeks guessing the next move.</p>
+      </div>
+      <a href="#brief" class="btn">Submit brief for pricing →</a>
+    </div>
+
+    <section id="brief">
+      <div class="section-header">
+        <h2>Project Brief 📝</h2>
+        <p class="section-lead">
+          We work fully async: no calls or meetings. You send a short brief, we align by email, and the project moves forward through 1–2 quick feedback rounds. The brief itself often clarifies what you really need.
+        </p>
+      </div>
+      <div class="contact-box">
+        <div class="contact-header">
+          <div>
+            <div class="tag">Work async, stay focused</div>
+            <p class="contact-text">
+              Fill in the form below or email your brief directly. You’ll receive a reply with a rough plan, timeline and budget range, so you can quickly see if this is the right move right now.
+            </p>
+            <p class="contact-inline-link">
+              Prefer email? Just write to <a href="mailto:theolehhebel@gmail.com?subject=Project%20brief">theolehhebel@gmail.com</a>.
+            </p>
+          </div>
+          <a href="mailto:theolehhebel@gmail.com?subject=Project%20brief" class="contact-email">theolehhebel@gmail.com</a>
+        </div>
+
+        <form class="brief-form" action="mailto:theolehhebel@gmail.com?subject=Project%20brief" method="post" enctype="text/plain">
+          <div class="field field-primary">
+            <label for="brief-email">Your email</label>
+            <input
+              id="brief-email"
+              name="Email"
+              type="email"
+              placeholder="name@company.com"
+              required
+            />
+            <p class="field-hint">I will reply here with a short plan, timeline and budget range.</p>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="brief-name">Name</label>
+              <input
+                id="brief-name"
+                name="Name"
+                type="text"
+                placeholder="How should I address you?"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="brief-goal">Goal</label>
+              <input
+                id="brief-goal"
+                name="Goal"
+                type="text"
+                placeholder="What do you want to achieve right now?"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="brief-project">Project</label>
+            <textarea
+              id="brief-project"
+              name="Project"
+              rows="4"
+              placeholder="Describe your project or idea in a few sentences — messy is fine."
+            ></textarea>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="brief-deadline">Deadline</label>
+              <input
+                id="brief-deadline"
+                name="Deadline"
+                type="text"
+                placeholder="When would “done” feel perfect for you?"
+              />
+            </div>
+            <div class="field">
+              <label for="brief-expectations">Expectations</label>
+              <textarea
+                id="brief-expectations"
+                name="Expectations"
+                rows="3"
+                placeholder="If this collaboration worked perfectly, what would you have in your hands?"
+            ></textarea>
+            </div>
+          </div>
+
+          <div class="field file-field">
+            <label for="brief-references">Attach references / moodboard</label>
+            <input
+              id="brief-references"
+              name="References"
+              type="file"
+              multiple
+            />
+            <p class="field-hint">
+              Upload or link any moodboards, screenshots, existing pages or products that show the look, feel or structure you like — even a quick dump of links works.
+            </p>
+          </div>
+
+          <div class="brief-actions">
+            <button type="submit" class="btn">Submit brief →</button>
+          </div>
+        </form>
+
+        <p class="hero-note" style="margin-top:12px;">
+          You can also forward an existing pitch deck, Notion doc or old website — I’ll help translate it into an AI-first, JSON-driven approach that actually moves the project forward.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ua-strip ua-strip--footer">
+      <div class="shell ua-strip-inner">
+        <div class="ua-strip-marquee" aria-label="Support Ukraine front-line defenders">
+          <div class="ua-strip-marquee-inner">
+            I am raising direct support for Ukrainian defenders who lack basic gear, drones, communications and medical supplies — even 1&nbsp;$ can turn into real help on the front line. Thank you for not staying aside.
+          </div>
+        </div>
+        <button class="btn btn-donate-strip donate-trigger" type="button">DONATE</button>
+      </div>
+    </div>
+    <div class="footer-inner">
+      © 2025 AI Superprompt Studio. Built in Ukraine, built async, no meetings.
+    </div>
+  </footer>
+
+<div class="donate-backdrop" id="donate-modal" aria-hidden="true">
+  <div class="donate-modal" role="dialog" aria-modal="true" aria-labelledby="donate-title">
+    <div class="donate-flag"></div>
+    <button class="donate-close" type="button" aria-label="Close donate window">×</button>
+    <div class="donate-body">
+      <div class="donate-kicker">Support Ukraine directly</div>
+      <h2 class="donate-title" id="donate-title">Help my people stay alive and keep resisting</h2>
+      <p class="donate-subtitle">
+        I’m a designer from Ukraine. Too many of my relatives, friends and colleagues are serving right now — some of them have already been killed.
+        This site is both my studio and a way to send targeted help to them.
+      </p>
+      <ul class="donate-list">
+        <li>Any amount matters — even <strong>1&nbsp;$</strong> closes a small but real need on the front line.</li>
+        <li>Donations go to verified units and people I know personally for gear, drones, communication and medical supplies.</li>
+        <li>You have my real contacts here. I will answer everyone and report on how funds are spent.</li>
+      </ul>
+      <p class="donate-subtitle">
+        Yes, you see news about corruption at the top in Ukraine. That problem exists, but it does <strong>not</strong> cancel the sacrifice of people in trenches and hospitals.
+        They keep fighting every day and rely on direct support from those who refuse to look away.
+      </p>
+      <p class="donate-subtitle">
+        Here you’re not just sending money into a void. You support my work as a designer and, at the same time, help my brothers and sisters in uniform have a better chance to come back home.
+      </p>
+      <a href="https://www.paypal.com/donate?business=doctorgebel@gmail.com" target="_blank" rel="noopener" class="btn-donate-main">DONATE</a>
+      <p class="donate-note">
+        Send what feels possible — 1&nbsp;$, 5&nbsp;$, 20&nbsp;$ or more. I’ll regularly publish transparent reports on this site so you can see how your help turns into real action.
+      </p>
+      <p class="donate-transparency">
+        I am open to dialogue if you need deeper reporting about how your support is used or want to discuss specific details.
+        Just please remember that, in the reality of the war against Ukraine, any shared details, screenshots or quotes from our
+        communication can also be misused by hostile actors or people acting in bad faith. If you are unsure, please
+        <a href="mailto:theolehhebel@gmail.com?subject=Donation%20questions">email me directly</a> and we will choose a safe way to talk.
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+  (function() {
+    var modal = document.getElementById('donate-modal');
+    if (!modal) return;
+    var triggers = document.querySelectorAll('.donate-trigger');
+    var closeBtn = modal.querySelector('.donate-close');
+
+    function openModal() {
+      modal.classList.add('is-open');
+      document.body.classList.add('has-donate-modal');
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      document.body.classList.remove('has-donate-modal');
+    }
+
+    triggers.forEach(function(btn) {
+      btn.addEventListener('click', openModal);
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal);
+    }
+
+    modal.addEventListener('click', function(evt) {
+      if (evt.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function(evt) {
+      if (evt.key === 'Escape') {
+        closeModal();
+      }
+    });
+  })();
+</script>
+</body>
+</html>
