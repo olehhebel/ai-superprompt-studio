@@ -1346,7 +1346,20 @@
           <a href="mailto:theolehhebel@gmail.com?subject=Project%20brief" class="contact-email">theolehhebel@gmail.com</a>
         </div>
 
-        <form class="brief-form" id="brief-form">
+        <form
+          class="brief-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+        >
+          <!-- Web3Forms access key -->
+          <input type="hidden" name="access_key" value="54d405a9-39f1-41cc-8263-276e0ebaf3c6" />
+
+          <!-- Доп. служебные поля (можно править текст) -->
+          <input type="hidden" name="subject" value="New project brief from superprompt.pro" />
+          <input type="hidden" name="from_name" value="Superprompt Studio website" />
+          <!-- redirect можно добавить позже, когда захочешь свою thank-you страницу -->
+          <!-- <input type="hidden" name="redirect" value="https://superprompt.pro/#brief-sent" /> -->
+
           <div class="field field-primary">
             <label for="brief-email">Your email</label>
             <input
@@ -1412,17 +1425,14 @@
             </div>
           </div>
 
-          <div class="field file-field">
-            <label for="brief-references">Attach references / moodboard</label>
-            <input
-              id="brief-references"
-              name="References"
-              type="file"
-              multiple
-            />
-            <p class="field-hint">
-              Upload or link any moodboards, screenshots, existing pages or products that show the look, feel or structure you like — even a quick dump of links works.
-            </p>
+          <div class="field">
+            <label for="brief-links">References (Figma, Notion, links)</label>
+            <textarea
+              id="brief-links"
+              name="Reference links"
+              placeholder="Paste one or several links to Figma, Notion, Google Drive, etc."
+              rows="3"
+            ></textarea>
           </div>
 
           <div class="brief-actions">
@@ -1527,32 +1537,5 @@
     });
   })();
 </script>
-
-<script>
-  (function () {
-    const form = document.getElementById('brief-form');
-    if (!form) return;
-
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      const formData = new FormData(form);
-      const lines = [];
-
-      for (const [key, value] of formData.entries()) {
-        if (value && String(value).trim() !== '') {
-          lines.push(key + ': ' + value);
-        }
-      }
-
-      const subject = encodeURIComponent('Project brief from superprompt.pro');
-      const body = encodeURIComponent(lines.join('\n'));
-
-      window.location.href =
-        'mailto:theolehhebel@gmail.com?subject=' + subject + '&body=' + body;
-    });
-  })();
-</script>
-  
 </body>
 </html>
