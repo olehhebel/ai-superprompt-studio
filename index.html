@@ -988,6 +988,71 @@
       font-size: var(--fs-xs);
       color: #78350f;
     }
+
+    .process-banner-section {
+      margin-block: var(--space-2xl);
+    }
+    
+    .process-banner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: var(--space-xl);
+      padding: var(--space-xl);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at top left, rgba(213, 242, 14, 0.16), transparent 55%),
+        var(--surface);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      align-items: center;
+    }
+    
+    .process-copy .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    
+    .process-steps {
+      margin: var(--space-md) 0 0;
+      padding-left: 1.25rem;
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    
+    .process-steps strong {
+      color: var(--fg);
+      font-weight: 600;
+    }
+    
+    .process-visual img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: calc(var(--radius) * 1.2);
+      box-shadow: var(--shadow-subtle);
+    }
+    
+    .process-visual figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    
+    @media (max-width: 800px) {
+      .process-banner {
+        grid-template-columns: minmax(0, 1fr);
+        padding: var(--space-lg);
+      }
+    
+      .process-visual {
+        order: -1; /* картинка сверху на мобиле */
+      }
+    }
   </style>
 
   <script type="application/ld+json">
