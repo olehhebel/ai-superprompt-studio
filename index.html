@@ -1527,5 +1527,32 @@
     });
   })();
 </script>
+
+<script>
+  (function () {
+    const form = document.getElementById('brief-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const lines = [];
+
+      for (const [key, value] of formData.entries()) {
+        if (value && String(value).trim() !== '') {
+          lines.push(key + ': ' + value);
+        }
+      }
+
+      const subject = encodeURIComponent('Project brief from superprompt.pro');
+      const body = encodeURIComponent(lines.join('\n'));
+
+      window.location.href =
+        'mailto:theolehhebel@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  })();
+</script>
+  
 </body>
 </html>
