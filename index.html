@@ -746,9 +746,12 @@
       padding-left: 100%;
       animation: ua-marquee 28s linear infinite;
 
-      /* синяя обводка текста 1px */
-      -webkit-text-stroke: 0.2em #0057b7;      /* обводка */
-      -webkit-text-fill-color: #ffffff;      /* белая заливка текста */
+      color: #ffffff; /* основной цвет текста */
+      text-shadow:
+        0 0 2px #0057b7,
+        0 0 4px #0057b7,
+        0 0 6px #0057b7,
+        0 0 8px #0057b7; /* создаёт внешнюю синюю обводку */
     }
 
     @keyframes ua-marquee {
