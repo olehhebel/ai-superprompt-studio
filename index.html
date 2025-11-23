@@ -435,11 +435,11 @@
     .contact-box {
       padding: 24px 22px 22px;
       border-radius: 24px;
-      background: #020617;           /* тёмный фон */
-      border: 1px solid #111827;     /* тёмная рамка */
+      background: #020617;          /* ВОТ ЭТО — подложка, тёмный фон */
+      border: 1px solid #111827;
       box-shadow: var(--shadow-soft);
       font-size: var(--fs-base);
-      color: #e5e7eb;                /* светлый текст по умолчанию */
+      color: #e5e7eb;               /* светлый текст по умолчанию внутри карточки */
     }
 
           /* Тёмная тема только для секции #brief */
@@ -453,11 +453,27 @@
         color: #e5e7eb;
       }
       
-      #brief .contact-inline-link a {
-        color: #facc15;
-        text-decoration: underline;
-        text-underline-offset: 3px;
+      #brief .field label {
+        color: #9ca3af;
       }
+      
+      #brief .field input,
+      #brief .field textarea {
+        border-radius: 12px;
+        border: 1px solid #4b5563;
+        background: #020617;
+        color: #f9fafb;
+      }
+      
+      /* Жёлтый акцентный блок e-mail */
+      #brief .field-primary {
+        padding: 10px 12px 12px;
+        border-radius: 14px;
+        background: #030712;
+        border: 1px solid var(--accent);
+        box-shadow: 0 14px 36px rgba(15, 23, 42, 0.9);
+      }
+
       
       /* Лейблы */
       #brief .field label {
