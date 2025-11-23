@@ -1,1 +1,118 @@
+<div class="section-header">
+        <h2>Project Brief 📝</h2>
+        <p class="section-lead">
+          We work fully async: no calls or meetings. You send a short brief, we align by email, and the project moves forward through 1–2 quick feedback rounds. The brief itself often clarifies what you really need.
+        </p>
+      </div>
+      <div class="contact-box">
+        <div class="contact-header">
+          <div>
+            <div class="tag">Work async, stay focused</div>
+            <p class="contact-text">
+              Fill in the form below or email your brief directly. You’ll receive a reply with a rough plan, timeline and budget range, so you can quickly see if this is the right move right now.
+            </p>
+            <p class="contact-inline-link">
+              Prefer email? Just write to <a href="mailto:theolehhebel@gmail.com?subject=Project%20brief">theolehhebel@gmail.com</a>.
+            </p>
+          </div>
+          <a href="mailto:theolehhebel@gmail.com?subject=Project%20brief" class="contact-email">theolehhebel@gmail.com</a>
+        </div>
 
+        <form
+          class="brief-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+        >
+          <!-- Web3Forms access key -->
+          <input type="hidden" name="access_key" value="54d405a9-39f1-41cc-8263-276e0ebaf3c6" />
+
+          <!-- Доп. служебные поля (можно править текст) -->
+          <input type="hidden" name="subject" value="New project brief from superprompt.pro" />
+          <input type="hidden" name="from_name" value="Superprompt Studio website" />
+          <!-- redirect можно добавить позже, когда захочешь свою thank-you страницу -->
+          <!-- <input type="hidden" name="redirect" value="https://superprompt.pro/#brief-sent" /> -->
+
+          <div class="field field-primary">
+            <label for="brief-email">Your email</label>
+            <input
+              id="brief-email"
+              name="Email"
+              type="email"
+              placeholder="name@company.com"
+              required
+            />
+            <p class="field-hint">I will reply here with a short plan, timeline and budget range.</p>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="brief-name">Name</label>
+              <input
+                id="brief-name"
+                name="Name"
+                type="text"
+                placeholder="How should I address you?"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="brief-goal">Goal</label>
+              <input
+                id="brief-goal"
+                name="Goal"
+                type="text"
+                placeholder="What do you want to achieve right now?"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="brief-project">Project</label>
+            <textarea
+              id="brief-project"
+              name="Project"
+              rows="4"
+              placeholder="Describe your project or idea in a few sentences — messy is fine."
+            ></textarea>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="brief-deadline">Deadline</label>
+              <input
+                id="brief-deadline"
+                name="Deadline"
+                type="text"
+                placeholder="When would “done” feel perfect for you?"
+              />
+            </div>
+            <div class="field">
+              <label for="brief-expectations">Expectations</label>
+              <textarea
+                id="brief-expectations"
+                name="Expectations"
+                rows="3"
+                placeholder="If this collaboration worked perfectly, what would you have in your hands?"
+            ></textarea>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="brief-links">References (Figma, Notion, links)</label>
+            <textarea
+              id="brief-links"
+              name="Reference links"
+              placeholder="Paste one or several links to Figma, Notion, Google Drive, etc."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="brief-actions">
+            <button type="submit" class="btn">Submit brief →</button>
+          </div>
+        </form>
+
+        <p class="hero-note" style="margin-top:12px;">
+          You can also forward an existing pitch deck, Notion doc or old website — I’ll help translate it into an AI-first, JSON-driven approach that actually moves the project forward.
+        </p>
+      </div>
