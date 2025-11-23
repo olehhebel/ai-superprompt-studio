@@ -1060,6 +1060,69 @@
         order: -1; /* картинка сверху на мобиле */
       }
     }
+
+    /* Donate popup layout tweaks */
+    .donate-modal {
+      max-width: 560px;
+      width: min(100% - 32px, 560px);
+      max-height: calc(100vh - 40px);
+      margin: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .donate-body {
+      padding: 22px 22px 24px;
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+    }
+    
+    /* Центрируем основную кнопку */
+    .donate-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .donate-actions .btn-donate-main {
+      margin-top: 0;
+    }
+    
+    /* Чёрный прогресс-блок */
+    .donate-progress {
+      margin-top: 12px;
+      margin-bottom: 8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #020617;
+      color: #f9fafb;
+      font-size: var(--fs-xs);
+    }
+    
+    .donate-progress-main {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-weight: 600;
+    }
+    
+    .donate-progress-text {
+      margin: 4px 0 0;
+      opacity: 0.9;
+    }
+    
+    /* Мобильная адаптация */
+    @media (max-width: 640px) {
+      .donate-modal {
+        border-radius: 20px;
+        width: min(100% - 16px, 560px);
+        margin: 8px;
+      }
+    
+      .donate-body {
+        padding: 18px 16px 20px;
+      }
+    }
   </style>
 
   <script type="application/ld+json">
