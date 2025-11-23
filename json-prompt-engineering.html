@@ -433,13 +433,77 @@
     }
 
     .contact-box {
-      padding: 24px 22px 22px;
-      border-radius: 24px;
-      background: var(--surface);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      font-size: var(--fs-base);
-    }
+  padding: 24px 22px 22px;
+  border-radius: 24px;
+  background: #020617;           /* тёмный фон */
+  border: 1px solid #111827;     /* тёмная рамка */
+  box-shadow: var(--shadow-soft);
+  font-size: var(--fs-base);
+  color: #e5e7eb;                /* светлый текст по умолчанию */
+}
+
+    /* Тёмная тема только для секции #brief */
+#brief .tag {
+  color: #9ca3af;
+}
+
+#brief .contact-text,
+#brief .hero-note,
+#brief .contact-inline-link {
+  color: #e5e7eb;
+}
+
+#brief .contact-inline-link a {
+  color: #facc15;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Лейблы */
+#brief .field label {
+  color: #9ca3af;
+}
+
+/* Инпуты и текстовые поля */
+#brief .field input,
+#brief .field textarea {
+  border-radius: 12px;
+  border: 1px solid #4b5563;
+  background: #020617;
+  color: #f9fafb;
+  padding: 10px 12px;
+}
+
+#brief .field input::placeholder,
+#brief .field textarea::placeholder {
+  color: #6b7280;
+}
+
+#brief .field input:focus,
+#brief .field textarea:focus {
+  border-color: var(--accent);
+  background: #030712;
+  box-shadow: 0 0 0 1px rgba(213, 242, 14, 0.35);
+}
+
+/* Жёлтый "primary" блок под e-mail тоже в тёмный */
+#brief .field-primary {
+  padding: 10px 12px 12px;
+  border-radius: 14px;
+  background: #030712;
+  border: 1px solid var(--accent);
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.9);
+}
+
+#brief .field-primary input {
+  background: #020617;
+  border-color: var(--accent);
+}
+
+#brief .field-primary .field-hint {
+  color: #e5e7eb;
+}
+
 
     .contact-header {
       display: flex;
