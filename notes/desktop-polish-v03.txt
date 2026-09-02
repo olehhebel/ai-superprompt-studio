@@ -1,1 +1,0 @@
-Fixed header surface, raised Outcomes copy, and softened section fades.
