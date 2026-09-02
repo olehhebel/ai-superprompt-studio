@@ -1,0 +1,75 @@
+:root {
+  --ease-screen: cubic-bezier(.42,0,.58,1);
+}
+
+html,
+body,
+main,
+.problem-sprint-story,
+.outcome-team-story {
+  overflow-x: clip;
+}
+
+.site-header {
+  transition: color .52s var(--ease-screen);
+}
+
+.desktop-nav a,
+.nav-cta {
+  transition: color .52s var(--ease-screen), opacity .35s var(--ease-screen);
+}
+
+.nav-indicator {
+  transition:
+    width .42s var(--ease-screen),
+    transform .42s var(--ease-screen),
+    opacity .32s var(--ease-screen),
+    background-color .52s var(--ease-screen);
+}
+
+.section-inner {
+  will-change: opacity;
+}
+
+/* Opacity-only reveals: avoids content jumping or clipping during screen transitions. */
+.reveal-item {
+  transform: none;
+}
+
+.reveal-item.is-visible {
+  transform: none;
+  transition: opacity .62s var(--ease-screen);
+}
+
+/* Prevent the Sprints CTA from visually colliding with Outcomes on shorter desktop viewports. */
+.sprints-inner {
+  padding-bottom: clamp(112px, 12vh, 156px);
+}
+
+/* Keep Outcomes locked to the viewport bounds during the circle transition. */
+.outcomes-inner {
+  padding-left: var(--page-x);
+  padding-right: var(--page-x);
+  max-width: 100vw;
+}
+
+.outcome-list {
+  max-width: 100%;
+}
+
+@media (min-width: 821px) {
+  .sprints,
+  .sprints-inner {
+    min-height: max(100svh, 900px);
+  }
+
+  .outcomes-inner {
+    padding-bottom: 120px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-inner {
+    opacity: 1 !important;
+  }
+}
