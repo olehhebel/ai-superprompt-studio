@@ -114,6 +114,24 @@
   let source = 'unknown';
   let selectedSprint = '';
   let opener = null;
+  let submitting = false;
+
+  const honeypot = document.createElement('input');
+  honeypot.type = 'text';
+  honeypot.name = 'website';
+  honeypot.tabIndex = -1;
+  honeypot.autocomplete = 'off';
+  honeypot.setAttribute('aria-hidden', 'true');
+  honeypot.style.position = 'absolute';
+  honeypot.style.left = '-10000px';
+  honeypot.style.width = '1px';
+  honeypot.style.height = '1px';
+  honeypot.style.opacity = '0';
+  honeypot.style.pointerEvents = 'none';
+  projectForm.appendChild(honeypot);
+
+  productUrl.maxLength = 2048;
+  email.maxLength = 254;
 
   const validEmail = () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
   const validUrl = (value) => {
@@ -123,7 +141,7 @@
     } catch { return false; }
   };
   const updateSubmit = () => {
-    submitButton.disabled = !(selectedProduct && validEmail());
+    submitButton.disabled = submitting || !(selectedProduct && validEmail());
   };
 
   const transitionDOM = (fn) => {
@@ -148,14 +166,16 @@
   const acceptFile = (file) => {
     if (!file) return;
     const allowedExtensions = ['pdf','png','jpg','jpeg','zip'];
+    const allowedMimeTypes = ['application/pdf','image/png','image/jpeg','application/zip','application/x-zip-compressed'];
     const extension = (file.name.split('.').pop() || '').toLowerCase();
-    if (!allowedExtensions.includes(extension)) {
+    const mimeType = String(file.type || '').toLowerCase();
+    if (!allowedExtensions.includes(extension) || !allowedMimeTypes.includes(mimeType)) {
       formError.textContent = 'Choose a supported file.';
       productFile.value = '';
       return;
     }
-    if (file.size > 20 * 1024 * 1024) {
-      formError.textContent = 'File is too large. Maximum 20 MB.';
+    if (file.size > 4 * 1024 * 1024) {
+      formError.textContent = 'File is too large. Maximum 4 MB.';
       productFile.value = '';
       return;
     }
@@ -218,6 +238,8 @@
     productUrl.value = '';
     productFile.value = '';
     email.value = '';
+    honeypot.value = '';
+    submitting = false;
     formError.textContent = '';
     submitButton.disabled = true;
     productSummary.hidden = true;
@@ -262,6 +284,7 @@
 
   projectForm.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (submitting) return;
     formError.textContent = '';
     if (!selectedProduct) {
       formError.textContent = 'Add a product link or file.';
@@ -273,37 +296,42 @@
       return;
     }
 
-    submitButton.disabled = true;
+    submitting = true;
+    updateSubmit();
     submitButton.setAttribute('aria-busy', 'true');
-    const endpoint = document.body.dataset.formEndpoint?.trim();
-    const demo = document.body.dataset.demoForm === 'true';
 
     try {
-      if (endpoint) {
-        const data = new FormData();
-        data.append('email', email.value.trim());
-        if (selectedProduct.type === 'url') data.append('product_url', selectedProduct.value);
-        if (selectedProduct.type === 'file') data.append('product_file', selectedProduct.file, selectedProduct.file.name);
-        data.append('cta_source', source);
-        if (selectedSprint) data.append('selected_sprint', selectedSprint);
-        data.append('page_url', location.href);
-        data.append('referrer', document.referrer || 'direct');
-        const params = new URLSearchParams(location.search);
-        ['utm_source','utm_medium','utm_campaign'].forEach(key => { if (params.get(key)) data.append(key, params.get(key)); });
+      const data = new FormData();
+      data.append('email', email.value.trim());
+      if (selectedProduct.type === 'url') data.append('product_url', selectedProduct.value);
+      if (selectedProduct.type === 'file') data.append('product_file', selectedProduct.file, selectedProduct.file.name);
+      data.append('website', honeypot.value);
+      data.append('cta_source', source);
+      if (selectedSprint) data.append('selected_sprint', selectedSprint);
+      data.append('page_url', location.href);
+      data.append('referrer', document.referrer || 'direct');
+      const params = new URLSearchParams(location.search);
+      ['utm_source','utm_medium','utm_campaign'].forEach(key => { if (params.get(key)) data.append(key, params.get(key)); });
 
-        const response = await fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-        if (!response.ok) throw new Error('Submission failed');
-      } else if (demo) {
-        await new Promise(resolve => setTimeout(resolve, reduceMotion ? 50 : 520));
-      } else {
-        throw new Error('Form endpoint not configured');
-      }
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      const payload = await response.json().catch(() => null);
+      if (!response.ok || payload?.ok !== true) throw new Error('Submission failed');
+
       showSuccess();
-    } catch (error) {
-      formError.textContent = endpoint ? 'Something went wrong. Try again.' : 'Form endpoint is not configured yet.';
-      submitButton.disabled = false;
+    } catch {
+      formError.textContent = 'Something went wrong. Try again.';
     } finally {
+      submitting = false;
       submitButton.removeAttribute('aria-busy');
+      if (!successState.hidden) {
+        submitButton.disabled = true;
+      } else {
+        updateSubmit();
+      }
     }
   });
 })();
