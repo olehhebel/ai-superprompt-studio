@@ -1,6 +1,4 @@
 (() => {
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   window.addEventListener('load', () => {
     if (!window.gsap || !window.ScrollTrigger) return;
 
@@ -15,9 +13,7 @@
       // Remove legacy vertical-section ScrollTriggers created by script.js.
       ScrollTrigger.getAll().forEach((st) => {
         const trigger = st.trigger;
-        if (
-          trigger?.matches?.('#problems, #sprints, .problem-sprint-story, .outcome-team-story')
-        ) {
+        if (trigger?.matches?.('#problems, #sprints, .problem-sprint-story, .outcome-team-story')) {
           st.animation?.kill?.();
           st.kill();
         }
@@ -43,15 +39,17 @@
       let currentScene = -1;
       let storyTrigger = null;
 
+      // Reset any inline values left by the previous vertical ScrollTrigger implementation.
       gsap.set(main, { backgroundColor: '#ffffff' });
       gsap.set(scenes, { autoAlpha: 0 });
       gsap.set(scenes[0], { autoAlpha: 1 });
-      scenes[0].classList.add('is-story-active');
+      gsap.set(problemArt, { autoAlpha: 1, x: 0, y: 0, yPercent: 0 });
+      gsap.set(problemPaths, { opacity: 1, x: 0, y: 0, scaleX: 1, scaleY: 1, transformOrigin: '0% 50%' });
       gsap.set(sprintLines, { opacity: 0, scaleX: 1, transformOrigin: '0% 50%' });
-      gsap.set(problemPaths, { transformOrigin: '0% 50%' });
+      scenes[0].classList.add('is-story-active');
 
-      const setStoryNav = (index, immediate = false) => {
-        if (index === currentScene) return;
+      const setStoryNav = (index, immediate = false, force = false) => {
+        if (index === currentScene && !force) return;
         currentScene = index;
 
         scenes.forEach((scene, i) => scene.classList.toggle('is-story-active', i === index));
@@ -93,9 +91,9 @@
         });
       };
 
-      setStoryNav(0, true);
+      setStoryNav(0, true, true);
 
-      // Subtle motion while the Problems state is held. Individual path transforms remain
+      // Subtle ambient movement while Problems is held. Individual path transforms are
       // reserved for the scroll-driven straightening sequence.
       const lineFloat = gsap.to(problemArt, {
         x: 7,
@@ -103,8 +101,7 @@
         duration: 8.5,
         repeat: -1,
         yoyo: true,
-        ease: 'sine.inOut',
-        paused: false
+        ease: 'sine.inOut'
       });
 
       const getLineTarget = (index, axis) => {
@@ -123,13 +120,12 @@
 
       const tl = gsap.timeline({ defaults: { ease: 'sine.inOut' } });
 
-      // HERO → PROBLEMS. The viewport stays fixed; only state changes.
+      // HERO → PROBLEMS. The viewport stays fixed; only the scene state changes.
       tl.to(scenes[0], { autoAlpha: 0, duration: 0.14 }, 0.68)
         .to(main, { backgroundColor: '#1c1c1c', duration: 0.22 }, 0.74)
         .to(scenes[1], { autoAlpha: 1, duration: 0.16 }, 0.84);
 
-      // PROBLEMS → SPRINTS. Give the three tangled paths enough scroll distance to visibly
-      // collapse into clean horizontal service lines before the Sprints state takes over.
+      // PROBLEMS → SPRINTS. Tangled paths visibly collapse into the three clean service lines.
       tl.to(problemCopy, { autoAlpha: 0, duration: 0.12 }, 1.52)
         .to(problemArt, { x: 0, y: 0, duration: 0.12, ease: 'power2.out' }, 1.52);
 
@@ -148,7 +144,7 @@
       tl.to(main, { backgroundColor: '#ffffff', duration: 0.22 }, 1.69)
         .to(scenes[2], { autoAlpha: 1, duration: 0.16 }, 1.78)
         .to(sprintLines, { opacity: 1, scaleX: 1, stagger: 0.025, duration: 0.12 }, 1.87)
-        .to(problemArt, { autoAlpha: 0, duration: 0.1 }, 1.91)
+        .to(problemArt, { autoAlpha: 0, duration: 0.10 }, 1.91)
         .to(scenes[1], { autoAlpha: 0, duration: 0.08 }, 1.94);
 
       // SPRINTS → OUTCOMES.
@@ -156,7 +152,7 @@
         .to(main, { backgroundColor: '#0066ff', duration: 0.22 }, 2.76)
         .to(scenes[3], { autoAlpha: 1, duration: 0.16 }, 2.86);
 
-      // OUTCOMES → TEAM. No circle transition: blue resolves directly to the final white state.
+      // OUTCOMES → TEAM. No circle: blue resolves directly to the final white state.
       tl.to(scenes[3], { autoAlpha: 0, duration: 0.14 }, 3.70)
         .to(main, { backgroundColor: '#ffffff', duration: 0.22 }, 3.76)
         .to(scenes[4], { autoAlpha: 1, duration: 0.16 }, 3.86);
@@ -174,7 +170,7 @@
           const index = Math.max(0, Math.min(4, Math.round(self.progress * 4)));
           setStoryNav(index);
 
-          // Keep the ambient Problems line drift only while the second state is dominant.
+          // Ambient drift only while Problems is the dominant state.
           if (index === 1 && self.progress < 0.39) lineFloat.resume();
           else lineFloat.pause();
         }
@@ -202,10 +198,13 @@
 
       const refresh = () => {
         ScrollTrigger.refresh();
-        setStoryNav(Math.max(0, currentScene), true);
+        setStoryNav(Math.max(0, currentScene), true, true);
       };
       window.addEventListener('resize', refresh);
-      requestAnimationFrame(() => ScrollTrigger.refresh());
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+        setStoryNav(0, true, true);
+      });
 
       return () => {
         window.removeEventListener('resize', refresh);
@@ -221,7 +220,6 @@
       };
     });
 
-    // Reduced motion and mobile retain the safe document-flow behavior.
     mm.add('(prefers-reduced-motion: reduce)', () => {
       document.documentElement.classList.remove('story-mode');
     });
