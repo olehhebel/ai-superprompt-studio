@@ -1,0 +1,9 @@
+{
+  "name": "oleh-hebel-superprompt",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "nodemailer": "^9.1.1"
+  }
+}
