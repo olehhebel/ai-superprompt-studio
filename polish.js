@@ -8,7 +8,7 @@
     const { gsap, ScrollTrigger } = window;
     gsap.registerPlugin(ScrollTrigger);
 
-    // Opacity-first section transitions. Backgrounds stay solid; content crossfades.
+    // Stronger opacity crossfade between screens. Background blending is handled in CSS.
     const sections = gsap.utils.toArray('.section');
     sections.forEach((section, index) => {
       const inner = section.querySelector('.section-inner');
@@ -16,15 +16,15 @@
 
       if (index > 0) {
         gsap.fromTo(inner,
-          { opacity: 0.34 },
+          { opacity: 0.08 },
           {
             opacity: 1,
             ease: 'sine.inOut',
             scrollTrigger: {
               trigger: section,
-              start: 'top 96%',
-              end: 'top 58%',
-              scrub: 0.9,
+              start: 'top 100%',
+              end: 'top 68%',
+              scrub: 1.05,
               invalidateOnRefresh: true
             }
           }
@@ -35,13 +35,13 @@
         gsap.fromTo(inner,
           { opacity: 1 },
           {
-            opacity: 0.34,
+            opacity: 0.08,
             ease: 'sine.inOut',
             scrollTrigger: {
               trigger: section,
-              start: 'bottom 40%',
-              end: 'bottom 4%',
-              scrub: 0.9,
+              start: 'bottom 48%',
+              end: 'bottom 8%',
+              scrub: 1.05,
               invalidateOnRefresh: true
             }
           }
@@ -49,7 +49,7 @@
       }
     });
 
-    // Rebuild the white-circle transition so copy fades before the circle reaches it.
+    // Rebuild the white-circle transition so it starts after the Outcomes copy has cleared.
     ScrollTrigger.getAll().forEach((st) => {
       const trigger = st.trigger;
       if (trigger?.matches?.('.outcome-team-story')) {
@@ -64,9 +64,9 @@
       ease: 'sine.inOut',
       scrollTrigger: {
         trigger: '#outcomes',
-        start: 'bottom 41%',
-        end: 'bottom 2%',
-        scrub: 1.05,
+        start: 'bottom 34%',
+        end: 'bottom 0%',
+        scrub: 1.15,
         invalidateOnRefresh: true
       }
     });
@@ -118,7 +118,6 @@
       });
     }
 
-    // A second long wave on the whole group makes the paths weave together.
     gsap.to('.problem-art', {
       x: 10,
       y: -8,
