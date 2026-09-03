@@ -128,6 +128,56 @@ main,
   transform: translateY(0);
 }
 
+/* Hero service ticker. The former static 5–10 DAYS line becomes one continuous, non-interactive marquee. */
+.hero-marquee {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  top: 53.4%;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 400;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%);
+}
+
+.hero-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: hero-marquee-scroll 42s linear infinite;
+}
+
+.hero-marquee-group {
+  display: flex;
+  align-items: center;
+  flex: none;
+  padding-right: 34px;
+}
+
+.hero-marquee-group span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero-marquee-group span::after {
+  content: "·";
+  display: inline-block;
+  margin: 0 28px;
+  color: currentColor;
+}
+
+@keyframes hero-marquee-scroll {
+  from { transform: translate3d(0,0,0); }
+  to { transform: translate3d(-50%,0,0); }
+}
+
 /* Fingerprint: quiet opacity pulse only. */
 .primary-cta::after { display: none !important; }
 .primary-cta .fingerprint {
@@ -266,6 +316,14 @@ main,
     top: 22% !important;
     width: 115vw !important;
   }
+  .hero-marquee {
+    top: 55%;
+    font-size: 13px;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .hero-marquee-track { animation-duration: 34s; }
+  .hero-marquee-group span::after { margin-inline: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -277,4 +335,6 @@ main,
   }
 
   .primary-cta .fingerprint { animation: none; }
+  .hero-marquee-track { animation: none; transform: none; }
+  .hero-marquee-group:last-child { display: none; }
 }

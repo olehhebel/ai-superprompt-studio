@@ -17,7 +17,7 @@
         '.eyebrow',
         '.hero-title',
         '.hero-copy',
-        '.terms',
+        '.hero-marquee',
         '.primary-cta'
       ]],
       ['#problems', [
