@@ -1,0 +1,47 @@
+/* Stable navigation state: no travelling underline. The active mark fades in/out in place. */
+.desktop-nav a {
+  position: relative;
+  transition: color .34s cubic-bezier(.4,0,.2,1), opacity .34s cubic-bezier(.4,0,.2,1) !important;
+}
+
+/* Ignore the legacy moving indicator and legacy active color. */
+.nav-indicator {
+  display: none !important;
+}
+
+.site-header .desktop-nav a.is-active,
+.site-header[data-theme="dark"] .desktop-nav a.is-active,
+.site-header[data-theme="blue"] .desktop-nav a.is-active {
+  color: rgba(0,0,0,.34) !important;
+}
+
+.site-header .desktop-nav a.is-soft-active,
+.site-header[data-theme="dark"] .desktop-nav a.is-soft-active,
+.site-header[data-theme="blue"] .desktop-nav a.is-soft-active {
+  color: #000 !important;
+}
+
+.desktop-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 16px);
+  height: 2px;
+  border-radius: 999px;
+  background: var(--blue);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .34s cubic-bezier(.4,0,.2,1);
+}
+
+.desktop-nav a.is-soft-active::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktop-nav a,
+  .desktop-nav a::after {
+    transition: none !important;
+  }
+}

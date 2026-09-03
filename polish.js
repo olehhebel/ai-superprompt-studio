@@ -4,6 +4,51 @@
   window.addEventListener('load', () => {
     document.documentElement.classList.remove('story-mode');
 
+    // Stable nav state: determine the active section at the viewport center.
+    // This avoids IntersectionObserver threshold thrashing at section boundaries.
+    const softNavLinks = [...document.querySelectorAll('.desktop-nav [data-nav]')];
+    const softNavSections = [...document.querySelectorAll('[data-section]')];
+    let softActiveName = null;
+    let softNavRaf = 0;
+
+    const setSoftActive = (name) => {
+      if (name === softActiveName) return;
+      softActiveName = name;
+      softNavLinks.forEach((link) => {
+        link.classList.toggle('is-soft-active', link.dataset.nav === name);
+      });
+    };
+
+    const updateSoftNav = () => {
+      softNavRaf = 0;
+      const centerY = window.innerHeight * 0.5;
+      const hit = softNavSections.find((section) => {
+        const rect = section.getBoundingClientRect();
+        return rect.top <= centerY && rect.bottom >= centerY;
+      });
+
+      if (hit) {
+        setSoftActive(hit.dataset.section || 'hero');
+        return;
+      }
+
+      const team = document.querySelector('#team');
+      if (team && team.getBoundingClientRect().bottom < centerY) {
+        setSoftActive('team');
+      } else {
+        setSoftActive('hero');
+      }
+    };
+
+    const requestSoftNavUpdate = () => {
+      if (softNavRaf) return;
+      softNavRaf = window.requestAnimationFrame(updateSoftNav);
+    };
+
+    window.addEventListener('scroll', requestSoftNavUpdate, { passive: true });
+    window.addEventListener('resize', requestSoftNavUpdate);
+    updateSoftNav();
+
     // Remove all legacy scroll-effect timelines. Keep only normal document scrolling.
     if (window.gsap && window.ScrollTrigger) {
       const { gsap, ScrollTrigger } = window;
