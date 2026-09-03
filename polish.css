@@ -98,7 +98,8 @@ main,
 }
 
 .white-transition { display: none !important; }
-.problem-path { display: none !important; }
+.problem-path,
+.problem-art { display: none !important; }
 
 /* Keep service lines static. */
 .sprint-line {
@@ -128,7 +129,7 @@ main,
   transform: translateY(0);
 }
 
-/* Hero service ticker. The former static 5–10 DAYS line becomes one continuous, non-interactive marquee. */
+/* Hero service ticker. */
 .hero-marquee {
   position: absolute;
   z-index: 5;
@@ -192,14 +193,16 @@ main,
 
 /*
   DESKTOP GEOMETRY
-  Figma master: normal screens 1024px high; Outcomes 850px high.
-  Use height-based math rather than percentage padding, because vertical percentage
-  padding is width-relative in CSS and caused the CTA/section overlap on wide screens.
+  Standard screens follow the 1024px master; Problems and Outcomes intentionally use
+  the shorter 850/1024 ratio. Vertical geometry is height-based so content never overlaps
+  neighboring sections on wide desktops.
 */
 @media (min-width: 821px) {
   :root {
     --section-h: max(100svh, 900px);
-    --outcomes-h: calc(var(--section-h) * .830078125);
+    --short-section-h: calc(var(--section-h) * .830078125);
+    --outcomes-h: var(--short-section-h);
+    --problems-h: var(--short-section-h);
   }
 
   .section,
@@ -207,31 +210,43 @@ main,
     min-height: var(--section-h);
   }
 
-  /* Problems — latest Figma: copy at y 165 / 259 / 353 and fibers start at y 0. */
+  /* Problems mirrors Outcomes spacing and scale. */
+  .problems {
+    min-height: var(--problems-h) !important;
+    height: var(--problems-h) !important;
+  }
+
+  .problems-inner {
+    min-height: var(--problems-h) !important;
+    height: var(--problems-h) !important;
+    padding: 0 var(--page-x) !important;
+  }
+
+  .problems-eyebrow {
+    position: absolute;
+    left: var(--page-x);
+    top: 33.0588235294%;
+    margin: 0;
+    color: rgba(255,255,255,.50);
+  }
+
   .problem-copy {
-    top: calc(var(--section-h) * .1611328125) !important;
-  }
-
-  .problem-art {
     position: absolute !important;
-    inset: auto !important;
-    left: 37.15% !important;
-    top: 0 !important;
-    width: 89.8vw !important;
-    height: var(--section-h) !important;
-    max-width: none !important;
-    aspect-ratio: auto !important;
-    background: url('./assets/fibers.svg') left top / auto 100% no-repeat;
-    opacity: 1 !important;
-    transform: none !important;
-    pointer-events: none;
+    left: var(--page-x) !important;
+    right: var(--page-x);
+    top: 39.5294117647% !important;
+    display: grid !important;
+    gap: 0 !important;
+    margin: 0 !important;
   }
 
-  /*
-    Sprints — position all major blocks from the section height, matching 1440×1024:
-    eyebrow 170, title 225, rows 366, terms 696, CTA 765.
-    Absolute section geometry keeps the CTA safely inside its own section at every desktop height.
-  */
+  .problem-line {
+    font-size: clamp(38px, 3.333vw, 48px) !important;
+    line-height: 1.2 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Sprints — position all major blocks from the section height. */
   .sprints-inner {
     padding: 0 var(--page-x) !important;
   }
@@ -270,7 +285,7 @@ main,
     margin: 0 !important;
   }
 
-  /* Outcomes is intentionally shorter in the latest master: 850 / 1024 = 83.0078125%. */
+  /* Outcomes uses the same short-section rhythm. */
   .outcomes {
     min-height: var(--outcomes-h) !important;
     height: var(--outcomes-h) !important;
@@ -311,11 +326,6 @@ main,
 @media (max-width: 820px) {
   :root { --header-surface-h: 76px; }
   .site-header { height: var(--header-surface-h) !important; }
-  .problem-art {
-    left: 38% !important;
-    top: 22% !important;
-    width: 115vw !important;
-  }
   .hero-marquee {
     top: 55%;
     font-size: 13px;
@@ -324,6 +334,12 @@ main,
   }
   .hero-marquee-track { animation-duration: 34s; }
   .hero-marquee-group span::after { margin-inline: 20px; }
+  .problems-eyebrow {
+    position: absolute;
+    left: var(--page-x);
+    top: 18%;
+    color: rgba(255,255,255,.50);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
