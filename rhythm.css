@@ -1,0 +1,7 @@
+:root {
+  --screen-pad-y: clamp(190px, 24vh, 250px);
+  --screen-gap-sm: 28px;
+  --screen-gap-md: 40px;
+  --screen-gap-lg: 64px;
+  --screen-gap-xl: 88px;
+}
