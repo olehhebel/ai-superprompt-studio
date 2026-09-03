@@ -177,4 +177,18 @@
   .team-copy .terms { margin: var(--screen-gap-lg) 0 0 !important; }
   .sprints .primary-cta { margin-top: var(--screen-gap-md) !important; }
   .team-trust { margin: var(--screen-gap-xl) 0 0 !important; }
+
+  /* Mobile: keep sprint rows clean and remove decorative service lines. */
+  .sprint-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .sprint-name,
+  .sprint-outcome {
+    grid-column: 1 !important;
+  }
+
+  .sprint-line {
+    display: none !important;
+  }
 }
