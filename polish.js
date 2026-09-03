@@ -9,7 +9,7 @@
       const { gsap, ScrollTrigger } = window;
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill(true));
-      gsap.set('.problem-art, .problem-path, .sprint-line, .white-transition', { clearProps: 'all' });
+      gsap.set('.sprint-line, .white-transition', { clearProps: 'all' });
     }
 
     const sectionItems = new Map([
@@ -21,6 +21,7 @@
         '.primary-cta'
       ]],
       ['#problems', [
+        '.problems-eyebrow',
         '.problem-line:nth-child(1)',
         '.problem-line:nth-child(2)',
         '.problem-line:nth-child(3)'
