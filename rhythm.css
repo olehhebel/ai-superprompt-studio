@@ -6,93 +6,135 @@
   --screen-gap-xl: 88px;
 }
 
-@media (min-width: 821px) {
-  .section,
-  .section-inner,
-  .hero,
-  .problems,
-  .sprints,
-  .outcomes,
-  .team,
-  .problems-inner,
-  .outcomes-inner,
-  .team-inner {
-    min-height: 0 !important;
-    height: auto !important;
-  }
-
-  .section-inner {
-    position: relative !important;
-    padding: var(--screen-pad-y) var(--page-x) !important;
-  }
-
-  .hero .eyebrow,
-  .hero-title,
-  .hero-copy,
-  .hero .primary-cta,
-  .problems-eyebrow,
-  .problem-copy,
-  .sprints-heading,
-  .sprint-list,
-  .sprints-terms,
-  .sprints .primary-cta,
-  .outcomes .eyebrow,
-  .outcome-list,
-  .team-copy .eyebrow,
-  .team-copy .section-title,
-  .team-body,
-  .team-copy .terms,
-  .team-copy .primary-cta,
-  .team-trust {
-    position: static !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-  }
-
-  .hero-heading { margin: 0 !important; }
-  .hero .eyebrow { margin: 0 0 var(--screen-gap-md) !important; }
-  .hero-title { display: block; width: min(760px, 58vw) !important; margin: 0 !important; }
-  .hero-copy { width: min(780px, 60vw) !important; margin: var(--screen-gap-md) 0 0 !important; }
-  .hero-marquee {
-    position: relative !important;
-    left: calc(-1 * var(--page-x)) !important;
-    right: auto !important;
-    top: auto !important;
-    width: 100vw;
-    margin-top: var(--screen-gap-lg);
-  }
-  .hero .primary-cta { margin-top: var(--screen-gap-md) !important; }
-
-  .problems-eyebrow { margin: 0 !important; }
-  .problem-copy {
-    margin-top: var(--screen-gap-md) !important;
-    display: grid !important;
-    gap: var(--screen-gap-sm) !important;
-  }
-  .problem-line { white-space: normal !important; }
-
-  .sprints-heading { margin: 0 !important; }
-  .sprints-heading .eyebrow { margin: 0 0 var(--screen-gap-sm) !important; }
-  .sprint-list { margin-top: var(--screen-gap-xl) !important; gap: var(--screen-gap-md) !important; }
-  .sprints-terms { margin: var(--screen-gap-lg) 0 0 !important; }
-  .sprints .primary-cta { margin: var(--screen-gap-md) 0 0 !important; }
-
-  .outcomes .eyebrow { margin: 0 !important; }
-  .outcome-list {
-    width: min(1137px, calc(100vw - (2 * var(--page-x)))) !important;
-    max-width: 100% !important;
-    margin: var(--screen-gap-md) 0 0 !important;
-  }
-
-  .team-copy .eyebrow { margin: 0 0 var(--screen-gap-md) !important; }
-  .team-copy .section-title { width: min(760px, 58vw) !important; }
-  .team-body { width: min(780px, 60vw) !important; margin: var(--screen-gap-md) 0 0 !important; }
-  .team-copy .terms { margin: var(--screen-gap-lg) 0 0 !important; }
-  .team-copy .primary-cta { margin: var(--screen-gap-md) 0 0 !important; }
-  .team-trust { width: max-content; max-width: 100%; margin: var(--screen-gap-xl) 0 0 auto !important; }
+/* Canonical section rhythm: every screen is content-driven and uses the same top/bottom spacing. */
+.section,
+.section-inner,
+.hero,
+.problems,
+.sprints,
+.outcomes,
+.team,
+.problems-inner,
+.sprints-inner,
+.outcomes-inner,
+.team-inner {
+  min-height: 0 !important;
+  height: auto !important;
 }
+
+.section-inner {
+  position: relative !important;
+  padding: var(--screen-pad-y) var(--page-x) !important;
+}
+
+.hero .eyebrow,
+.hero-title,
+.hero-copy,
+.hero .primary-cta,
+.problems-eyebrow,
+.problem-copy,
+.problem-conclusion,
+.sprints-heading,
+.sprint-list,
+.sprints-terms,
+.outcomes .eyebrow,
+.outcome-list,
+.handoff-grid,
+.handoff-cta,
+.team-trust {
+  position: static !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+}
+
+/* Hero background image. */
+.hero {
+  background: #f4f5f6 !important;
+  isolation: isolate;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("./assets/hero-cloud.svg") center center / cover no-repeat;
+  opacity: .82;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(255,255,255,.94) 0%, rgba(255,255,255,.82) 32%, rgba(255,255,255,.48) 58%, rgba(255,255,255,.12) 100%);
+  pointer-events: none;
+}
+
+.hero .section-inner {
+  z-index: 2;
+}
+
+/* Hero content flow. */
+.hero-heading { margin: 0 !important; }
+.hero .eyebrow { margin: 0 0 var(--screen-gap-md) !important; }
+.hero-title {
+  display: block;
+  width: min(760px, 58vw) !important;
+  margin: 0 !important;
+}
+.hero-lead {
+  margin-top: var(--screen-gap-md) !important;
+}
+.hero-copy {
+  width: min(780px, 60vw) !important;
+  margin-top: var(--screen-gap-sm) !important;
+}
+.hero-marquee {
+  position: relative !important;
+  left: calc(-1 * var(--page-x)) !important;
+  right: auto !important;
+  top: auto !important;
+  width: 100vw;
+  margin-top: var(--screen-gap-lg) !important;
+}
+.hero .primary-cta { margin-top: var(--screen-gap-md) !important; }
+.hero-helper { margin-top: var(--screen-gap-sm) !important; }
+
+/* Problems. */
+.problems-eyebrow { margin: 0 !important; }
+.problem-copy {
+  margin-top: var(--screen-gap-md) !important;
+  display: grid !important;
+  gap: var(--screen-gap-sm) !important;
+}
+.problem-line { white-space: normal !important; }
+.problem-conclusion { margin-top: var(--screen-gap-lg) !important; }
+
+/* Sprints. */
+.sprints-heading { margin: 0 !important; }
+.sprints-heading .eyebrow { margin: 0 0 var(--screen-gap-sm) !important; }
+.sprint-list { margin-top: var(--screen-gap-lg) !important; }
+.sprints-terms { margin: var(--screen-gap-lg) 0 0 !important; }
+
+/* Outcomes. */
+.outcomes .eyebrow { margin: 0 !important; }
+.outcome-list {
+  width: var(--copy-wide) !important;
+  max-width: 100% !important;
+  margin: var(--screen-gap-md) 0 0 !important;
+}
+
+/* Handoff: the personal intro now lives in the footer, so the CTA starts at the canonical section top. */
+.handoff-grid {
+  width: var(--copy-wide) !important;
+  max-width: 100% !important;
+}
+.handoff-cta { margin: 0 !important; }
+.handoff-cta-title { margin-top: 0 !important; }
 
 @media (max-width: 820px) {
   :root {
@@ -103,89 +145,43 @@
     --screen-gap-xl: 64px;
   }
 
-  .section,
-  .section-inner,
-  .hero,
-  .problems,
-  .sprints,
-  .outcomes,
-  .team,
-  .problems-inner,
-  .outcomes-inner,
-  .team-inner {
-    min-height: 0 !important;
-    height: auto !important;
+  .section-inner {
+    padding: var(--screen-pad-y) var(--page-x) !important;
   }
 
-  .section-inner { padding: var(--screen-pad-y) var(--page-x) !important; }
+  .hero::before {
+    background-position: 58% center;
+    opacity: .64;
+  }
 
-  .hero .eyebrow,
+  .hero::after {
+    background: linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.68) 52%, rgba(255,255,255,.36) 100%);
+  }
+
   .hero-title,
+  .hero-lead,
   .hero-copy,
-  .hero .primary-cta,
-  .problems-eyebrow,
-  .problem-copy,
-  .sprints-heading,
-  .sprint-list,
-  .sprints-terms,
-  .sprints .primary-cta,
-  .outcomes .eyebrow,
+  .hero-helper,
   .outcome-list,
-  .team-copy .eyebrow,
-  .team-copy .section-title,
-  .team-body,
-  .team-copy .terms,
-  .team-copy .primary-cta,
-  .team-trust {
-    position: static !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
+  .handoff-grid {
+    width: 100% !important;
+    max-width: 100% !important;
   }
-
-  .hero .eyebrow,
-  .problems-eyebrow,
-  .team-copy .eyebrow { margin: 0 0 var(--screen-gap-md) !important; }
-
-  .hero-title,
-  .hero-copy,
-  .team-copy .section-title,
-  .team-body { width: 100% !important; }
-
-  .hero-copy,
-  .team-body { margin: var(--screen-gap-md) 0 0 !important; }
 
   .hero-marquee {
-    position: relative !important;
-    left: calc(-1 * var(--page-x)) !important;
-    right: auto !important;
-    top: auto !important;
-    width: 100vw;
-    margin-top: var(--screen-gap-lg);
+    margin-top: var(--screen-gap-lg) !important;
   }
 
-  .hero .primary-cta,
-  .team-copy .primary-cta { margin-top: var(--screen-gap-md) !important; }
-
-  .problem-copy { display: grid !important; gap: var(--screen-gap-sm) !important; margin-top: 0 !important; }
-  .outcome-list { margin-top: var(--screen-gap-md) !important; }
-
-  .sprints-heading { margin: 0 !important; }
-  .sprint-list { margin-top: var(--screen-gap-lg) !important; }
-  .sprints-terms,
-  .team-copy .terms { margin: var(--screen-gap-lg) 0 0 !important; }
-  .sprints .primary-cta { margin-top: var(--screen-gap-md) !important; }
-  .team-trust { margin: var(--screen-gap-xl) 0 0 !important; }
-
-  /* Mobile: keep sprint rows clean and remove decorative service lines. */
-  .sprint-row {
-    grid-template-columns: minmax(0, 1fr) !important;
+  .problem-copy {
+    margin-top: var(--screen-gap-md) !important;
   }
 
-  .sprint-name,
-  .sprint-outcome {
-    grid-column: 1 !important;
+  .sprint-list {
+    margin-top: var(--screen-gap-lg) !important;
+  }
+
+  .sprints-terms {
+    margin-top: var(--screen-gap-lg) !important;
   }
 
   .sprint-line {
