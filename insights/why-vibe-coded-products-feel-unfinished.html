@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Why Vibe-Coded Products Feel Unfinished Even When They Work</title>
+  <meta name="description" content="A practical Prototype Debt Map for diagnosing why AI-built and vibe-coded products still feel unfinished after the code works." />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <link rel="canonical" href="https://superprompt.pro/insights/why-vibe-coded-products-feel-unfinished" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Oleh Hebel & Co" />
+  <meta property="og:title" content="Why Vibe-Coded Products Feel Unfinished Even When They Work" />
+  <meta property="og:description" content="The Prototype Debt Map: five layers between working code and a coherent product." />
+  <meta property="og:url" content="https://superprompt.pro/insights/why-vibe-coded-products-feel-unfinished" />
+  <meta property="og:image" content="https://superprompt.pro/og-image.jpg" />
+  <meta property="article:published_time" content="2026-09-04" />
+  <meta property="article:modified_time" content="2026-09-04" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Why Vibe-Coded Products Feel Unfinished Even When They Work" />
+  <meta name="twitter:description" content="Five layers of prototype debt in AI-built products." />
+  <meta name="twitter:image" content="https://superprompt.pro/og-image.jpg" />
+  <link rel="stylesheet" href="/insight-page.css" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Why Vibe-Coded Products Feel Unfinished Even When They Work",
+    "description":"A practical Prototype Debt Map for diagnosing why AI-built and vibe-coded products still feel unfinished after the code works.",
+    "datePublished":"2026-09-04",
+    "dateModified":"2026-09-04",
+    "mainEntityOfPage":"https://superprompt.pro/insights/why-vibe-coded-products-feel-unfinished",
+    "author":{"@type":"Person","@id":"https://superprompt.pro/#oleh-hebel","name":"Oleh Hebel"},
+    "publisher":{"@type":"Organization","@id":"https://superprompt.pro/#organization","name":"Oleh Hebel & Co"},
+    "about":["Vibe coding","AI-built MVP","Product design","Prototype debt","Production readiness"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#article">Skip to article</a>
+  <header class="insight-header">
+    <a class="brand" href="/">OLEH HEBEL &amp; Co</a>
+    <nav class="insight-nav" aria-label="Primary"><a href="/insights">Insights</a><a href="/vibe-coded-product-rescue">Product Rescue</a><a href="/agent-ready-design-system">Agent-Ready System</a><a href="/ai-agent-ux-design">AI Agent UX</a><a class="nav-cta" href="/#team">Send the product</a></nav>
+  </header>
+
+  <main>
+    <section class="article-hero">
+      <div class="article-hero-inner">
+        <p class="eyebrow">PRODUCT RESCUE · FIELD NOTE 01</p>
+        <h1>Why vibe-coded products feel unfinished even when they work.</h1>
+        <p class="article-deck">AI compresses the time required to put screens and features into the browser. It does not remove the product decisions that make those screens behave like one coherent system.</p>
+        <div class="article-meta"><span>By Oleh Hebel</span><span>September 4, 2026</span><span>8 min read</span></div>
+      </div>
+    </section>
+
+    <article class="article-main" id="article">
+      <div class="article-layout">
+        <div class="article-body">
+          <p>A vibe-coded product can be technically impressive and still feel strangely provisional. The buttons work. The database works. The main flow can be demonstrated. Yet users feel hesitation: patterns change from screen to screen, edge cases expose rough seams, and the product communicates less confidence than the underlying engineering deserves.</p>
+
+          <p>This is not a contradiction. It is a different kind of debt.</p>
+
+          <p>Vercel now describes the same structural gap from the tooling side: AI has made demos easy to generate, while the difficult work is moving those prototypes into real codebases and production systems. The design problem is parallel. Generating UI is fast; making every state, component and interaction express one product logic still requires judgment.</p>
+
+          <h2>The Prototype Debt Map</h2>
+          <p>I use five layers to diagnose why a fast-built product still reads as a prototype. They are useful because they separate visible polish problems from deeper product-system problems.</p>
+
+          <div class="model">
+            <h3>Prototype Debt Map</h3>
+            <div class="model-grid">
+              <div class="model-cell"><b>1. Structure debt</b>The flow exists, but task order, hierarchy, navigation or decision points are still shaped by implementation convenience.</div>
+              <div class="model-cell"><b>2. State debt</b>The happy path works, while loading, empty, error, validation, permission, destructive and recovery states are incomplete.</div>
+              <div class="model-cell"><b>3. System debt</b>Repeated UI patterns are visually similar but not actually governed by one component, token or behavior rule.</div>
+              <div class="model-cell"><b>4. Trust debt</b>The product asks users to infer what happened, why an AI action occurred, whether data was saved or how to recover.</div>
+              <div class="model-cell"><b>5. Implementation debt</b>The design intent and the shipped code diverge across breakpoints, states or components.</div>
+            </div>
+          </div>
+
+          <p>The most important point is that these layers compound. A small system inconsistency becomes more expensive once five generated screens copy it. A missing error state becomes more damaging once the product starts serving real users instead of demos.</p>
+
+          <h2>1. Structure debt: the interface mirrors the build sequence</h2>
+          <p>AI builders are very good at satisfying local instructions: add a dashboard, add settings, add a modal, add a new field. Over time, the product can start reflecting the order in which requests were made rather than the order in which users think.</p>
+
+          <p>Typical symptoms:</p>
+          <ul>
+            <li>navigation categories map to features rather than user goals;</li>
+            <li>secondary decisions compete visually with the primary task;</li>
+            <li>the same action appears in different places depending on the screen;</li>
+            <li>forms expose technical structure instead of the smallest useful decision sequence.</li>
+          </ul>
+
+          <p>The fix is rarely “make it prettier.” It is to identify one critical task and remove every decision, branch or hierarchy choice that does not help the user complete it.</p>
+
+          <h2>2. State debt: the demo path is not the product</h2>
+          <p>A prototype can survive with one successful path. A production product cannot. Every asynchronous action introduces states. Every permission introduces a denial path. Every AI workflow introduces uncertainty, partial completion and recovery.</p>
+
+          <table class="audit-table">
+            <thead><tr><th>Visible symptom</th><th>Hidden debt</th><th>Production question</th></tr></thead>
+            <tbody>
+              <tr><td>Spinner with no context</td><td>Progress state missing</td><td>What is happening, how long can it take, and can the user leave?</td></tr>
+              <tr><td>Blank dashboard</td><td>Empty state missing</td><td>What is the next useful action when there is no data?</td></tr>
+              <tr><td>Generic “Something went wrong”</td><td>Recovery model missing</td><td>Can the user retry, correct input, undo or escalate?</td></tr>
+              <tr><td>Disabled button</td><td>Constraint explanation missing</td><td>What condition prevents progress and how can it be resolved?</td></tr>
+            </tbody>
+          </table>
+
+          <p>State debt is one reason a product looks convincing in a founder demo and fragile five minutes into real use.</p>
+
+          <h2>3. System debt: every local success creates another pattern</h2>
+          <p>A generated component can look correct in isolation and still damage the product system. The issue appears when the next screen invents a 15px gap instead of the spacing scale, a new gray instead of the semantic token, or a new modal because the existing one was not obvious to the agent.</p>
+
+          <p>This is where “almost the same” becomes expensive. Users notice inconsistent density and behavior even when they cannot name the cause. Developers notice it later as duplicate components, conditional CSS and repeated fixes.</p>
+
+          <div class="callout">If a team has to describe the same visual rule again in each prompt, the rule is not yet part of the product system.</div>
+
+          <h2>4. Trust debt: working AI can still feel unreliable</h2>
+          <p>AI features expose product roughness faster because the system can act probabilistically, take time, use tools and occasionally be wrong. If the interface does not communicate scope, progress, confidence, approval or recovery, users are forced to supply their own mental model.</p>
+
+          <p>Trust debt is not solved by adding more explanation text. It is solved by designing the right state at the right moment: what the system is about to do, what it is doing now, what changed, and what control remains with the user.</p>
+
+          <h2>5. Implementation debt: design and code stop sharing rules</h2>
+          <p>A product can have a clean Figma file and still ship inconsistent UI. It can also have a polished codebase and a Figma file that no longer represents reality. Both cases create the same operational problem: nobody can point to one trustworthy source for the current rule.</p>
+
+          <p>Modern coding-agent workflows make this more important, not less. Cursor explicitly supports persistent project rules and design-system instructions so agents can reuse canonical components and tokens. Replit's enterprise design-system workflow similarly encodes component libraries, design tokens, brand assets and usage rules for its Agent. The direction is clear: product rules need to become retrievable operational context, not just visual documentation.</p>
+
+          <h2>A 30-minute production-readiness audit</h2>
+          <p>Pick one commercially important flow—signup, first value, checkout, creation, approval, export, invite—and inspect it without changing anything. Score each item 0, 1 or 2: absent, partial, clear.</p>
+          <ol>
+            <li><strong>Primary task:</strong> can a first-time user tell what to do next without reading every element?</li>
+            <li><strong>State coverage:</strong> do loading, empty, error, success and recovery states exist?</li>
+            <li><strong>Pattern reuse:</strong> are repeated controls actually the same component and behavior?</li>
+            <li><strong>Responsive rules:</strong> does the flow adapt deliberately rather than merely shrink?</li>
+            <li><strong>AI visibility:</strong> if AI acts, can the user see scope, progress, result and intervention points?</li>
+            <li><strong>Code parity:</strong> are the visible spacing, type, tokens and component variants traceable to canonical rules?</li>
+          </ol>
+
+          <p>A low score does not imply a full redesign. It tells you where to stop adding features temporarily and harden the product surface that users already touch.</p>
+
+          <h2>The right rescue scope is smaller than a redesign</h2>
+          <p>Teams often respond to prototype debt in one of two bad ways: keep shipping and hope the product “settles,” or pause everything for a giant redesign. There is a more useful middle option.</p>
+
+          <p>Select one critical flow. Fix its structure, states, reusable patterns and implementation rules. Then turn the decisions made there into defaults the next screen can reuse. The deliverable is not only a prettier flow. It is a small piece of product infrastructure.</p>
+
+          <div class="source-list">
+            <h2>Sources and further reading</h2>
+            <ul>
+              <li><a href="https://vercel.com/blog/introducing-the-new-v0" rel="noopener noreferrer">Vercel — Introducing the new v0 (2026)</a>: production gaps after vibe coding and prototype-to-production workflows.</li>
+              <li><a href="https://prod.cursor.com/for/designers" rel="noopener noreferrer">Cursor for Designers</a>: official design-system rule patterns for generated UI.</li>
+              <li><a href="https://docs.replit.com/teams/custom-design-system" rel="noopener noreferrer">Replit — Setting up a Design System</a>: components, tokens, instructions and agent context.</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="article-aside" aria-label="Article navigation">
+          <p>Framework</p>
+          <a href="#article">Prototype Debt Map</a>
+          <a href="/vibe-coded-product-rescue">Product Rescue Sprint →</a>
+          <a href="/insights/ai-prototype-to-production-ready-product">Next: Prototype → Production</a>
+          <a href="/insights">All insights</a>
+        </aside>
+      </div>
+    </article>
+  </main>
+
+  <section class="related"><div class="related-inner"><p class="eyebrow">HAVE THIS PROBLEM NOW?</p><h2>Send the working product. I’ll isolate the smallest fix that makes it feel ready.</h2><p>One critical flow, fixed scope, defined deliverables, 5–10 business days, no retainer.</p><div class="related-links"><a class="primary" href="/#team">Send the messy version</a><a href="/vibe-coded-product-rescue">Product Rescue Sprint</a><a href="/insights/stop-ai-coding-agent-ui-drift">Stop UI drift</a></div></div></section>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 OLEH HEBEL &amp; CO.</p><a href="/insights">Insights</a></div></footer>
+</body>
+</html>
