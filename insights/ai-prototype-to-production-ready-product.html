@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>From AI Prototype to Production-Ready Product</title>
+  <meta name="description" content="A practical release-readiness sequence for turning a working AI-built MVP into a coherent product without pausing for a full redesign." />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <link rel="canonical" href="https://superprompt.pro/insights/ai-prototype-to-production-ready-product" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Oleh Hebel & Co" />
+  <meta property="og:title" content="From AI Prototype to Production-Ready Product" />
+  <meta property="og:description" content="The Product-Ready Sequence: stabilize the highest-risk product decisions before adding another layer of features." />
+  <meta property="og:url" content="https://superprompt.pro/insights/ai-prototype-to-production-ready-product" />
+  <meta property="og:image" content="https://superprompt.pro/og-image.jpg" />
+  <meta property="article:published_time" content="2026-09-04" />
+  <meta property="article:modified_time" content="2026-09-04" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="From AI Prototype to Production-Ready Product" />
+  <meta name="twitter:description" content="A six-stage product-readiness sequence for AI-built MVPs." />
+  <meta name="twitter:image" content="https://superprompt.pro/og-image.jpg" />
+  <link rel="stylesheet" href="/insight-page.css" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"From AI Prototype to Production-Ready Product",
+    "description":"A practical release-readiness sequence for turning a working AI-built MVP into a coherent product without pausing for a full redesign.",
+    "datePublished":"2026-09-04",
+    "dateModified":"2026-09-04",
+    "mainEntityOfPage":"https://superprompt.pro/insights/ai-prototype-to-production-ready-product",
+    "author":{"@type":"Person","@id":"https://superprompt.pro/#oleh-hebel","name":"Oleh Hebel"},
+    "publisher":{"@type":"Organization","@id":"https://superprompt.pro/#organization","name":"Oleh Hebel & Co"},
+    "about":["AI prototype","Production readiness","AI-built MVP","Product design sprint","Design debt"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#article">Skip to article</a>
+  <header class="insight-header"><a class="brand" href="/">OLEH HEBEL &amp; Co</a><nav class="insight-nav" aria-label="Primary"><a href="/insights">Insights</a><a href="/vibe-coded-product-rescue">Product Rescue</a><a href="/agent-ready-design-system">Agent-Ready System</a><a href="/ai-agent-ux-design">AI Agent UX</a><a class="nav-cta" href="/#team">Send the product</a></nav></header>
+
+  <main>
+    <section class="article-hero"><div class="article-hero-inner"><p class="eyebrow">PRODUCTION READINESS · FIELD NOTE 05</p><h1>From AI prototype to production-ready product.</h1><p class="article-deck">Do not respond to fast prototyping with a slow redesign process. Stabilize the decisions that users and future features depend on, then keep shipping.</p><div class="article-meta"><span>By Oleh Hebel</span><span>September 4, 2026</span><span>9 min read</span></div></div></section>
+
+    <article class="article-main" id="article">
+      <div class="article-layout">
+        <div class="article-body">
+          <p>The old prototype-to-product transition often implied a rewrite: prototype first, then “real development.” AI builders are changing that boundary. Tools such as v0, Replit, Bolt, Cursor and others increasingly work directly with production code, repositories, deployment infrastructure and design systems.</p>
+
+          <p>That makes the next question more useful: if the code is already real, which product decisions still need to become production-grade?</p>
+
+          <h2>The Product-Ready Sequence</h2>
+          <p>I use a six-stage sequence. It is deliberately ordered by dependency: later work becomes cheaper when earlier rules are stable.</p>
+
+          <div class="model">
+            <h3>Product-Ready Sequence</h3>
+            <ol>
+              <li><strong>Choose the critical flow.</strong></li>
+              <li><strong>Fix hierarchy and task structure.</strong></li>
+              <li><strong>Complete the state model.</strong></li>
+              <li><strong>Normalize reusable UI rules.</strong></li>
+              <li><strong>Make trust and recovery explicit.</strong></li>
+              <li><strong>Align design, code and future agent context.</strong></li>
+            </ol>
+          </div>
+
+          <p>This is not a universal software release checklist. It is a product-design hardening sequence for a working MVP that already has code but still carries prototype-quality decisions.</p>
+
+          <h2>1. Choose the critical flow, not the whole product</h2>
+          <p>A fast-built product usually has too much surface area to “polish everything” efficiently. Start where one of these is true:</p>
+          <ul>
+            <li>most new users pass through the flow;</li>
+            <li>the flow creates revenue or first value;</li>
+            <li>support issues cluster around it;</li>
+            <li>the flow contains the product's most important AI behavior;</li>
+            <li>future features will copy its components and patterns.</li>
+          </ul>
+
+          <p>Common candidates are signup, onboarding, first creation, checkout, collaboration, approval, export and the primary AI task.</p>
+
+          <div class="callout">Production readiness should begin where product mistakes have the highest replication cost, not where the visual polish is most embarrassing.</div>
+
+          <h2>2. Fix hierarchy before styling</h2>
+          <p>Many AI-built screens are individually competent but weakly prioritized. Every generated requirement receives visible space. The result is an interface that explains implementation completeness rather than user priority.</p>
+
+          <p>Before touching fine visual details, answer:</p>
+          <ol>
+            <li>What is the one action this screen exists to help the user complete?</li>
+            <li>Which information changes that decision?</li>
+            <li>Which actions are secondary, destructive or exceptional?</li>
+            <li>What can move behind progressive disclosure?</li>
+            <li>What should remain stable as the product adds features?</li>
+          </ol>
+
+          <p>If the answers are unclear, polishing components will simply make the wrong hierarchy more consistent.</p>
+
+          <h2>3. Complete the state model</h2>
+          <p>Every important interaction should have an explicit state model before release. At minimum, inspect:</p>
+
+          <table class="audit-table">
+            <thead><tr><th>State</th><th>Question</th></tr></thead>
+            <tbody>
+              <tr><td>Initial</td><td>What does the user see before any data or action exists?</td></tr>
+              <tr><td>Loading / processing</td><td>Is progress visible and does the user know whether they can leave?</td></tr>
+              <tr><td>Success</td><td>Is completion obvious and is the next useful action clear?</td></tr>
+              <tr><td>Empty</td><td>Is “nothing here” distinguished from “something failed”?</td></tr>
+              <tr><td>Error</td><td>Does the message identify what can actually be corrected?</td></tr>
+              <tr><td>Permission / constraint</td><td>Does the user know why progress is blocked?</td></tr>
+              <tr><td>Destructive</td><td>Is impact visible before an irreversible action?</td></tr>
+              <tr><td>Recovery</td><td>Can the user retry, undo, correct or escalate?</td></tr>
+            </tbody>
+          </table>
+
+          <p>For AI workflows add progress, uncertainty, partial completion, tool failure, approval and human-handoff states.</p>
+
+          <h2>4. Normalize the rules that future screens will copy</h2>
+          <p>Do not create a complete enterprise design system for a five-screen MVP. Do create enough system to prevent the next five screens from multiplying inconsistency.</p>
+
+          <p>Stabilize:</p>
+          <ul>
+            <li>type hierarchy;</li>
+            <li>semantic color tokens;</li>
+            <li>spacing scale;</li>
+            <li>radii and elevation rules;</li>
+            <li>buttons and form controls;</li>
+            <li>cards / containers;</li>
+            <li>feedback and state patterns;</li>
+            <li>responsive behavior for the critical layout.</li>
+          </ul>
+
+          <p>The rule is simple: formalize decisions with high reuse probability. Leave isolated edge styling alone until it proves recurring.</p>
+
+          <h2>5. Make trust visible where the product acts</h2>
+          <p>For deterministic software, trust often comes from predictability. For AI features, the interface also needs to reveal enough operational state to support judgment.</p>
+
+          <p>Ask:</p>
+          <ul>
+            <li>Does the user know what data or scope the AI is operating on?</li>
+            <li>Can they tell whether work is still in progress?</li>
+            <li>Can they review high-impact output before it is committed?</li>
+            <li>Can they correct the input or assumptions?</li>
+            <li>Can they undo or recover from a wrong action?</li>
+          </ul>
+
+          <p>Do not add generic “AI may make mistakes” copy and call the trust layer complete. Trust is an interaction architecture problem.</p>
+
+          <h2>6. Align design, code and agent context</h2>
+          <p>The final production-readiness step is operational. The decisions you just fixed should survive the next feature.</p>
+
+          <p>That means:</p>
+          <ul>
+            <li>canonical components in code reflect the approved patterns;</li>
+            <li>Figma is not silently describing obsolete variants;</li>
+            <li>tokens have one source of truth;</li>
+            <li>coding-agent rules point to canonical components and decisions;</li>
+            <li>new generated UI can be checked against the same product rules.</li>
+          </ul>
+
+          <p>Cursor, Replit and Vercel are all moving toward richer product/design context for agents. Vercel explicitly describes a shift toward storing accepted product decisions in repositories so agents can understand not only what shipped but the context behind those decisions. Replit provides organizational design systems to its Agent. Cursor provides persistent rules and design-system guidance.</p>
+
+          <p>The tooling direction matters because production quality is no longer only a handoff from designer to engineer. It is increasingly a context problem across humans and agents.</p>
+
+          <h2>What can stay imperfect?</h2>
+          <p>Production-ready does not mean visually complete everywhere. Some debt is safe to leave.</p>
+
+          <p>Usually safe to defer:</p>
+          <ul>
+            <li>low-traffic secondary screens;</li>
+            <li>rare administrative workflows;</li>
+            <li>cosmetic differences that do not create a new reusable rule;</li>
+            <li>advanced personalization before the default flow is strong;</li>
+            <li>documentation polish before the underlying source of truth is stable.</li>
+          </ul>
+
+          <p>Usually expensive to defer:</p>
+          <ul>
+            <li>inconsistent primary navigation;</li>
+            <li>missing error/recovery states in high-volume flows;</li>
+            <li>duplicate primitives that every new feature will copy;</li>
+            <li>ambiguous AI approval or action states;</li>
+            <li>responsive failures in the main user journey;</li>
+            <li>design/code divergence around canonical patterns.</li>
+          </ul>
+
+          <h2>A release-readiness score for one flow</h2>
+          <p>Score each category 0–2. A perfect score is not required. The point is to make the weak layer visible.</p>
+
+          <table class="audit-table">
+            <thead><tr><th>Category</th><th>0</th><th>1</th><th>2</th></tr></thead>
+            <tbody>
+              <tr><td>Task structure</td><td>Ambiguous</td><td>Usable</td><td>Clear and prioritized</td></tr>
+              <tr><td>State coverage</td><td>Happy path</td><td>Main failures covered</td><td>Complete critical states</td></tr>
+              <tr><td>System reuse</td><td>Local styles</td><td>Partial reuse</td><td>Canonical components/tokens</td></tr>
+              <tr><td>Responsive</td><td>Breaks/shrinks</td><td>Works</td><td>Deliberately recomposed</td></tr>
+              <tr><td>Trust/recovery</td><td>Implicit</td><td>Partial</td><td>Visible and controllable</td></tr>
+              <tr><td>Design↔code</td><td>Diverged</td><td>Mostly aligned</td><td>Same current rules</td></tr>
+            </tbody>
+          </table>
+
+          <p>A flow scoring 5/12 does not need more features. A flow scoring 10/12 probably does not need a redesign.</p>
+
+          <h2>The objective is to keep the speed</h2>
+          <p>The answer to AI-speed product development should not be to recreate a months-long design process. The more useful response is compact product-quality infrastructure: identify the critical flow, make the important decisions explicit, encode the reusable rules and continue building from a stronger baseline.</p>
+
+          <div class="source-list">
+            <h2>Sources and further reading</h2>
+            <ul>
+              <li><a href="https://vercel.com/blog/introducing-the-new-v0" rel="noopener noreferrer">Vercel — Introducing the new v0 (2026)</a>: the shift from vibe-coded demos toward production apps and real codebases.</li>
+              <li><a href="https://vercel.com/blog/teaching-agents-product-design-at-vercel" rel="noopener noreferrer">Vercel — Teaching agents product design at Vercel</a>: making product decisions available to agents in the repository.</li>
+              <li><a href="https://prod.cursor.com/for/designers" rel="noopener noreferrer">Cursor for Designers</a>: design-system context and generated UI.</li>
+              <li><a href="https://docs.replit.com/teams/custom-design-system" rel="noopener noreferrer">Replit — Setting up a Design System</a>: organizational design systems for Agent.</li>
+              <li><a href="https://bolt.new/get-started" rel="noopener noreferrer">Bolt — Prototype to Production</a>: current product positioning around design systems and production-ready code.</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="article-aside" aria-label="Article navigation"><p>Framework</p><a href="#article">Product-Ready Sequence</a><a href="/vibe-coded-product-rescue">Product Rescue Sprint →</a><a href="/insights/why-vibe-coded-products-feel-unfinished">Prototype Debt Map</a><a href="/insights">All insights</a></aside>
+      </div>
+    </article>
+  </main>
+
+  <section class="related"><div class="related-inner"><p class="eyebrow">WORKING MVP, ROUGH PRODUCT?</p><h2>I can take one critical flow from prototype-quality to production-ready without restarting the product.</h2><p>Fixed scope. Defined milestones. 5–10 business days. No retainer.</p><div class="related-links"><a class="primary" href="/#team">Send the product</a><a href="/vibe-coded-product-rescue">Product Rescue Sprint</a><a href="/insights/why-vibe-coded-products-feel-unfinished">Prototype Debt Map</a></div></div></section>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 OLEH HEBEL &amp; CO.</p><a href="/insights">Insights</a></div></footer>
+</body>
+</html>
