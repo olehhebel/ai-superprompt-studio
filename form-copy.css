@@ -1,0 +1,15 @@
+.form-state-default .form-reassurance {
+  max-width: 520px;
+  margin: 31px auto 0;
+  font-size: 12px;
+  line-height: 1.55;
+  text-transform: none;
+  color: var(--muted);
+}
+
+@media (max-width: 480px) {
+  .form-state-default .form-reassurance {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
