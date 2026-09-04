@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
   "redirects": [
     {
       "source": "/:path*",
@@ -28,7 +29,7 @@
       ]
     },
     {
-      "source": "/ai-landing-page-design.html",
+      "source": "/ai-landing-page-design",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -37,7 +38,7 @@
       ]
     },
     {
-      "source": "/json-prompt-engineering.html",
+      "source": "/json-prompt-engineering",
       "headers": [
         {
           "key": "X-Robots-Tag",
