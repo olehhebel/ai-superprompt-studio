@@ -1,13 +1,12 @@
-/* Single-source responsive Hero background.
-   Overrides the obsolete/broken data-URI declared earlier in hero-bg.css. */
+/* Real Hero cloud PNG. Single responsive source; no blur, no overlay. */
 .hero {
   position: relative;
   overflow: hidden;
   background-color: #f4f5f6 !important;
-  background-image: url("./assets/hero-cloud.svg") !important;
+  background-image: url("./assets/hero-cloud.png") !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
-  background-position: center center !important;
+  background-position: 58% center !important;
   background-attachment: scroll !important;
 }
 
@@ -23,20 +22,20 @@
   z-index: 1;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1600px) {
   .hero {
-    background-position: 58% center !important;
+    background-position: 56% center !important;
   }
 }
 
 @media (max-width: 1100px) {
   .hero {
-    background-position: 62% center !important;
+    background-position: 63% center !important;
   }
 }
 
 @media (max-width: 640px) {
   .hero {
-    background-position: 68% center !important;
+    background-position: 70% center !important;
   }
 }
