@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>How to Stop AI Coding Agents From Creating UI Drift</title>
+  <meta name="description" content="The Agent Drift Loop: why Cursor, Claude Code and other coding agents create near-duplicate UI patterns, and five controls that keep generated interfaces on-system." />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <link rel="canonical" href="https://superprompt.pro/insights/stop-ai-coding-agent-ui-drift" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Oleh Hebel & Co" />
+  <meta property="og:title" content="How to Stop AI Coding Agents From Creating UI Drift" />
+  <meta property="og:description" content="A practical system for preventing local AI-generated UI decisions from becoming permanent product inconsistency." />
+  <meta property="og:url" content="https://superprompt.pro/insights/stop-ai-coding-agent-ui-drift" />
+  <meta property="og:image" content="https://superprompt.pro/og-image.jpg" />
+  <meta property="article:published_time" content="2026-09-04" />
+  <meta property="article:modified_time" content="2026-09-04" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Stop AI Coding Agents From Creating UI Drift" />
+  <meta name="twitter:description" content="The Agent Drift Loop and five controls that break it." />
+  <meta name="twitter:image" content="https://superprompt.pro/og-image.jpg" />
+  <link rel="stylesheet" href="/insight-page.css" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"How to Stop AI Coding Agents From Creating UI Drift",
+    "description":"The Agent Drift Loop: why coding agents create near-duplicate UI patterns and five controls that keep generated interfaces on-system.",
+    "datePublished":"2026-09-04",
+    "dateModified":"2026-09-04",
+    "mainEntityOfPage":"https://superprompt.pro/insights/stop-ai-coding-agent-ui-drift",
+    "author":{"@type":"Person","@id":"https://superprompt.pro/#oleh-hebel","name":"Oleh Hebel"},
+    "publisher":{"@type":"Organization","@id":"https://superprompt.pro/#organization","name":"Oleh Hebel & Co"},
+    "about":["AI coding agents","UI drift","Cursor","Claude Code","Design systems"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#article">Skip to article</a>
+  <header class="insight-header"><a class="brand" href="/">OLEH HEBEL &amp; Co</a><nav class="insight-nav" aria-label="Primary"><a href="/insights">Insights</a><a href="/vibe-coded-product-rescue">Product Rescue</a><a href="/agent-ready-design-system">Agent-Ready System</a><a href="/ai-agent-ux-design">AI Agent UX</a><a class="nav-cta" href="/#team">Send the product</a></nav></header>
+
+  <main>
+    <section class="article-hero"><div class="article-hero-inner"><p class="eyebrow">CODING AGENTS · FIELD NOTE 02</p><h1>How to stop AI coding agents from creating UI drift.</h1><p class="article-deck">The problem is usually not that the agent ignores the design system. The problem is that the correct rule is harder to retrieve than a plausible local solution.</p><div class="article-meta"><span>By Oleh Hebel</span><span>September 4, 2026</span><span>9 min read</span></div></div></section>
+
+    <article class="article-main" id="article">
+      <div class="article-layout">
+        <div class="article-body">
+          <p>AI coding agents are very good at producing a component that looks reasonable in the current context. That local competence creates a new product risk: every isolated success can introduce a slightly different button, card, spacing rule, empty state or interaction pattern.</p>
+
+          <p>Over a few weeks, the repo still compiles and the UI still looks broadly consistent. But the system has started to drift.</p>
+
+          <h2>The Agent Drift Loop</h2>
+          <p>UI drift is not one bad generation. It is a feedback loop.</p>
+
+          <div class="model">
+            <h3>Agent Drift Loop</h3>
+            <ol>
+              <li><strong>Ambiguous task.</strong> “Add a billing card” describes the feature, not the product rules.</li>
+              <li><strong>Incomplete retrieval.</strong> The agent sees nearby code but not necessarily the canonical component, token file or design decision.</li>
+              <li><strong>Local invention.</strong> It creates a plausible component that solves the immediate task.</li>
+              <li><strong>Build passes.</strong> The new pattern is technically valid, so there is no hard failure.</li>
+              <li><strong>New precedent.</strong> Future agents discover the duplicate and may treat it as an accepted pattern.</li>
+            </ol>
+          </div>
+
+          <p>The dangerous step is number four. Traditional defects often fail tests. Design-system drift frequently passes every automated check because the duplicate component is valid code.</p>
+
+          <h2>Why prompts alone do not solve this</h2>
+          <p>A team can write “use our design system” in every prompt. That instruction is directionally correct and operationally weak.</p>
+
+          <p>The agent still needs to answer:</p>
+          <ul>
+            <li>Which button component is canonical?</li>
+            <li>Which variant should be used for destructive actions?</li>
+            <li>Where are the spacing tokens?</li>
+            <li>Is a card allowed to have a new radius?</li>
+            <li>Which existing flow is the best precedent?</li>
+            <li>When is creating a new component justified?</li>
+          </ul>
+
+          <p>Cursor's current documentation reflects this directly. Project Rules live in the codebase, can be version-controlled, and can point the agent to canonical files. Cursor's own designer guidance gives a design-system rule example that says to reuse UI components, use CSS variables and spacing scales, and reference specific canonical files. This is not prompt decoration. It is retrieval architecture.</p>
+
+          <h2>The five controls that break the loop</h2>
+
+          <h3>1. Canonical components must be easier to find than duplicates</h3>
+          <p>Do not rely on naming alone. Create one obvious component location and reference it from agent rules. If two button systems exist, decide which one wins before asking an agent to build more UI.</p>
+
+          <p>A useful contract is simple:</p>
+          <ul>
+            <li>reuse canonical components by default;</li>
+            <li>extend a canonical component before creating a local substitute;</li>
+            <li>create a new component only when the interaction model is genuinely new;</li>
+            <li>delete or deprecate obsolete duplicates so retrieval does not surface competing precedents.</li>
+          </ul>
+
+          <h3>2. Tokens need semantic names, not only values</h3>
+          <p>An agent can reproduce <code>#111827</code>. It cannot infer why that color exists. Semantic tokens carry intent: <code>text-muted</code>, <code>surface-danger</code>, <code>space-section</code>, <code>radius-control</code>.</p>
+
+          <p>The design system becomes more robust when the same semantic vocabulary appears in Figma, CSS and agent instructions.</p>
+
+          <div class="callout">A token is agent-ready when the name helps the model choose it for the right reason, not merely reproduce the right value.</div>
+
+          <h3>3. Rules should point to examples, not duplicate the whole system</h3>
+          <p>Cursor's current customization guidance recommends short, specific rules that point to canonical examples rather than copying large amounts of code into instructions. Anthropic's context-engineering work makes the same broader point: context is finite, so the goal is to curate the highest-utility information, not dump everything into the window.</p>
+
+          <p>A strong UI rule usually contains:</p>
+          <ul>
+            <li>the non-negotiable behavior;</li>
+            <li>the canonical file or component to inspect;</li>
+            <li>the token source;</li>
+            <li>one or two anti-patterns;</li>
+            <li>the verification step after implementation.</li>
+          </ul>
+
+          <h3>4. Add anti-examples</h3>
+          <p>Design systems usually document what to do. Coding agents also benefit from explicit boundaries around what not to do.</p>
+
+          <table class="audit-table">
+            <thead><tr><th>Weak rule</th><th>Stronger operational rule</th></tr></thead>
+            <tbody>
+              <tr><td>Use consistent spacing.</td><td>Use only spacing tokens from <code>tokens.css</code>; do not introduce raw pixel gaps unless the canonical scale cannot express the layout.</td></tr>
+              <tr><td>Use our buttons.</td><td>Use <code>Button</code> from the canonical UI package. Do not create local button styles or native buttons for product actions.</td></tr>
+              <tr><td>Match the design.</td><td>Compare the changed state at desktop and mobile against the referenced pattern before completing the task.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>5. Verify system compliance, not only build success</h3>
+          <p>The agent's final check should include product-system questions. Did it create a new color? New radius? New button? New spacing value? New loading pattern? If yes, was that intentional?</p>
+
+          <p>This can be partly automated with linting and token restrictions, but visual and interaction review still matters. Vercel's 2026 article on teaching agents product design makes the deeper point: code shows what shipped, but not why a pattern became standard. They address that by keeping accepted product decisions in the repository and making those decisions available to agents.</p>
+
+          <h2>A practical agent-ready rule stack</h2>
+          <p>You do not need a giant AI documentation layer. Start with four levels.</p>
+
+          <div class="model">
+            <h3>Minimal rule stack</h3>
+            <div class="model-grid">
+              <div class="model-cell"><b>Global product rules</b>Interaction principles, responsive behavior, accessibility baseline, what must never be invented locally.</div>
+              <div class="model-cell"><b>Component rules</b>Canonical libraries, variants, extension policy and known anti-patterns.</div>
+              <div class="model-cell"><b>Token rules</b>Semantic source of truth for color, type, spacing, radius, elevation and motion.</div>
+              <div class="model-cell"><b>Verification rules</b>What to compare, test and inspect before the agent considers a UI task complete.</div>
+            </div>
+          </div>
+
+          <h2>Three signals that your system is not agent-ready yet</h2>
+          <ol>
+            <li><strong>You repeatedly correct the same class of mistake.</strong> The knowledge exists in a person, not in persistent context.</li>
+            <li><strong>Agents create components that humans would never approve as new primitives.</strong> Canonical reuse is not obvious enough.</li>
+            <li><strong>The prompt must contain screenshots and long explanations every time.</strong> The repo does not yet carry enough product intent.</li>
+          </ol>
+
+          <h2>The goal is not zero drift</h2>
+          <p>No design system eliminates review, and no rule file turns an AI coding agent into a product designer. The realistic objective is different: reduce repeated correction, make deviations visible, and make the correct decision the easiest decision for both humans and agents.</p>
+
+          <p>That is why the best unit of work is not “write better prompts.” It is to improve the relationship between design system, repository and agent context.</p>
+
+          <div class="source-list">
+            <h2>Sources and further reading</h2>
+            <ul>
+              <li><a href="https://prod.cursor.com/docs/rules" rel="noopener noreferrer">Cursor Docs — Rules</a>: persistent project rules, version control and contextual application.</li>
+              <li><a href="https://prod.cursor.com/for/designers" rel="noopener noreferrer">Cursor for Designers</a>: official design-system rule example for components, tokens and patterns.</li>
+              <li><a href="https://prod.cursor.com/learn/customizing-agents" rel="noopener noreferrer">Cursor Learn — Customizing agents</a>: short, specific rules that reference canonical examples.</li>
+              <li><a href="https://vercel.com/blog/teaching-agents-product-design-at-vercel" rel="noopener noreferrer">Vercel — Teaching agents product design at Vercel</a>: storing accepted product decisions as agent-accessible repository context.</li>
+              <li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" rel="noopener noreferrer">Anthropic — Effective context engineering for AI agents</a>: context curation as an agent engineering discipline.</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="article-aside" aria-label="Article navigation"><p>Framework</p><a href="#article">Agent Drift Loop</a><a href="/agent-ready-design-system">Agent-Ready System Sprint →</a><a href="/insights/agent-ready-design-system">Next: What the system needs</a><a href="/insights">All insights</a></aside>
+      </div>
+    </article>
+  </main>
+
+  <section class="related"><div class="related-inner"><p class="eyebrow">DRIFT ALREADY COSTING TIME?</p><h2>I can turn the current Figma + codebase into one usable system for the team and its coding agents.</h2><p>Tokens, components, patterns, agent context and design↔code alignment in a bounded System Sprint.</p><div class="related-links"><a class="primary" href="/#team">Send the system</a><a href="/agent-ready-design-system">Agent-Ready System Sprint</a><a href="/insights/why-vibe-coded-products-feel-unfinished">Prototype debt</a></div></div></section>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 OLEH HEBEL &amp; CO.</p><a href="/insights">Insights</a></div></footer>
+</body>
+</html>
