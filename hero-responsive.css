@@ -3,8 +3,7 @@
 /*
   Keep editorial line breaks semantic and let the browser improve soft wraps.
   Short display copy is balanced; paragraph copy prefers higher-quality wrapping.
-  Existing explicit <br> elements are retained only where they separate complete
-  thoughts or deliberate rhetorical beats.
+  Explicit <br> elements are used only at real sentence or rhetorical boundaries.
 */
 
 .hero-title,
@@ -12,6 +11,7 @@
 .problem-line,
 .sprints-intro,
 .sprint-name,
+.outcome-list li,
 .handoff-cta-title,
 .footer-about-title,
 .form-title,
@@ -23,7 +23,6 @@
 .hero-copy,
 .hero-helper,
 .sprint-description,
-.outcome-list li,
 .handoff-cta-copy p,
 .footer-about-body p,
 .form-reassurance,
@@ -31,13 +30,22 @@
   text-wrap: pretty;
 }
 
-/* Keep short semantic units from splitting awkwardly. */
+/* Prevent pathological word splitting. */
 .hero-title,
 .problem-line,
+.sprints-intro,
+.outcome-list li,
 .form-title,
 .success-copy {
   overflow-wrap: normal;
   word-break: normal;
+}
+
+/* Keep short semantic phrases intact on layouts where there is room. */
+@media (min-width: 821px) {
+  .keep-together {
+    white-space: nowrap;
+  }
 }
 
 /* On narrow screens, preserve natural reflow rather than desktop-shaped lines. */
@@ -47,13 +55,13 @@
   .sprints-intro,
   .handoff-cta-title,
   .form-title,
-  .success-copy {
+  .success-copy,
+  .outcome-list li {
     text-wrap: balance;
   }
 
   .hero-copy,
   .sprint-description,
-  .outcome-list li,
   .handoff-cta-copy p,
   .footer-about-body p,
   .form-reassurance {
