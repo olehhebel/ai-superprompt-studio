@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>What an Agent-Ready Design System Actually Needs</title>
+  <meta name="description" content="A practical operating model for design systems that must work for humans and AI coding agents: sources, rules, retrieval, validation and product context." />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <link rel="canonical" href="https://superprompt.pro/insights/agent-ready-design-system" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Oleh Hebel & Co" />
+  <meta property="og:title" content="What an Agent-Ready Design System Actually Needs" />
+  <meta property="og:description" content="A design system for humans is not automatically usable by coding agents. Here is the missing operating layer." />
+  <meta property="og:url" content="https://superprompt.pro/insights/agent-ready-design-system" />
+  <meta property="og:image" content="https://superprompt.pro/og-image.jpg" />
+  <meta property="article:published_time" content="2026-09-04" />
+  <meta property="article:modified_time" content="2026-09-04" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What an Agent-Ready Design System Actually Needs" />
+  <meta name="twitter:description" content="Sources + Rules + Retrieval + Validation: the operating layer for agent-ready systems." />
+  <meta name="twitter:image" content="https://superprompt.pro/og-image.jpg" />
+  <link rel="stylesheet" href="/insight-page.css" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"What an Agent-Ready Design System Actually Needs",
+    "description":"A practical operating model for design systems that must work for humans and AI coding agents.",
+    "datePublished":"2026-09-04",
+    "dateModified":"2026-09-04",
+    "mainEntityOfPage":"https://superprompt.pro/insights/agent-ready-design-system",
+    "author":{"@type":"Person","@id":"https://superprompt.pro/#oleh-hebel","name":"Oleh Hebel"},
+    "publisher":{"@type":"Organization","@id":"https://superprompt.pro/#organization","name":"Oleh Hebel & Co"},
+    "about":["Agent-ready design system","Design tokens","AI coding agents","Context engineering","Design-to-code"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#article">Skip to article</a>
+  <header class="insight-header"><a class="brand" href="/">OLEH HEBEL &amp; Co</a><nav class="insight-nav" aria-label="Primary"><a href="/insights">Insights</a><a href="/vibe-coded-product-rescue">Product Rescue</a><a href="/agent-ready-design-system">Agent-Ready System</a><a href="/ai-agent-ux-design">AI Agent UX</a><a class="nav-cta" href="/#team">Send the product</a></nav></header>
+
+  <main>
+    <section class="article-hero"><div class="article-hero-inner"><p class="eyebrow">SYSTEMS · FIELD NOTE 03</p><h1>What an agent-ready design system actually needs.</h1><p class="article-deck">The old question was “can designers and engineers find the right component?” The new question is “can a coding agent retrieve the right rule before it invents a plausible substitute?”</p><div class="article-meta"><span>By Oleh Hebel</span><span>September 4, 2026</span><span>9 min read</span></div></div></section>
+
+    <article class="article-main" id="article">
+      <div class="article-layout">
+        <div class="article-body">
+          <p>Most mature design systems were built for human collaboration. They assume a designer can browse Figma, an engineer can inspect Storybook, and both can ask a teammate why one pattern is preferred over another. AI coding agents change that assumption.</p>
+
+          <p>An agent needs the same product system represented as usable context: canonical sources, explicit rules, retrievable examples and a way to verify that the generated UI still belongs to the product.</p>
+
+          <h2>A design system is not agent-ready because it exists</h2>
+          <p>You can have excellent components and still get drifting AI-generated UI. The failure usually happens between the existence of the rule and the agent's ability to retrieve and apply it.</p>
+
+          <p>That is why I use this operating model:</p>
+
+          <div class="model">
+            <h3>Agent-Ready System = Sources + Rules + Retrieval + Validation</h3>
+            <div class="model-grid">
+              <div class="model-cell"><b>Sources</b>One trustworthy place for tokens, components, patterns and current product decisions.</div>
+              <div class="model-cell"><b>Rules</b>Concise instructions that explain what must be reused, what can vary and when a new pattern is justified.</div>
+              <div class="model-cell"><b>Retrieval</b>File structure and context mechanisms that make the relevant rule available at the moment of generation.</div>
+              <div class="model-cell"><b>Validation</b>Checks that catch local invention, token drift and visual inconsistency before the change becomes precedent.</div>
+            </div>
+          </div>
+
+          <h2>1. Sources: decide what is canonical</h2>
+          <p>An agent cannot resolve organizational ambiguity for you. If Figma says one thing, Storybook says another and the production CSS says a third, “follow the design system” is not an executable instruction.</p>
+
+          <p>The first job is to define authority by category:</p>
+          <table class="audit-table">
+            <thead><tr><th>Decision</th><th>Canonical source</th><th>Why</th></tr></thead>
+            <tbody>
+              <tr><td>Color / type / spacing tokens</td><td>Versioned token source</td><td>Values must stay consistent across design and code.</td></tr>
+              <tr><td>Component API and variants</td><td>Production component library</td><td>The agent should build with what actually ships.</td></tr>
+              <tr><td>Interaction pattern</td><td>Pattern rule + reference implementation</td><td>Code alone shows what happened, not why the pattern is correct.</td></tr>
+              <tr><td>Product judgment</td><td>Concise decision notes / repository context</td><td>Trade-offs and constraints rarely live inside component code.</td></tr>
+            </tbody>
+          </table>
+
+          <p>Vercel's 2026 description of teaching agents product design is useful here: coding agents can observe shipped patterns, but code does not automatically contain the reasoning behind accepted product decisions. Vercel addresses that by keeping product decisions in the repository and exposing them to agents.</p>
+
+          <h2>2. Rules: encode constraints, not aesthetics</h2>
+          <p>“Make it clean” is a preference. “Use the existing Dialog component; new modal primitives require a documented interaction need” is a rule.</p>
+
+          <p>Strong agent rules answer four questions:</p>
+          <ol>
+            <li><strong>What should I reuse?</strong></li>
+            <li><strong>What am I allowed to change?</strong></li>
+            <li><strong>Where is the canonical example?</strong></li>
+            <li><strong>How do I know the result is still on-system?</strong></li>
+          </ol>
+
+          <p>Cursor's Project Rules and <code>AGENTS.md</code> support exactly this kind of persistent, version-controlled context. Its designer documentation even provides a design-system rule pattern that points the agent to canonical components and token files. Replit's enterprise design-system workflow similarly combines custom instructions, skills and design assets so its Agent can apply a shared system.</p>
+
+          <h2>3. Retrieval: put the right context close to the work</h2>
+          <p>A giant design-system handbook is not automatically good agent context. Anthropic's context-engineering guidance is relevant: context is finite, and the engineering task is to maximize the utility of what enters the model's context window.</p>
+
+          <p>For a product system, that means using layers.</p>
+
+          <div class="model">
+            <h3>Context layers</h3>
+            <div class="model-grid">
+              <div class="model-cell"><b>Always-on</b>Small global rules: canonical library, token policy, responsive baseline, accessibility floor, no local primitives.</div>
+              <div class="model-cell"><b>Path-specific</b>Rules for forms, data tables, onboarding, mobile surfaces or other product areas.</div>
+              <div class="model-cell"><b>Reference-on-demand</b>Detailed component APIs, examples, screenshots and deeper rationale loaded when relevant.</div>
+              <div class="model-cell"><b>Task-specific</b>The current Figma frame, issue, user story, visual annotation or flow constraint.</div>
+            </div>
+          </div>
+
+          <p>This resembles how you onboard a strong engineer: they do not memorize the whole organization. They know the core rules, where the sources live and how to retrieve deeper context when needed.</p>
+
+          <h2>4. Validation: build passing is not enough</h2>
+          <p>Agent-generated UI requires a second definition of done.</p>
+
+          <p>Functional validation asks:</p>
+          <ul><li>does it compile?</li><li>do tests pass?</li><li>does the interaction complete?</li></ul>
+
+          <p>System validation asks:</p>
+          <ul>
+            <li>did this change introduce a raw color, gap, radius or shadow?</li>
+            <li>did it create a component that already exists?</li>
+            <li>does it use the canonical pattern for loading, error and empty states?</li>
+            <li>does the mobile composition follow the same product hierarchy?</li>
+            <li>did a local workaround become a new implicit standard?</li>
+          </ul>
+
+          <div class="callout">An agent-ready design system is complete only when deviations are easier to detect than to normalize.</div>
+
+          <h2>The five artifacts I would create first</h2>
+          <p>If the current system is scattered, do not begin by writing a documentation portal. Begin with five operational artifacts.</p>
+
+          <ol>
+            <li><strong>Canonical token map.</strong> Semantic token names aligned between design and implementation.</li>
+            <li><strong>Component registry.</strong> The primitives and product components that should be reused, including status and ownership.</li>
+            <li><strong>Pattern decisions.</strong> A short set of rules for recurring structures such as forms, dialogs, tables, feedback and AI states.</li>
+            <li><strong>Agent context file(s).</strong> Tool-specific instructions that point to the first three artifacts rather than duplicating them.</li>
+            <li><strong>System check.</strong> A lightweight review or automated check for raw values, duplicate primitives and product-pattern deviations.</li>
+          </ol>
+
+          <h2>What not to put into the agent layer</h2>
+          <p>Do not turn the repository into a museum of design rationale. Context that is stale, redundant or contradictory makes retrieval worse.</p>
+
+          <p>Avoid:</p>
+          <ul>
+            <li>full Figma exports as the only design documentation;</li>
+            <li>long prose where a canonical file path would be clearer;</li>
+            <li>rules that restate generic frontend knowledge the model already has;</li>
+            <li>multiple “temporary” components with no deprecation state;</li>
+            <li>visual values without semantic intent;</li>
+            <li>agent instructions that are not versioned with the product.</li>
+          </ul>
+
+          <h2>A useful maturity model</h2>
+          <table class="audit-table">
+            <thead><tr><th>Level</th><th>Human workflow</th><th>Agent workflow</th></tr></thead>
+            <tbody>
+              <tr><td>0 · Tribal</td><td>Ask the designer</td><td>Agent invents</td></tr>
+              <tr><td>1 · Documented</td><td>Browse Figma/docs</td><td>Agent may miss them</td></tr>
+              <tr><td>2 · Canonical</td><td>One component/token source</td><td>Agent can reuse when pointed there</td></tr>
+              <tr><td>3 · Contextual</td><td>Rules + sources</td><td>Agent retrieves the right system automatically or by task scope</td></tr>
+              <tr><td>4 · Verified</td><td>Review against shared rules</td><td>Generated changes are checked for system compliance before completion</td></tr>
+            </tbody>
+          </table>
+
+          <p>Most teams do not need level 4 everywhere. The commercial goal is to apply enough system to the areas where AI-assisted velocity is currently creating the most correction work.</p>
+
+          <h2>The system should reduce prompting, not create more of it</h2>
+          <p>A good agent-ready design system changes the workflow from “remember to explain the product again” to “the relevant product rules are already part of the working environment.”</p>
+
+          <p>That is the core shift: from design documentation as reference material to design context as product infrastructure.</p>
+
+          <div class="source-list">
+            <h2>Sources and further reading</h2>
+            <ul>
+              <li><a href="https://prod.cursor.com/docs/rules" rel="noopener noreferrer">Cursor Docs — Rules</a>: project rules and AGENTS.md as persistent context.</li>
+              <li><a href="https://prod.cursor.com/for/designers" rel="noopener noreferrer">Cursor for Designers</a>: design-system rules, canonical components and token references.</li>
+              <li><a href="https://docs.replit.com/teams/custom-design-system" rel="noopener noreferrer">Replit — Setting up a Design System</a>: custom instructions, skills, component libraries and design tokens for Agent.</li>
+              <li><a href="https://vercel.com/blog/teaching-agents-product-design-at-vercel" rel="noopener noreferrer">Vercel — Teaching agents product design at Vercel</a>: repository-based product decisions for coding agents.</li>
+              <li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" rel="noopener noreferrer">Anthropic — Effective context engineering for AI agents</a>: curating high-utility agent context.</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="article-aside" aria-label="Article navigation"><p>Framework</p><a href="#article">Sources + Rules + Retrieval + Validation</a><a href="/agent-ready-design-system">System Sprint →</a><a href="/insights/stop-ai-coding-agent-ui-drift">Previous: Agent Drift Loop</a><a href="/insights">All insights</a></aside>
+      </div>
+    </article>
+  </main>
+
+  <section class="related"><div class="related-inner"><p class="eyebrow">NEED THE OPERATING LAYER?</p><h2>I can turn the existing Figma, components and repo conventions into an agent-ready product system.</h2><p>Enough structure to stop repeated drift. Not enough bureaucracy to slow shipping.</p><div class="related-links"><a class="primary" href="/#team">Send Figma + repo</a><a href="/agent-ready-design-system">Agent-Ready System Sprint</a><a href="/insights/stop-ai-coding-agent-ui-drift">Agent Drift Loop</a></div></div></section>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 OLEH HEBEL &amp; CO.</p><a href="/insights">Insights</a></div></footer>
+</body>
+</html>
