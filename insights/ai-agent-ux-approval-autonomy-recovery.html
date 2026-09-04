@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>AI Agent UX: Approval, Autonomy, Undo and Recovery</title>
+  <meta name="description" content="A practical Autonomy × Reversibility framework for deciding when AI agents can act, when users should approve, and how undo, recovery and handoff should work." />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <link rel="canonical" href="https://superprompt.pro/insights/ai-agent-ux-approval-autonomy-recovery" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Oleh Hebel & Co" />
+  <meta property="og:title" content="AI Agent UX: Approval, Autonomy, Undo and Recovery" />
+  <meta property="og:description" content="The interface rules that keep autonomous AI useful without making users either babysit it or blindly trust it." />
+  <meta property="og:url" content="https://superprompt.pro/insights/ai-agent-ux-approval-autonomy-recovery" />
+  <meta property="og:image" content="https://superprompt.pro/og-image.jpg" />
+  <meta property="article:published_time" content="2026-09-04" />
+  <meta property="article:modified_time" content="2026-09-04" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Agent UX: Approval, Autonomy, Undo and Recovery" />
+  <meta name="twitter:description" content="A practical Autonomy × Reversibility matrix for agentic product UX." />
+  <meta name="twitter:image" content="https://superprompt.pro/og-image.jpg" />
+  <link rel="stylesheet" href="/insight-page.css" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"AI Agent UX: Approval, Autonomy, Undo and Recovery",
+    "description":"A practical Autonomy × Reversibility framework for deciding when AI agents can act, when users should approve, and how recovery should work.",
+    "datePublished":"2026-09-04",
+    "dateModified":"2026-09-04",
+    "mainEntityOfPage":"https://superprompt.pro/insights/ai-agent-ux-approval-autonomy-recovery",
+    "author":{"@type":"Person","@id":"https://superprompt.pro/#oleh-hebel","name":"Oleh Hebel"},
+    "publisher":{"@type":"Organization","@id":"https://superprompt.pro/#organization","name":"Oleh Hebel & Co"},
+    "about":["AI agent UX","Human–AI interaction","Human in the loop","AI autonomy","AI recovery"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#article">Skip to article</a>
+  <header class="insight-header"><a class="brand" href="/">OLEH HEBEL &amp; Co</a><nav class="insight-nav" aria-label="Primary"><a href="/insights">Insights</a><a href="/vibe-coded-product-rescue">Product Rescue</a><a href="/agent-ready-design-system">Agent-Ready System</a><a href="/ai-agent-ux-design">AI Agent UX</a><a class="nav-cta" href="/#team">Send the product</a></nav></header>
+
+  <main>
+    <section class="article-hero"><div class="article-hero-inner"><p class="eyebrow">HUMAN–AI UX · FIELD NOTE 04</p><h1>AI agent UX: approval, autonomy, undo and recovery.</h1><p class="article-deck">The useful design question is not “should a human be in the loop?” It is “which actions deserve friction, which can run autonomously, and what control survives after the agent acts?”</p><div class="article-meta"><span>By Oleh Hebel</span><span>September 4, 2026</span><span>10 min read</span></div></div></section>
+
+    <article class="article-main" id="article">
+      <div class="article-layout">
+        <div class="article-body">
+          <p>Agentic products change the interaction contract. Traditional software waits for explicit user actions. An agent can plan, call tools, modify state and continue working while the user is elsewhere. That makes autonomy itself a UX parameter.</p>
+
+          <p>Too little autonomy and the product becomes a sequence of annoying confirmation dialogs. Too much autonomy and the user stops knowing what changed, whether an action can be reversed, or when intervention is still possible.</p>
+
+          <h2>The Autonomy × Reversibility matrix</h2>
+          <p>I use two variables before deciding how much approval an agent needs:</p>
+          <ul>
+            <li><strong>Consequence:</strong> what happens if the action is wrong?</li>
+            <li><strong>Reversibility:</strong> how completely and cheaply can the action be undone?</li>
+          </ul>
+
+          <div class="model">
+            <h3>Autonomy × Reversibility</h3>
+            <div class="model-grid">
+              <div class="model-cell"><b>Low consequence + reversible</b>Let the agent act. Show a compact status and preserve undo. Example: reorganize draft items or apply a reversible formatting change.</div>
+              <div class="model-cell"><b>High consequence + reversible</b>Allow action only when the result is inspectable and rollback is obvious. Consider review-after rather than blocking every step.</div>
+              <div class="model-cell"><b>Low consequence + irreversible</b>Use a focused confirmation at the point of no return. Do not ask for repeated approval during preparation.</div>
+              <div class="model-cell"><b>High consequence + irreversible</b>Require explicit review with evidence, scope and consequences visible before execution. Strong identity or role boundaries may also be required.</div>
+            </div>
+          </div>
+
+          <p>This avoids the common mistake of applying one approval policy to every agent action.</p>
+
+          <h2>Approval is a product state, not a button</h2>
+          <p>A useful approval screen should help the user make a decision. “Approve / Reject” without evidence merely transfers responsibility to the user.</p>
+
+          <p>Before approval, show:</p>
+          <ul>
+            <li><strong>scope:</strong> exactly what the agent intends to change;</li>
+            <li><strong>reason:</strong> the user-facing basis for the proposed action, not raw chain-of-thought;</li>
+            <li><strong>impact:</strong> affected records, recipients, cost, permissions or other consequences;</li>
+            <li><strong>uncertainty:</strong> what remains unknown or ambiguous;</li>
+            <li><strong>recovery:</strong> whether the action can be undone and for how long.</li>
+          </ul>
+
+          <p>Microsoft's current agent runbook makes a similar operational point: approval flows need explicit reject paths, and different action types should not share one blanket approval policy.</p>
+
+          <h2>Four checkpoint locations</h2>
+          <p>Human oversight can happen at different moments. Choose the moment based on risk, not habit.</p>
+
+          <table class="audit-table">
+            <thead><tr><th>Checkpoint</th><th>Best for</th><th>UX requirement</th></tr></thead>
+            <tbody>
+              <tr><td>Before execution</td><td>High-impact or irreversible actions</td><td>Plan, scope, evidence and consequences before approval.</td></tr>
+              <tr><td>During execution</td><td>Uncertainty or branching decisions</td><td>Pause cleanly, preserve context, ask one bounded question.</td></tr>
+              <tr><td>Before commit / publish</td><td>Long-running preparation with a final consequential step</td><td>Let the agent do reversible work first; review only the final change.</td></tr>
+              <tr><td>After execution</td><td>Reversible low-risk automation</td><td>Clear change log, result inspection and undo.</td></tr>
+            </tbody>
+          </table>
+
+          <h2>Do not turn permission prompts into noise</h2>
+          <p>Repeated confirmations can create the appearance of safety while reducing actual attention. Anthropic reported in 2026 that users approved roughly 93% of Claude Code permission prompts in one context, illustrating a familiar UX problem: when prompts are frequent and predictable, users stop treating them as meaningful decisions.</p>
+
+          <p>The design implication is not “remove permission.” It is to move control to the moments where judgment matters.</p>
+
+          <div class="callout">The safest interface is not the one with the most approvals. It is the one where the user can recognize the few approvals that actually matter.</div>
+
+          <h2>Progress must expose state, not internal monologue</h2>
+          <p>An agent that works for 30 seconds or 10 minutes needs a visible operational state. Users usually do not need hidden reasoning. They need answers to practical questions:</p>
+          <ul>
+            <li>What is the agent doing now?</li>
+            <li>What has already completed?</li>
+            <li>What is blocked?</li>
+            <li>What external systems or tools are being used?</li>
+            <li>Can I pause or cancel?</li>
+            <li>Will leaving this screen stop the task?</li>
+          </ul>
+
+          <p>Anthropic's guidance on effective agents prioritizes transparency and meaningful human oversight, while its agent work also emphasizes grounding against the environment during multi-step execution. In UX terms, the agent's operational state should be legible enough that users can supervise without reading a transcript.</p>
+
+          <h2>Undo is an autonomy feature</h2>
+          <p>Teams often treat undo as post-error polish. For agentic products, undo directly changes how much autonomy can be safely granted.</p>
+
+          <p>If an action is:</p>
+          <ul>
+            <li>fully reversible;</li>
+            <li>visible after completion;</li>
+            <li>logged with enough context;</li>
+            <li>recoverable without expert support;</li>
+          </ul>
+
+          <p>then the interface can often allow more automatic execution with less pre-action friction.</p>
+
+          <p>Conversely, if a wrong action is invisible or impossible to reverse, the product needs stronger pre-action control.</p>
+
+          <h2>Design the reject path</h2>
+          <p>“Reject” is not a complete state. What happens next?</p>
+
+          <p>A rejected agent action may need to:</p>
+          <ul>
+            <li>return to the agent with a correction;</li>
+            <li>route to a human operator;</li>
+            <li>save as a draft;</li>
+            <li>discard only the proposed step while preserving prior work;</li>
+            <li>ask the user which constraint was violated;</li>
+            <li>stop the entire run.</li>
+          </ul>
+
+          <p>If the product has no answer, users learn that “Reject” is risky too.</p>
+
+          <h2>Recovery needs three levels</h2>
+          <div class="model">
+            <h3>Recovery ladder</h3>
+            <div class="model-grid">
+              <div class="model-cell"><b>Correct</b>Edit the agent's input, scope or assumption and continue from the current task.</div>
+              <div class="model-cell"><b>Undo</b>Reverse a completed action without restarting the whole workflow.</div>
+              <div class="model-cell"><b>Escalate</b>Stop automation and transfer the current context, actions and evidence to a human.</div>
+              <div class="model-cell"><b>Abort safely</b>Terminate the run while clearly showing what already changed and what did not.</div>
+            </div>
+          </div>
+
+          <h2>A five-question UX review for any agent action</h2>
+          <ol>
+            <li><strong>What is the worst plausible consequence if this is wrong?</strong></li>
+            <li><strong>Can the user see exactly what the agent is about to affect?</strong></li>
+            <li><strong>Is approval placed at the smallest meaningful point of no return?</strong></li>
+            <li><strong>Can the user correct or undo without restarting?</strong></li>
+            <li><strong>If automation stops, can a human understand what already happened?</strong></li>
+          </ol>
+
+          <p>These questions are more useful than defaulting every AI interaction to chat plus an “Approve” button.</p>
+
+          <h2>The target is calibrated autonomy</h2>
+          <p>The best agent UX does not maximize automation. It maximizes useful autonomy while preserving meaningful control. That usually means fewer generic interruptions, more visible state, stronger boundaries around irreversible actions and much better recovery.</p>
+
+          <div class="source-list">
+            <h2>Sources and further reading</h2>
+            <ul>
+              <li><a href="https://www.anthropic.com/engineering/building-effective-agents" rel="noopener noreferrer">Anthropic — Building effective agents</a>: transparency, feedback loops, checkpoints and meaningful human oversight.</li>
+              <li><a href="https://www.anthropic.com/engineering/how-we-contain-claude" rel="noopener noreferrer">Anthropic — How we contain Claude across products (2026)</a>: capability, blast radius and limits of repetitive permission prompting.</li>
+              <li><a href="https://github.com/microsoft/ai-agent-runbooks/blob/main/02-patterns/Human-in-the-Loop-Review-and-Approval/Human-in-the-Loop-Review-and-Approval.md" rel="noopener noreferrer">Microsoft — Human-in-the-Loop Review & Approval Pattern</a>: risk-based gates, reject paths and anti-patterns.</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="article-aside" aria-label="Article navigation"><p>Framework</p><a href="#article">Autonomy × Reversibility</a><a href="/ai-agent-ux-design">Human–AI UX Sprint →</a><a href="/insights">All insights</a></aside>
+      </div>
+    </article>
+  </main>
+
+  <section class="related"><div class="related-inner"><p class="eyebrow">ONE AI FLOW FEELS WRONG?</p><h2>I can map the autonomy, approval, progress and recovery states and redesign the critical workflow.</h2><p>One workflow. All states that affect trust. Fixed scope, 5–10 business days.</p><div class="related-links"><a class="primary" href="/#team">Send the AI flow</a><a href="/ai-agent-ux-design">AI Agent UX Sprint</a><a href="/insights/agent-ready-design-system">Agent-ready systems</a></div></div></section>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 OLEH HEBEL &amp; CO.</p><a href="/insights">Insights</a></div></footer>
+</body>
+</html>
