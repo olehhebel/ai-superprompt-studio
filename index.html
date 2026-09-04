@@ -42,9 +42,17 @@
         "url": "https://superprompt.pro/",
         "name": "Oleh Hebel & Co",
         "inLanguage": "en",
-        "publisher": {
-          "@id": "https://superprompt.pro/#organization"
-        }
+        "publisher": {"@id": "https://superprompt.pro/#organization"}
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://superprompt.pro/#webpage",
+        "url": "https://superprompt.pro/",
+        "name": "AI Product Design for Startups & SaaS | Oleh Hebel",
+        "description": "Product design sprints for AI-built MVPs and fast-moving SaaS, focused on product readiness, coherent systems and understandable Human–AI UX.",
+        "isPartOf": {"@id": "https://superprompt.pro/#website"},
+        "about": {"@id": "https://superprompt.pro/#organization"},
+        "inLanguage": "en"
       },
       {
         "@type": "Organization",
@@ -53,56 +61,49 @@
         "url": "https://superprompt.pro/",
         "description": "Product design sprints for AI-built MVPs and fast-moving SaaS, focused on product readiness, coherent systems and understandable Human–AI UX.",
         "slogan": "Your product works. I'll make it feel ready.",
-        "founder": {
-          "@id": "https://superprompt.pro/#oleh-hebel"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/olehhebel"
-        ],
+        "founder": {"@id": "https://superprompt.pro/#oleh-hebel"},
+        "sameAs": ["https://www.linkedin.com/in/olehhebel"],
         "makesOffer": [
           {
             "@type": "Offer",
-            "url": "https://superprompt.pro/#sprints",
-            "itemOffered": {
-              "@type": "Service",
-              "@id": "https://superprompt.pro/#product-ready-sprint",
-              "name": "Product-Ready Sprint",
-              "serviceType": "Product design sprint",
-              "description": "Turn one critical flow from prototype-quality into production-ready.",
-              "provider": {
-                "@id": "https://superprompt.pro/#organization"
-              }
-            }
+            "url": "https://superprompt.pro/vibe-coded-product-rescue",
+            "itemOffered": {"@id": "https://superprompt.pro/vibe-coded-product-rescue#service"}
           },
           {
             "@type": "Offer",
-            "url": "https://superprompt.pro/#sprints",
-            "itemOffered": {
-              "@type": "Service",
-              "@id": "https://superprompt.pro/#system-sprint",
-              "name": "System Sprint",
-              "serviceType": "Design system sprint",
-              "description": "Stop UI drift and give the product team one coherent set of rules to build from.",
-              "provider": {
-                "@id": "https://superprompt.pro/#organization"
-              }
-            }
+            "url": "https://superprompt.pro/agent-ready-design-system",
+            "itemOffered": {"@id": "https://superprompt.pro/agent-ready-design-system#service"}
           },
           {
             "@type": "Offer",
-            "url": "https://superprompt.pro/#sprints",
-            "itemOffered": {
-              "@type": "Service",
-              "@id": "https://superprompt.pro/#human-ai-ux-sprint",
-              "name": "Human–AI UX Sprint",
-              "serviceType": "Human–AI UX design sprint",
-              "description": "Make one AI workflow understandable, controllable and recoverable.",
-              "provider": {
-                "@id": "https://superprompt.pro/#organization"
-              }
-            }
+            "url": "https://superprompt.pro/ai-agent-ux-design",
+            "itemOffered": {"@id": "https://superprompt.pro/ai-agent-ux-design#service"}
           }
         ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://superprompt.pro/vibe-coded-product-rescue#service",
+        "name": "Vibe-Coded Product Design Rescue",
+        "serviceType": "AI-built MVP and vibe-coded product UX redesign",
+        "url": "https://superprompt.pro/vibe-coded-product-rescue",
+        "provider": {"@id": "https://superprompt.pro/#organization"}
+      },
+      {
+        "@type": "Service",
+        "@id": "https://superprompt.pro/agent-ready-design-system#service",
+        "name": "Agent-Ready Design System",
+        "serviceType": "Design systems for AI coding agents",
+        "url": "https://superprompt.pro/agent-ready-design-system",
+        "provider": {"@id": "https://superprompt.pro/#organization"}
+      },
+      {
+        "@type": "Service",
+        "@id": "https://superprompt.pro/ai-agent-ux-design#service",
+        "name": "AI Agent UX Design",
+        "serviceType": "Human–AI and agentic UX design",
+        "url": "https://superprompt.pro/ai-agent-ux-design",
+        "provider": {"@id": "https://superprompt.pro/#organization"}
       },
       {
         "@type": "Person",
@@ -110,12 +111,8 @@
         "name": "Oleh Hebel",
         "url": "https://superprompt.pro/",
         "jobTitle": "Product Designer",
-        "worksFor": {
-          "@id": "https://superprompt.pro/#organization"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/olehhebel"
-        ],
+        "worksFor": {"@id": "https://superprompt.pro/#organization"},
+        "sameAs": ["https://www.linkedin.com/in/olehhebel"],
         "knowsAbout": [
           "AI product design",
           "Product UX",
