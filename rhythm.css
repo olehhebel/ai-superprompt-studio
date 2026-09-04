@@ -97,6 +97,7 @@
   width: var(--copy-wide) !important;
   max-width: 100% !important;
   margin: var(--screen-gap-md) 0 0 !important;
+  gap: var(--screen-gap-sm) !important;
 }
 
 /* Handoff. */
