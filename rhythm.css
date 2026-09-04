@@ -49,36 +49,7 @@
   bottom: auto !important;
 }
 
-/* Hero background image. */
-.hero {
-  background: #f4f5f6 !important;
-  isolation: isolate;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: url("./assets/hero-cloud.svg") center center / cover no-repeat;
-  opacity: .82;
-  pointer-events: none;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(90deg, rgba(255,255,255,.94) 0%, rgba(255,255,255,.82) 32%, rgba(255,255,255,.48) 58%, rgba(255,255,255,.12) 100%);
-  pointer-events: none;
-}
-
-.hero .section-inner {
-  z-index: 2;
-}
-
-/* Hero content flow. */
+/* Hero content flow. Background is defined only in hero-bg.css. */
 .hero-heading { margin: 0 !important; }
 .hero .eyebrow { margin: 0 0 var(--screen-gap-md) !important; }
 .hero-title {
@@ -128,7 +99,7 @@
   margin: var(--screen-gap-md) 0 0 !important;
 }
 
-/* Handoff: the personal intro now lives in the footer, so the CTA starts at the canonical section top. */
+/* Handoff. */
 .handoff-grid {
   width: var(--copy-wide) !important;
   max-width: 100% !important;
@@ -147,15 +118,6 @@
 
   .section-inner {
     padding: var(--screen-pad-y) var(--page-x) !important;
-  }
-
-  .hero::before {
-    background-position: 58% center;
-    opacity: .64;
-  }
-
-  .hero::after {
-    background: linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.68) 52%, rgba(255,255,255,.36) 100%);
   }
 
   .hero-title,
