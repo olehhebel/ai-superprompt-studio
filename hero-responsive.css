@@ -1,9 +1,9 @@
 /* Responsive typography and line-breaking rules — September 2026 */
 
 /*
-  Keep editorial line breaks semantic and let the browser improve soft wraps.
-  Short display copy is balanced; paragraph copy prefers higher-quality wrapping.
-  Explicit <br> elements are used only at real sentence or rhetorical boundaries.
+  Typography is treated editorially, not left to accidental browser wrapping.
+  Display copy uses deliberate phrase/sentence breaks on desktop, while mobile
+  can reflow naturally. Short semantic phrases can be kept intact where needed.
 */
 
 .hero-title,
@@ -30,15 +30,22 @@
   text-wrap: pretty;
 }
 
-/* Prevent pathological word splitting. */
 .hero-title,
 .problem-line,
 .sprints-intro,
+.sprint-description,
 .outcome-list li,
+.handoff-cta-copy p,
+.footer-about-body p,
 .form-title,
 .success-copy {
   overflow-wrap: normal;
   word-break: normal;
+}
+
+/* Desktop editorial breaks: place line endings at complete semantic units. */
+.editorial-break {
+  display: inline;
 }
 
 /* Keep short semantic phrases intact on layouts where there is room. */
@@ -48,8 +55,12 @@
   }
 }
 
-/* On narrow screens, preserve natural reflow rather than desktop-shaped lines. */
+/* Mobile should preserve the same reading order without inheriting desktop-shaped lines. */
 @media (max-width: 820px) {
+  .editorial-break {
+    display: none;
+  }
+
   .hero-title,
   .section-title,
   .sprints-intro,
