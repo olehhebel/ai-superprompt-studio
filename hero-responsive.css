@@ -1,0 +1,62 @@
+/* Responsive typography and line-breaking rules — September 2026 */
+
+/*
+  Keep editorial line breaks semantic and let the browser improve soft wraps.
+  Short display copy is balanced; paragraph copy prefers higher-quality wrapping.
+  Existing explicit <br> elements are retained only where they separate complete
+  thoughts or deliberate rhetorical beats.
+*/
+
+.hero-title,
+.section-title,
+.problem-line,
+.sprints-intro,
+.sprint-name,
+.handoff-cta-title,
+.footer-about-title,
+.form-title,
+.success-title {
+  text-wrap: balance;
+}
+
+.hero-lead,
+.hero-copy,
+.hero-helper,
+.sprint-description,
+.outcome-list li,
+.handoff-cta-copy p,
+.footer-about-body p,
+.form-reassurance,
+.success-copy {
+  text-wrap: pretty;
+}
+
+/* Keep short semantic units from splitting awkwardly. */
+.hero-title,
+.problem-line,
+.form-title,
+.success-copy {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* On narrow screens, preserve natural reflow rather than desktop-shaped lines. */
+@media (max-width: 820px) {
+  .hero-title,
+  .section-title,
+  .sprints-intro,
+  .handoff-cta-title,
+  .form-title,
+  .success-copy {
+    text-wrap: balance;
+  }
+
+  .hero-copy,
+  .sprint-description,
+  .outcome-list li,
+  .handoff-cta-copy p,
+  .footer-about-body p,
+  .form-reassurance {
+    text-wrap: pretty;
+  }
+}
