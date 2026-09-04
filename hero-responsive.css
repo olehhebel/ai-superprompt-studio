@@ -189,11 +189,11 @@
   }
 }
 
-/* Keep the proof frame anchored to the reference position on desktop.
-   A constant right edge prevents different thesis lengths from drifting sideways. */
+/* Keep a stable right anchor and use the viewport gutter to move the frame
+   closer to the reference edge without risking clipping. */
 @media (min-width: 821px) {
   .hero-marquee {
-    margin-right: clamp(34px, 4.5vw, 92px) !important;
+    margin-right: calc((var(--page-x) - 16px) * -1) !important;
   }
 }
 
