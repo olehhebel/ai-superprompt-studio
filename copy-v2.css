@@ -1,0 +1,267 @@
+/* Copy v2 — content structure and responsive composition */
+
+.hero-lead {
+  width: min(780px, 62vw);
+  margin: var(--screen-gap-md) 0 0;
+  font-size: clamp(20px, 1.667vw, 24px);
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.hero-copy {
+  font-size: clamp(17px, 1.25vw, 20px);
+  line-height: 1.5;
+}
+
+.hero-helper {
+  width: min(420px, 100%);
+  margin: var(--screen-gap-sm) 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.hero-marquee-group {
+  gap: 0;
+}
+
+.hero-marquee-group span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero-marquee-group span::after {
+  content: "·";
+  margin-inline: 28px;
+}
+
+.problems .eyebrow,
+.sprints .eyebrow,
+.outcomes .eyebrow {
+  font-weight: 500;
+}
+
+.problem-copy {
+  max-width: 980px;
+}
+
+.problem-line {
+  font-size: clamp(34px, 3.05vw, 44px);
+  line-height: 1.22;
+}
+
+.problem-conclusion {
+  max-width: 760px;
+  margin: var(--screen-gap-lg) 0 0;
+  color: rgba(255,255,255,.72);
+  font-size: clamp(18px, 1.45vw, 21px);
+  line-height: 1.5;
+}
+
+.sprints-intro {
+  max-width: 760px;
+}
+
+.sprint-list {
+  gap: clamp(52px, 6vw, 76px) !important;
+}
+
+.sprint-row {
+  grid-template-columns: minmax(0, 760px) minmax(80px, 1fr);
+  grid-template-rows: auto auto auto;
+  column-gap: 24px;
+}
+
+.sprint-name {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.sprint-description {
+  grid-column: 1;
+  grid-row: 2;
+  margin-top: 12px;
+  color: rgba(0,0,0,.78);
+  font-size: clamp(17px, 1.35vw, 20px);
+  line-height: 1.45;
+  white-space: normal;
+}
+
+.sprint-meta {
+  grid-column: 1;
+  grid-row: 3;
+  margin-top: 14px;
+  color: var(--blue);
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  white-space: normal;
+}
+
+.sprint-line {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.terms-stack {
+  display: grid;
+  gap: 2px;
+}
+
+.terms-stack span {
+  display: block;
+}
+
+.outcomes .eyebrow {
+  line-height: 1.35;
+}
+
+.outcome-list {
+  padding: 0;
+  list-style: none;
+  gap: 10px;
+}
+
+.outcome-list li {
+  margin: 0;
+  list-style: none;
+}
+
+.handoff-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(72px, 10vw, 150px);
+  align-items: start;
+}
+
+.handoff-heading {
+  margin: 0;
+  font-weight: 400;
+}
+
+.handoff-heading .eyebrow {
+  margin: 0 0 var(--screen-gap-md);
+}
+
+.handoff-heading .section-title {
+  display: block;
+  color: var(--blue);
+}
+
+.handoff-body {
+  display: grid;
+  gap: 22px;
+  margin-top: var(--screen-gap-md);
+  max-width: 600px;
+}
+
+.handoff-body p,
+.handoff-cta p {
+  margin: 0;
+  font-size: clamp(18px, 1.45vw, 21px);
+  line-height: 1.5;
+}
+
+.handoff-cta-title {
+  margin: 0 0 var(--screen-gap-md);
+  color: var(--blue);
+  font-size: clamp(34px, 3.05vw, 44px);
+  line-height: 1.15;
+  font-weight: 500;
+}
+
+.handoff-cta-copy {
+  display: grid;
+  gap: 20px;
+  max-width: 650px;
+}
+
+.handoff-cta .primary-cta {
+  margin-top: var(--screen-gap-md);
+}
+
+.handoff-terms {
+  margin-top: var(--screen-gap-md);
+  max-width: 620px;
+}
+
+.footer-team {
+  text-transform: none;
+}
+
+.form-title {
+  width: 430px;
+}
+
+@media (max-width: 820px) {
+  .hero-lead,
+  .hero-copy,
+  .hero-helper {
+    width: 100%;
+  }
+
+  .hero-lead {
+    font-size: 19px;
+  }
+
+  .hero-copy {
+    margin-top: 22px !important;
+    font-size: 17px;
+  }
+
+  .hero-helper {
+    font-size: 13px;
+  }
+
+  .hero-marquee-group span::after {
+    margin-inline: 18px;
+  }
+
+  .problem-copy {
+    max-width: 100%;
+  }
+
+  .problem-line {
+    font-size: clamp(30px, 8vw, 38px);
+  }
+
+  .problem-conclusion {
+    margin-top: var(--screen-gap-lg);
+    font-size: 17px;
+  }
+
+  .sprint-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto auto !important;
+  }
+
+  .sprint-name,
+  .sprint-description,
+  .sprint-meta {
+    grid-column: 1 !important;
+  }
+
+  .sprint-description {
+    font-size: 17px;
+  }
+
+  .sprint-meta {
+    font-size: 12px;
+  }
+
+  .handoff-grid {
+    grid-template-columns: 1fr;
+    gap: var(--screen-gap-xl);
+  }
+
+  .handoff-body p,
+  .handoff-cta p {
+    font-size: 17px;
+  }
+
+  .handoff-cta-title {
+    font-size: clamp(30px, 8vw, 38px);
+  }
+}
