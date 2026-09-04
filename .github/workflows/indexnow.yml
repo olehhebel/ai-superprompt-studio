@@ -1,0 +1,67 @@
+name: IndexNow content updates
+
+on:
+  push:
+    branches:
+      - index.html
+    paths:
+      - index.html
+      - vibe-coded-product-rescue.html
+      - agent-ready-design-system.html
+      - ai-agent-ux-design.html
+      - insights.html
+      - insights/**/*.html
+      - sitemap.xml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Notify IndexNow
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+
+          const host = 'superprompt.pro';
+          const keyFile = fs.readdirSync('.').find((name) => /^[A-Za-z0-9-]{8,128}\.txt$/.test(name) && fs.readFileSync(name, 'utf8').trim() === name.replace(/\.txt$/, ''));
+          if (!keyFile) throw new Error('IndexNow key file not found');
+
+          const key = fs.readFileSync(keyFile, 'utf8').trim();
+          const sitemap = fs.readFileSync('sitemap.xml', 'utf8');
+          const urlList = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1].trim());
+          if (!urlList.length) throw new Error('No URLs found in sitemap.xml');
+
+          const payload = {
+            host,
+            key,
+            keyLocation: `https://${host}/${keyFile}`,
+            urlList,
+          };
+
+          fetch('https://api.indexnow.org/indexnow', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json; charset=utf-8' },
+            body: JSON.stringify(payload),
+          }).then(async (response) => {
+            const body = await response.text();
+            console.log(`IndexNow status: ${response.status}; URLs: ${urlList.length}`);
+            if (![200, 202].includes(response.status)) {
+              console.error(body);
+              process.exit(1);
+            }
+          }).catch((error) => {
+            console.error(error);
+            process.exit(1);
+          });
+          NODE
