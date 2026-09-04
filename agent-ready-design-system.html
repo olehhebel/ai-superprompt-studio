@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Design Systems for AI Coding Agents | Cursor &amp; Claude Code</title>
-  <meta name="description" content="Build an agent-ready design system that gives Cursor, Claude Code and your team one source of truth for tokens, components, patterns and UI rules." />
+  <meta name="description" content="Build an agent-ready design system for Cursor, Claude Code and Codex: canonical tokens, components, agent rules and validation that stop UI drift." />
   <meta name="author" content="Oleh Hebel" />
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <link rel="canonical" href="https://superprompt.pro/agent-ready-design-system" />
@@ -14,13 +14,13 @@
   <meta property="og:site_name" content="Oleh Hebel & Co" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="Design Systems for AI Coding Agents | Cursor &amp; Claude Code" />
-  <meta property="og:description" content="Turn your design system into usable context for AI coding agents so generated UI stays on-system instead of drifting." />
+  <meta property="og:description" content="Turn the real product system into usable agent context—with canonical tokens, components, rules and validation that keep generated UI on-system." />
   <meta property="og:url" content="https://superprompt.pro/agent-ready-design-system" />
   <meta property="og:image" content="https://superprompt.pro/og-image.jpg" />
   <meta property="og:image:alt" content="Agent-ready design systems for AI coding agents by Oleh Hebel & Co" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Design Systems for AI Coding Agents | Cursor &amp; Claude Code" />
-  <meta name="twitter:description" content="A focused sprint for tokens, components, rules and persistent design context that AI coding agents can follow." />
+  <meta name="twitter:description" content="A focused sprint for canonical tokens, components, DESIGN.md-style agent context and validation that prevents UI drift." />
   <meta name="twitter:image" content="https://superprompt.pro/og-image.jpg" />
   <meta name="twitter:image:alt" content="Agent-ready design systems for AI coding agents by Oleh Hebel & Co" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -35,7 +35,7 @@
         "@id": "https://superprompt.pro/agent-ready-design-system#webpage",
         "url": "https://superprompt.pro/agent-ready-design-system",
         "name": "Design Systems for AI Coding Agents | Cursor & Claude Code",
-        "description": "Build an agent-ready design system that gives coding agents and product teams one source of truth for tokens, components, patterns and UI rules.",
+        "description": "Build an agent-ready design system with canonical tokens, components, agent-readable rules and validation that keeps AI-generated UI on-system.",
         "isPartOf": {"@id": "https://superprompt.pro/#website"},
         "mainEntity": {"@id": "https://superprompt.pro/agent-ready-design-system#service"},
         "breadcrumb": {"@id": "https://superprompt.pro/agent-ready-design-system#breadcrumb"},
@@ -47,7 +47,7 @@
         "name": "Agent-Ready Design System",
         "serviceType": "Design systems for AI coding agents",
         "url": "https://superprompt.pro/agent-ready-design-system",
-        "description": "A focused design-system sprint that aligns tokens, components, patterns and repository context so AI coding agents and product teams build from the same rules.",
+        "description": "A focused design-system sprint that aligns tokens, components, patterns, repository context and validation so AI coding agents and product teams build from the same rules.",
         "provider": {"@id": "https://superprompt.pro/#organization"},
         "areaServed": ["United States", "United Kingdom", "European Union"]
       },
@@ -85,7 +85,7 @@
       <div class="hero-inner">
         <p class="eyebrow">DESIGN SYSTEMS FOR AI CODING AGENTS</p>
         <h1>Give your coding agents one system to build from.</h1>
-        <p class="hero-lead">I turn scattered Figma styles, components and frontend conventions into a usable product system that your team—and tools such as Cursor or Claude Code—can actually follow.</p>
+        <p class="hero-lead">I turn scattered Figma styles, components and frontend conventions into a usable product system that your team—and tools such as Cursor, Claude Code or Codex—can retrieve, follow and validate against.</p>
         <div class="hero-terms"><span>Fixed scope</span><span>Tokens + components</span><span>Agent context</span><span>No retainer</span></div>
         <div class="hero-actions"><a class="primary-link" href="/#team">Show me the drift</a></div>
       </div>
@@ -121,7 +121,8 @@
             <li><strong>Canonical tokens.</strong> Color, type, spacing, radius, elevation and responsive rules with one clear source of truth.</li>
             <li><strong>Component contract.</strong> Which components are canonical, when to use them, which variants exist and when a new pattern is actually justified.</li>
             <li><strong>Pattern rules.</strong> Forms, tables, navigation, dialogs, feedback, states and recurring product structures documented as decisions—not screenshots.</li>
-            <li><strong>Agent-ready context.</strong> Repository instructions and concise design rules prepared for the coding workflow instead of buried in a PDF.</li>
+            <li><strong>Agent-readable context.</strong> The system is packaged into the formats the workflow actually loads—such as DESIGN.md, CLAUDE.md, Cursor rules or equivalent repository instructions—rather than buried in a PDF.</li>
+            <li><strong>Validation layer.</strong> Linting, visual review or lightweight automated checks catch rogue values and duplicate patterns instead of relying on the prompt to behave perfectly.</li>
             <li><strong>Design ↔ code parity.</strong> Figma and implementation are compared so the system describes the product that really ships.</li>
           </ul>
         </div>
@@ -135,7 +136,7 @@
         <div class="steps">
           <article class="step"><span class="step-index">01</span><h3>Inventory</h3><p>I inspect Figma and the live codebase, identify duplicates, contradictions and the real components the product relies on.</p></article>
           <article class="step"><span class="step-index">02</span><h3>Normalize</h3><p>I define the canonical tokens, components and patterns, then remove ambiguity around what should be reused.</p></article>
-          <article class="step"><span class="step-index">03</span><h3>Contextualize</h3><p>I translate the system into concise rules and repository context that fit the tools your team already uses.</p></article>
+          <article class="step"><span class="step-index">03</span><h3>Contextualize + validate</h3><p>I translate the system into concise agent-readable rules and add the smallest useful checks that expose drift before it ships.</p></article>
         </div>
       </div>
     </section>
@@ -146,8 +147,9 @@
         <h2>You are shipping faster than your system can keep up.</h2>
         <div class="faq-list">
           <article class="faq-item"><h3>We already have a design system.</h3><p>Good. This sprint is often about making the existing system usable in production and by AI-assisted workflows, not replacing it.</p></article>
+          <article class="faq-item"><h3>Do you just create a DESIGN.md?</h3><p>No. A DESIGN.md, CLAUDE.md or Cursor rule is a delivery format, not the design system itself. I first resolve the real source of truth across tokens, components, patterns and code, then package those decisions into agent-readable context.</p></article>
           <article class="faq-item"><h3>We mostly build in code.</h3><p>That is fine. The system can be anchored in the repo and component library, with Figma acting as a supporting design surface rather than the only source of truth.</p></article>
-          <article class="faq-item"><h3>We use Cursor or Claude Code.</h3><p>The exact format should match the toolchain. Current coding-agent workflows work better when components, tokens and design rules are explicit and easy for the agent to retrieve before it generates UI.</p></article>
+          <article class="faq-item"><h3>We use Cursor, Claude Code or Codex.</h3><p>The exact format should match the toolchain. The important part is that canonical components, tokens and product rules are explicit, retrievable before UI generation and checked after generation.</p></article>
           <article class="faq-item"><h3>Will this eliminate all AI drift?</h3><p>No system removes the need for review. The point is to reduce repeated correction, make mistakes easier to detect and give both humans and agents a consistent baseline.</p></article>
         </div>
 
