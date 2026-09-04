@@ -80,22 +80,33 @@
   }
 }
 
-/* Hero proof drum — replaces the old horizontal marquee.
-   The frame stays fixed on the right; only the thesis moves vertically.
-   Each thesis owns a 1.5 second slot. */
+/* Hero action composition.
+   The proof drum occupies the 392×110 reference frame directly above and to
+   the right of the CTA's top-right corner. Keeping both in one grid makes the
+   relationship stable when the viewport changes. */
+.hero-actions {
+  display: grid;
+  grid-template-columns: max-content minmax(220px, 392px);
+  grid-template-rows: 110px auto;
+  column-gap: clamp(16px, 1.35vw, 22px);
+  align-items: end;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 36px;
+}
+
+/* Hero proof drum — one thesis per 1.5 second slot. */
 .hero-marquee {
   position: relative !important;
   left: auto !important;
   right: auto !important;
   top: auto !important;
-  width: min(392px, 100%) !important;
+  width: min(392px, 27vw) !important;
   height: 110px;
-  margin-top: var(--screen-gap-lg) !important;
-  margin-left: auto !important;
-  margin-right: 0 !important;
+  margin: 0 !important;
   overflow: hidden !important;
   color: rgba(0, 0, 0, .48) !important;
-  font-size: clamp(14px, 1.25vw, 18px) !important;
+  font-size: clamp(11px, .82vw, 13px) !important;
   line-height: 1.25 !important;
   font-weight: 500 !important;
   text-transform: uppercase;
@@ -103,6 +114,10 @@
   pointer-events: none;
   -webkit-mask-image: none !important;
   mask-image: none !important;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start;
+  align-self: end;
 }
 
 .hero-marquee-track {
@@ -189,27 +204,26 @@
   }
 }
 
-/* Keep a stable right anchor and use the viewport gutter to move the frame
-   closer to the reference edge without risking clipping. */
-@media (min-width: 821px) {
-  .hero-marquee {
-    margin-right: calc((var(--page-x) - 16px) * -1) !important;
-  }
-}
-
-/* The drum sits immediately above the CTA, like the Figma reference. */
-.hero .primary-cta {
-  margin-top: 16px !important;
+/* Button begins immediately below the proof row. This removes the old extra
+   vertical gap and lifts the CTA while preserving the reference relationship. */
+.hero-actions .primary-cta {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
+  margin: 0 !important;
 }
 
 @media (max-width: 820px) {
+  .hero-actions {
+    display: block;
+    margin-top: var(--screen-gap-lg);
+  }
+
   .hero-marquee {
     width: min(392px, 100%) !important;
     height: 84px;
-    margin-top: var(--screen-gap-lg) !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    font-size: 13px !important;
+    margin: 0 !important;
+    font-size: 11px !important;
   }
 
   .hero-marquee-group:first-child span {
@@ -217,7 +231,7 @@
     text-align: left;
   }
 
-  .hero .primary-cta {
+  .hero-actions .primary-cta {
     margin-top: 14px !important;
   }
 }
