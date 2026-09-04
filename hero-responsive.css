@@ -1,15 +1,16 @@
-/* Responsive Hero background override.
-   Keep the original PNG proportions and let it scale with the Hero viewport. */
+/* Single-source responsive Hero background.
+   Overrides the obsolete/broken data-URI declared earlier in hero-bg.css. */
 .hero {
   position: relative;
   overflow: hidden;
+  background-color: #f4f5f6 !important;
+  background-image: url("./assets/hero-cloud.svg") !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center center !important;
   background-attachment: scroll !important;
 }
 
-/* Remove legacy decorative background layers so only the PNG is visible. */
 .hero::before,
 .hero::after {
   content: none !important;
@@ -17,32 +18,25 @@
   background: none !important;
 }
 
-/* Keep Hero content above the background. */
 .hero .section-inner {
   position: relative;
   z-index: 1;
 }
 
-/* Large/wide desktop: keep the cloud centred without horizontal stretching. */
 @media (min-width: 1440px) {
   .hero {
-    background-size: cover !important;
-    background-position: center 50% !important;
-  }
-}
-
-/* Laptop / tablet: shift the cloud slightly right so the copy remains readable. */
-@media (max-width: 1100px) {
-  .hero {
-    background-size: cover !important;
     background-position: 58% center !important;
   }
 }
 
-/* Mobile portrait: preserve aspect ratio and favour the visual centre of the cloud. */
+@media (max-width: 1100px) {
+  .hero {
+    background-position: 62% center !important;
+  }
+}
+
 @media (max-width: 640px) {
   .hero {
-    background-size: cover !important;
-    background-position: 64% center !important;
+    background-position: 68% center !important;
   }
 }
