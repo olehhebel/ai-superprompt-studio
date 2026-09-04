@@ -1,5 +1,9 @@
 /* Copy v2 — content structure and responsive composition */
 
+:root {
+  --copy-wide: min(66.667vw, 1180px);
+}
+
 .hero-lead {
   width: min(780px, 62vw);
   margin: var(--screen-gap-md) 0 0;
@@ -59,26 +63,33 @@
 }
 
 .sprints-intro {
-  max-width: 760px;
+  width: var(--copy-wide);
+  max-width: none;
 }
 
 .sprint-list {
+  width: var(--copy-wide);
+  max-width: 100%;
   gap: clamp(52px, 6vw, 76px) !important;
 }
 
 .sprint-row {
-  grid-template-columns: minmax(0, 760px) minmax(80px, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto auto auto;
-  column-gap: 24px;
+  column-gap: 0;
+}
+
+.sprint-name,
+.sprint-description,
+.sprint-meta {
+  grid-column: 1;
 }
 
 .sprint-name {
-  grid-column: 1;
   grid-row: 1;
 }
 
 .sprint-description {
-  grid-column: 1;
   grid-row: 2;
   margin-top: 12px;
   color: rgba(0,0,0,.78);
@@ -88,7 +99,6 @@
 }
 
 .sprint-meta {
-  grid-column: 1;
   grid-row: 3;
   margin-top: 14px;
   color: var(--blue);
@@ -101,8 +111,7 @@
 }
 
 .sprint-line {
-  grid-column: 2;
-  grid-row: 3;
+  display: none !important;
 }
 
 .terms-stack {
@@ -119,6 +128,8 @@
 }
 
 .outcome-list {
+  width: var(--copy-wide) !important;
+  max-width: none !important;
   padding: 0;
   list-style: none;
   gap: 10px;
@@ -127,13 +138,19 @@
 .outcome-list li {
   margin: 0;
   list-style: none;
+  max-width: 100%;
 }
 
 .handoff-grid {
-  display: grid;
-  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-  gap: clamp(72px, 10vw, 150px);
-  align-items: start;
+  display: block;
+  width: var(--copy-wide);
+  max-width: 100%;
+}
+
+.handoff-about,
+.handoff-cta {
+  width: 100%;
+  max-width: 100%;
 }
 
 .handoff-heading {
@@ -154,7 +171,7 @@
   display: grid;
   gap: 22px;
   margin-top: var(--screen-gap-md);
-  max-width: 600px;
+  max-width: 100%;
 }
 
 .handoff-body p,
@@ -162,6 +179,10 @@
   margin: 0;
   font-size: clamp(18px, 1.45vw, 21px);
   line-height: 1.5;
+}
+
+.handoff-cta {
+  margin-top: var(--screen-gap-xl);
 }
 
 .handoff-cta-title {
@@ -175,16 +196,11 @@
 .handoff-cta-copy {
   display: grid;
   gap: 20px;
-  max-width: 650px;
+  max-width: 100%;
 }
 
 .handoff-cta .primary-cta {
   margin-top: var(--screen-gap-md);
-}
-
-.handoff-terms {
-  margin-top: var(--screen-gap-md);
-  max-width: 620px;
 }
 
 .footer-team {
@@ -196,6 +212,10 @@
 }
 
 @media (max-width: 820px) {
+  :root {
+    --copy-wide: 100%;
+  }
+
   .hero-lead,
   .hero-copy,
   .hero-helper {
@@ -232,6 +252,14 @@
     font-size: 17px;
   }
 
+  .sprints-intro,
+  .sprint-list,
+  .outcome-list,
+  .handoff-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   .sprint-row {
     grid-template-columns: minmax(0, 1fr) !important;
     grid-template-rows: auto auto auto !important;
@@ -251,9 +279,8 @@
     font-size: 12px;
   }
 
-  .handoff-grid {
-    grid-template-columns: 1fr;
-    gap: var(--screen-gap-xl);
+  .handoff-cta {
+    margin-top: var(--screen-gap-xl);
   }
 
   .handoff-body p,
