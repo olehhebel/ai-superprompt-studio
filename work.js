@@ -102,6 +102,31 @@
     }
   }
 
+  const premiumCovers = {
+    dashboarder: '/assets/work/dashboarder-premium-cover.svg',
+    tra: '/assets/work/tra-premium-cover.svg',
+    yads: '/assets/work/yads-premium-cover.svg',
+    smartproject: '/assets/work/smartproject-premium-cover.svg',
+    'thrive-well': '/assets/work/thrive-well-premium-cover.svg',
+    maison: '/assets/work/maison-premium-cover.svg',
+    muse: '/assets/work/muse-premium-cover.svg',
+    'autumn-hills': '/assets/work/autumn-hills-premium-cover.svg',
+    mentorium: '/assets/work/mentorium-premium-cover.svg',
+    fuelup: '/assets/work/fuelup-premium-cover.svg'
+  };
+
+  Object.entries(premiumCovers).forEach(([id, src]) => {
+    const project = document.getElementById(id);
+    const cover = project?.querySelector('.work-cover');
+    const img = cover?.querySelector('img');
+    if (!img) return;
+    img.src = src;
+    img.width = 1600;
+    img.height = 1100;
+    img.decoding = 'async';
+    if (cover) cover.href = src;
+  });
+
   const toggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.mobile-menu');
   if (!toggle || !menu) return;
