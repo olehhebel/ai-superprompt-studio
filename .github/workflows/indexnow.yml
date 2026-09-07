@@ -9,6 +9,7 @@ on:
       - vibe-coded-product-rescue.html
       - agent-ready-design-system.html
       - ai-agent-ux-design.html
+      - work.html
       - insights.html
       - insights/**/*.html
       - sitemap.xml
