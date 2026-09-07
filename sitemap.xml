@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://superprompt.pro/</loc>
     <lastmod>2026-09-04</lastmod>
@@ -40,5 +40,5 @@
     <loc>https://superprompt.pro/insights/ai-prototype-to-production-ready-product</loc>
     <lastmod>2026-09-04</lastmod>
   </url>
-  <url><loc>https://superprompt.pro/work</loc><lastmod>2026-09-07</lastmod></url>
+  <url><loc>https://superprompt.pro/work</loc><lastmod>2026-09-07</lastmod><image:image><image:loc>https://superprompt.pro/assets/work/smartproject-cover.png</image:loc></image:image><image:image><image:loc>https://superprompt.pro/assets/work/dashboarder-cover.png</image:loc></image:image><image:image><image:loc>https://superprompt.pro/assets/work/tra-cover.png</image:loc></image:image><image:image><image:loc>https://superprompt.pro/assets/work/yads-cover.png</image:loc></image:image><image:image><image:loc>https://superprompt.pro/assets/work/thrive-well-cover.png</image:loc></image:image><image:image><image:loc>https://superprompt.pro/assets/work/maison-cover.png</image:loc></image:image><image:image><image:loc>https://superprompt.pro/assets/work/muse-cover.png</image:loc></image:image><image:image><image:loc>https://superprompt.pro/assets/work/autumn-hills-cover.png</image:loc></image:image><image:image><image:loc>https://superprompt.pro/assets/work/mentorium-cover.png</image:loc></image:image><image:image><image:loc>https://superprompt.pro/assets/work/fuelup-cover.png</image:loc></image:image></url>
 </urlset>
