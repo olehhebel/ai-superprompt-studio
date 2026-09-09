@@ -2,7 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://superprompt.pro/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-09</lastmod>
+  
+    <image:image><image:loc>https://superprompt.pro/assets/brand/oleh-hebel-co-logo.svg</image:loc></image:image>
   </url>
   <url>
     <loc>https://superprompt.pro/vibe-coded-product-rescue</loc>
