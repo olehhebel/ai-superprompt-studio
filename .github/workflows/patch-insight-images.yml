@@ -1,0 +1,26 @@
+name: Patch insight images
+on:
+  push:
+    branches: [index.html]
+    paths:
+      - 'assets/insights/**'
+      - 'scripts/patch_insight_images.py'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: index.html
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - run: python scripts/patch_insight_images.py
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add article hero images and structured data' || exit 0
+          git push origin HEAD:index.html
