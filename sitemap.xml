@@ -6,6 +6,11 @@
     <image:image><image:loc>https://superprompt.pro/assets/brand/oleh-hebel-co-logo.svg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://superprompt.pro/ai-product-readiness-scorecard</loc>
+    <lastmod>2026-09-09</lastmod>
+    <image:image><image:loc>https://superprompt.pro/assets/insights/ai-prototype-to-production-ready-product.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://superprompt.pro/vibe-coded-product-rescue</loc>
     <lastmod>2026-09-09</lastmod>
   </url>
@@ -52,7 +57,7 @@
     <image:image><image:loc>https://superprompt.pro/assets/work/maison-cover.png</image:loc></image:image>
     <image:image><image:loc>https://superprompt.pro/assets/work/muse-cover.png</image:loc></image:image>
     <image:image><image:loc>https://superprompt.pro/assets/work/autumn-hills-cover.png</image:loc></image:image>
-    <image:image><image:loc>https://superprompt.pro/assets/work/mentorium-cover.png</image:loc></image:image>
+    <image:image><image:loc>https://superprompt.pro/assets/work/mentorium-cover.png</image:image><image:loc>https://superprompt.pro/assets/work/mentorium-cover.png</image:loc></image:image>
     <image:image><image:loc>https://superprompt.pro/assets/work/fuelup-cover.png</image:loc></image:image>
   </url>
 </urlset>
