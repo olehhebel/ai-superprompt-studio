@@ -87,3 +87,7 @@ h1{margin:0;max-width:980px;font-size:clamp(46px,7vw,96px);line-height:.98;lette
   .hub-hero,.article-hero{padding-top:72px}.insight-card{padding:24px;min-height:280px}.article-body{font-size:17px}.article-body>p:first-child{font-size:20px}.footer-inner{flex-direction:column}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+.article-hero-media{width:min(calc(100% - (2 * var(--page))),var(--max));margin:0 auto clamp(64px,8vw,110px);overflow:hidden;border-radius:var(--radius);background:#08111f}
+.article-hero-media img{display:block;width:100%;height:auto;aspect-ratio:1672/941;object-fit:cover}
+@media(max-width:560px){.article-hero-media{width:calc(100% - (2 * var(--page)));margin-bottom:56px;border-radius:12px}}
