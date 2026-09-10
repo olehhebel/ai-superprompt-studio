@@ -23,6 +23,26 @@
 .work-meta p:not(.eyebrow) { font-size: 17px; line-height: 1.6; margin: 0 0 24px; }
 .work-meta .work-scope { font-size: 14px !important; color: #666; }
 .work-project--text-only .work-meta .work-confidentiality { max-width: 640px; margin-top: 18px !important; margin-bottom: 0 !important; font-size: 11px !important; line-height: 1.45; font-weight: 400; letter-spacing: .01em; color: #8a8a8a; }
+
+/* Compact archive of logo explorations. The fixed frames normalize very different source proportions without stretching artwork. */
+.work-concepts { border-top: 1px solid var(--work-rule); padding-block: 34px 42px; overflow: hidden; }
+.work-concepts-title { margin: 0 0 22px; font-size: 12px; line-height: 1.4; letter-spacing: .04em; color: #777; }
+.work-concepts-viewport { width: 100%; overflow: hidden; }
+.work-concepts-track { display: flex; width: max-content; transform: translate3d(0,0,0); animation: work-concepts-marquee 44s linear infinite; will-change: transform; }
+.work-concepts-group { display: flex; align-items: center; gap: 16px; padding-right: 16px; }
+.work-concept-logo { position: relative; flex: 0 0 172px; width: 172px; height: 92px; display: grid; place-items: center; overflow: hidden; border: 1px solid rgba(0,0,0,.09); background: #f6f6f4; text-decoration: none; }
+.work-concept-logo img { display: block; width: 100%; height: 100%; transition: transform .35s var(--ease), opacity .25s ease; }
+.work-concept-logo--contain img { object-fit: contain; padding: 9px; }
+.work-concept-logo--cover img { object-fit: cover; }
+.work-concept-logo.is-image-missing img { display: none; }
+.work-concept-logo.is-image-missing::after { content: attr(data-fallback); max-width: 86%; font-size: 11px; line-height: 1.2; text-align: center; text-transform: uppercase; letter-spacing: .04em; color: #777; }
+@media (hover:hover) {
+  .work-concept-logo:hover img { transform: scale(1.025); }
+}
+@keyframes work-concepts-marquee {
+  to { transform: translate3d(-50%,0,0); }
+}
+
 .work-cover, .work-image { display: block; background: #f3f3f3; }
 .work-cover img, .work-image img { display: block; width: 100%; height: auto; }
 .work-cover { overflow: hidden; }
@@ -52,7 +72,20 @@
  .work-meta h2 { font-size: clamp(30px,8vw,38px); margin: 16px 0 24px; }
  .work-project--text-only .work-meta h2 { margin-top: 0; }
  .work-project--text-only .work-meta .work-confidentiality { margin-top: 14px !important; font-size: 10px !important; line-height: 1.5; }
+ .work-concepts { padding-block: 26px 32px; }
+ .work-concepts-title { margin-bottom: 16px; font-size: 11px; }
+ .work-concepts-track { animation-duration: 38s; }
+ .work-concepts-group { gap: 12px; padding-right: 12px; }
+ .work-concept-logo { flex-basis: 144px; width: 144px; height: 78px; }
+ .work-concept-logo--contain img { padding: 7px; }
  .work-handoff { padding-block: 56px; }
  .work-handoff .primary-cta { padding: 22px; min-height: 72px; font-size: 17px; }
 }
-@media(prefers-reduced-motion: reduce) { .work-page { scroll-behavior: auto; } .work-cover img { transition: none; } }
+@media(prefers-reduced-motion: reduce) {
+ .work-page { scroll-behavior: auto; }
+ .work-cover img, .work-concept-logo img { transition: none; }
+ .work-concepts-viewport { overflow-x: auto; scrollbar-width: none; }
+ .work-concepts-viewport::-webkit-scrollbar { display: none; }
+ .work-concepts-track { animation: none; }
+ .work-concepts-group[aria-hidden="true"] { display: none; }
+}
