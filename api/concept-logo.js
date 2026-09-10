@@ -11,13 +11,16 @@ export async function GET(request) {
 
     if (!sourceUrl) return new Response('Not found', { status: 404 });
 
-    const cachedUrl = `https://wsrv.nl/?url=${encodeURIComponent(sourceUrl)}&w=500&h=500&fit=contain&output=webp`;
+    const cachedUrl = `https://images.weserv.nl/?url=${encodeURIComponent(sourceUrl)}&w=500&h=500&fit=contain&output=webp`;
     const upstream = await fetch(cachedUrl, {
       headers: { Accept: 'image/webp,image/*,*/*;q=0.8' },
       redirect: 'follow'
     });
 
-    if (!upstream.ok) return new Response('Image unavailable', { status: 502 });
+    if (!upstream.ok) {
+      console.warn('concept-logo upstream', id, upstream.status);
+      return new Response('Image unavailable', { status: 502 });
+    }
 
     const contentType = upstream.headers.get('content-type') || 'image/webp';
     if (!contentType.startsWith('image/')) return new Response('Invalid image response', { status: 502 });
@@ -30,7 +33,8 @@ export async function GET(request) {
         'X-Content-Type-Options': 'nosniff'
       }
     });
-  } catch {
+  } catch (error) {
+    console.warn('concept-logo error', error?.message || 'unknown');
     return new Response('Image unavailable', { status: 502 });
   }
 }
