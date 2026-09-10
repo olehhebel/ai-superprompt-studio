@@ -9,7 +9,7 @@ const SOURCES = {
   }
 };
 
-export default async function handler(request) {
+export async function GET(request) {
   try {
     const url = new URL(request.url);
     const id = url.searchParams.get('id');
