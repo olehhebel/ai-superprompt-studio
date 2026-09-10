@@ -36,25 +36,23 @@
     {
       name: 'CocheLUX',
       alt: 'CocheLUX luxury car logo concept by Oleh Hebel',
-      src: 'https://images-platform.99static.com/CFJKFxSunwcI3H-S0aaSEPEEAsM%3D/0x0%3A1509x1509/500x500/top/smart/99designs-contests-attachments/128/128567/attachment_128567111',
-      href: 'https://99designs.com/logo-design/contests/cochelux-coches-de-lujo-ocasi%C3%B3n-1100034',
-      mode: 'contain', width: 500, height: 500
+      src: '/api/concept-logo?id=cochelux',
+      href: 'https://99designs.com/logo-design/contests/cochelux-coches-de-lujo-ocasi%C3%B3n-1100034'
     },
     {
-      name: 'Ciucaș Rescue Race concept',
+      name: 'Ciucaș Rescue Race',
       alt: 'Ciucaș Rescue Race logo and brand guide concept by Oleh Hebel',
-      src: 'https://images-platform.99static.com/eSMZUFJ47mbG4p3xYlB_l6TH6iM%3D/0x1374%3A1440x2814/500x500/top/smart/99designs-contests-attachments/138/138862/attachment_138862605',
-      href: 'https://99designs.com/logo-brand-guide/contests/logo-ciuca%C8%99-rescue-race-1193171',
-      mode: 'contain', width: 500, height: 500
+      src: '/api/concept-logo?id=ciucas',
+      href: 'https://99designs.com/logo-brand-guide/contests/logo-ciuca%C8%99-rescue-race-1193171'
     },
-    { name: 'Trä', alt: 'Trä Scandinavian spa logo and identity concept by Oleh Hebel', src: '/assets/work/tra-cover.png', href: '#tra', mode: 'cover', width: 1672, height: 941 },
-    { name: 'Yads', alt: 'Yads fresh food delivery logo and identity by Oleh Hebel', src: '/assets/work/yads-cover.png', href: '#yads', mode: 'cover', width: 1595, height: 986 },
-    { name: 'ERP. Smartproject', alt: 'ERP Smartproject software logo and identity concept by Oleh Hebel', src: '/assets/work/smartproject-cover.png', href: '#smartproject', mode: 'cover', width: 1672, height: 941 },
-    { name: 'Thrive Well', alt: 'Thrive Well nutrition logo and packaging identity by Oleh Hebel', src: '/assets/work/thrive-well-cover.png', href: '#thrive-well', mode: 'cover', width: 1448, height: 1086 },
-    { name: 'Maison', alt: 'Maison Australian flooring logo and identity by Oleh Hebel', src: '/assets/work/maison-cover.png', href: '#maison', mode: 'cover', width: 1479, height: 1064 },
-    { name: 'Muse', alt: 'Muse real estate and mortgage logo and identity by Oleh Hebel', src: '/assets/work/muse-cover.png', href: '#muse', mode: 'cover', width: 1478, height: 1064 },
-    { name: 'Autumn Hills', alt: 'Autumn Hills farm logo refresh and identity by Oleh Hebel', src: '/assets/work/autumn-hills-cover.png', href: '#autumn-hills', mode: 'cover', width: 1478, height: 1064 },
-    { name: 'FuelUp', alt: 'FuelUp wordmark and brand identity concept by Oleh Hebel', src: '/assets/work/fuelup-cover.png', href: '#fuelup', mode: 'cover', width: 1312, height: 1199 }
+    { name: 'Trä', alt: 'Trä Scandinavian spa logo and identity concept by Oleh Hebel', src: '/assets/work/tra-8.webp', href: '#tra' },
+    { name: 'Yads', alt: 'Yads fresh food delivery logo and identity by Oleh Hebel', src: '/assets/work/yads-14.webp', href: '#yads' },
+    { name: 'ERP. Smartproject', alt: 'ERP Smartproject software logo and identity concept by Oleh Hebel', src: '/assets/work/smartproject-23.webp', href: '#smartproject' },
+    { name: 'Thrive Well', alt: 'Thrive Well nutrition logo and packaging identity by Oleh Hebel', src: '/assets/work/thrive-well-28.webp', href: '#thrive-well' },
+    { name: 'Maison', alt: 'Maison Australian flooring logo and identity by Oleh Hebel', src: '/assets/work/maison-37.webp', href: '#maison' },
+    { name: 'Muse', alt: 'Muse real estate and mortgage logo and identity by Oleh Hebel', src: '/assets/work/muse-44.webp', href: '#muse' },
+    { name: 'Autumn Hills', alt: 'Autumn Hills farm logo refresh and identity by Oleh Hebel', src: '/assets/work/autumn-hills-49.webp', href: '#autumn-hills' },
+    { name: 'FuelUp', alt: 'FuelUp wordmark and brand identity concept by Oleh Hebel', src: '/assets/work/fuelup-55.webp', href: '#fuelup' }
   ];
 
   const absoluteUrl = value => {
@@ -88,7 +86,7 @@
 
       conceptLogos.forEach(concept => {
         const link = document.createElement('a');
-        link.className = `work-concept-logo work-concept-logo--${concept.mode}`;
+        link.className = 'work-concept-logo work-concept-logo--contain';
         link.href = concept.href;
         link.setAttribute('aria-label', `View ${concept.name}`);
         link.title = concept.name;
@@ -100,14 +98,13 @@
         const image = document.createElement('img');
         image.src = concept.src;
         image.alt = hidden ? '' : concept.alt;
-        image.width = concept.width;
-        image.height = concept.height;
+        image.width = 500;
+        image.height = 500;
         image.loading = 'lazy';
         image.decoding = 'async';
         image.fetchPriority = 'low';
         image.addEventListener('error', () => {
-          link.classList.add('is-image-missing');
-          link.dataset.fallback = concept.name.replace(/ concept \d+$/i, '').replace(/ concept$/i, '');
+          link.hidden = true;
         }, { once: true });
 
         link.appendChild(image);
