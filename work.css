@@ -22,6 +22,7 @@
 .work-meta h3 { font-size: clamp(20px,1.667vw,24px); font-weight: 500; line-height: 1.3; margin: 0 0 20px; }
 .work-meta p:not(.eyebrow) { font-size: 17px; line-height: 1.6; margin: 0 0 24px; }
 .work-meta .work-scope { font-size: 14px !important; color: #666; }
+.work-project--text-only .work-meta .work-confidentiality { max-width: 640px; margin-top: 18px !important; margin-bottom: 0 !important; font-size: 11px !important; line-height: 1.45; font-weight: 400; letter-spacing: .01em; color: #8a8a8a; }
 .work-cover, .work-image { display: block; background: #f3f3f3; }
 .work-cover img, .work-image img { display: block; width: 100%; height: auto; }
 .work-cover { overflow: hidden; }
@@ -50,6 +51,7 @@
  .work-project--text-only { padding-block: 36px; }
  .work-meta h2 { font-size: clamp(30px,8vw,38px); margin: 16px 0 24px; }
  .work-project--text-only .work-meta h2 { margin-top: 0; }
+ .work-project--text-only .work-meta .work-confidentiality { margin-top: 14px !important; font-size: 10px !important; line-height: 1.5; }
  .work-handoff { padding-block: 56px; }
  .work-handoff .primary-cta { padding: 22px; min-height: 72px; font-size: 17px; }
 }
