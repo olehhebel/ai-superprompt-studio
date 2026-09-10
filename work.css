@@ -24,9 +24,9 @@
 .work-meta .work-scope { font-size: 14px !important; color: #666; }
 .work-project--text-only .work-meta .work-confidentiality { max-width: 640px; margin-top: 18px !important; margin-bottom: 0 !important; font-size: 11px !important; line-height: 1.45; font-weight: 400; letter-spacing: .01em; color: #8a8a8a; }
 
-/* Compact archive of logo explorations. The fixed frames normalize very different source proportions without stretching artwork. */
+/* Compact archive of logo explorations. Fixed frames normalize very different source proportions without stretching artwork. */
 .work-concepts { border-top: 1px solid var(--work-rule); padding-block: 34px 42px; overflow: hidden; }
-.work-concepts-title { margin: 0 0 22px; font-size: 12px; line-height: 1.4; letter-spacing: .04em; color: #777; }
+.work-concepts-title { margin: 0 0 22px; font-size: 12px; line-height: 1.4; font-weight: 500; letter-spacing: .04em; color: #777; text-transform: uppercase; }
 .work-concepts-viewport { width: 100%; overflow: hidden; }
 .work-concepts-track { display: flex; width: max-content; transform: translate3d(0,0,0); animation: work-concepts-marquee 44s linear infinite; will-change: transform; }
 .work-concepts-group { display: flex; align-items: center; gap: 16px; padding-right: 16px; }
@@ -38,7 +38,9 @@
 .work-concept-logo.is-image-missing::after { content: attr(data-fallback); max-width: 86%; font-size: 11px; line-height: 1.2; text-align: center; text-transform: uppercase; letter-spacing: .04em; color: #777; }
 @media (hover:hover) {
   .work-concept-logo:hover img { transform: scale(1.025); }
+  .work-concepts-viewport:hover .work-concepts-track { animation-play-state: paused; }
 }
+.work-concepts-viewport:focus-within .work-concepts-track { animation-play-state: paused; }
 @keyframes work-concepts-marquee {
   to { transform: translate3d(-50%,0,0); }
 }
