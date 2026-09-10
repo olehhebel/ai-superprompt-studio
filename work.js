@@ -33,26 +33,18 @@
   });
 
   const conceptLogos = [
-    {
-      name: 'CocheLUX',
-      alt: 'CocheLUX luxury car logo concept by Oleh Hebel',
-      src: '/api/concept-logo?id=cochelux',
-      href: 'https://99designs.com/logo-design/contests/cochelux-coches-de-lujo-ocasi%C3%B3n-1100034'
-    },
-    {
-      name: 'Ciucaș Rescue Race',
-      alt: 'Ciucaș Rescue Race logo and brand guide concept by Oleh Hebel',
-      src: '/api/concept-logo?id=ciucas',
-      href: 'https://99designs.com/logo-brand-guide/contests/logo-ciuca%C8%99-rescue-race-1193171'
-    },
-    { name: 'Trä', alt: 'Trä Scandinavian spa logo and identity concept by Oleh Hebel', src: '/assets/work/tra-8.webp', href: '#tra' },
-    { name: 'Yads', alt: 'Yads fresh food delivery logo and identity by Oleh Hebel', src: '/assets/work/yads-14.webp', href: '#yads' },
-    { name: 'ERP. Smartproject', alt: 'ERP Smartproject software logo and identity concept by Oleh Hebel', src: '/assets/work/smartproject-23.webp', href: '#smartproject' },
-    { name: 'Thrive Well', alt: 'Thrive Well nutrition logo and packaging identity by Oleh Hebel', src: '/assets/work/thrive-well-28.webp', href: '#thrive-well' },
-    { name: 'Maison', alt: 'Maison Australian flooring logo and identity by Oleh Hebel', src: '/assets/work/maison-37.webp', href: '#maison' },
-    { name: 'Muse', alt: 'Muse real estate and mortgage logo and identity by Oleh Hebel', src: '/assets/work/muse-44.webp', href: '#muse' },
-    { name: 'Autumn Hills', alt: 'Autumn Hills farm logo refresh and identity by Oleh Hebel', src: '/assets/work/autumn-hills-49.webp', href: '#autumn-hills' },
-    { name: 'FuelUp', alt: 'FuelUp wordmark and brand identity concept by Oleh Hebel', src: '/assets/work/fuelup-55.webp', href: '#fuelup' }
+    { name: 'Trä', alt: 'Trä Scandinavian spa logo concept by Oleh Hebel', src: '/assets/work/concepts/tra.svg', href: '#tra' },
+    { name: 'Yads', alt: 'Yads fresh food delivery logo and identity by Oleh Hebel', src: '/assets/work/concepts/yads.svg', href: '#yads' },
+    { name: 'ERP. Smartproject', alt: 'ERP Smartproject software logo concept by Oleh Hebel', src: '/assets/work/concepts/erp-smartproject.svg', href: '#smartproject' },
+    { name: 'Thrive Well', alt: 'Thrive Well nutrition labs logo by Oleh Hebel', src: '/assets/work/concepts/thrive-well.svg', href: '#thrive-well' },
+    { name: 'Maison', alt: 'Maison Flooring logo by Oleh Hebel', src: '/assets/work/concepts/maison.svg', href: '#maison' },
+    { name: 'Muse', alt: 'Muse real estate and mortgage logo by Oleh Hebel', src: '/assets/work/concepts/muse.svg', href: '#muse' },
+    { name: 'Autumn Hills', alt: 'Autumn Hills Orchard logo by Oleh Hebel', src: '/assets/work/concepts/autumn-hills.svg', href: '#autumn-hills' },
+    { name: 'FuelUp', alt: 'FuelUp stacked wordmark concept by Oleh Hebel', src: '/assets/work/concepts/fuelup.svg', href: '#fuelup' },
+    { name: 'Terra', alt: 'Terra identity logo concept by Oleh Hebel', src: '/assets/work/concepts/terra.svg', href: 'https://freelance.ru/portfolio/project/view/863253' },
+    { name: 'Predi', alt: 'Predi technology logo concept by Oleh Hebel', src: '/assets/work/concepts/predi.svg', href: 'https://dribbble.com/shots/17859463-Predi' },
+    { name: 'Lushnikova', alt: 'Lushnikova fashion logo concept by Oleh Hebel', src: '/assets/work/concepts/lushnikova.svg', href: 'https://dribbble.com/shots/17859837-Lushnikova-logo' },
+    { name: 'CocheLUX', alt: 'CocheLUX luxury automotive logo concept by Oleh Hebel', src: '/assets/work/concepts/cochelux.svg', href: 'https://99designs.com/logo-design/contests/cochelux-coches-de-lujo-ocasi%C3%B3n-1100034' }
   ];
 
   const absoluteUrl = value => {
@@ -98,8 +90,8 @@
         const image = document.createElement('img');
         image.src = concept.src;
         image.alt = hidden ? '' : concept.alt;
-        image.width = 500;
-        image.height = 500;
+        image.width = 600;
+        image.height = 320;
         image.loading = 'lazy';
         image.decoding = 'async';
         image.fetchPriority = 'low';
