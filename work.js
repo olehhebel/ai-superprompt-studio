@@ -34,44 +34,9 @@
 
   const conceptLogos = [
     {
-      name: 'CocheLUX concept 01',
-      alt: 'CocheLUX luxury car logo concept by Oleh Hebel — version 01',
+      name: 'CocheLUX',
+      alt: 'CocheLUX luxury car logo concept by Oleh Hebel',
       src: 'https://images-platform.99static.com/CFJKFxSunwcI3H-S0aaSEPEEAsM%3D/0x0%3A1509x1509/500x500/top/smart/99designs-contests-attachments/128/128567/attachment_128567111',
-      href: 'https://99designs.com/logo-design/contests/cochelux-coches-de-lujo-ocasi%C3%B3n-1100034',
-      mode: 'contain', width: 500, height: 500
-    },
-    {
-      name: 'CocheLUX concept 02',
-      alt: 'CocheLUX luxury car logo concept by Oleh Hebel — version 02',
-      src: 'https://images-platform.99static.com/iLJTXKzy5UYOQWtV163DXCJsyrU%3D/83x1180%3A903x2000/500x500/top/smart/99designs-contests-attachments/128/128567/attachment_128567038',
-      href: 'https://99designs.com/logo-design/contests/cochelux-coches-de-lujo-ocasi%C3%B3n-1100034',
-      mode: 'contain', width: 500, height: 500
-    },
-    {
-      name: 'CocheLUX concept 03',
-      alt: 'CocheLUX luxury car logo concept by Oleh Hebel — version 03',
-      src: 'https://images-platform.99static.com/iDzWMFhZKtOAMfeBK624isQUz7g%3D/0x186%3A1656x1842/500x500/top/smart/99designs-contests-attachments/128/128566/attachment_128566669',
-      href: 'https://99designs.com/logo-design/contests/cochelux-coches-de-lujo-ocasi%C3%B3n-1100034',
-      mode: 'contain', width: 500, height: 500
-    },
-    {
-      name: 'CocheLUX concept 04',
-      alt: 'CocheLUX luxury car logo concept by Oleh Hebel — version 04',
-      src: 'https://images-platform.99static.com/JdmwBCLauopZewfEQzQbu6w-qf0%3D/0x571%3A1422x1993/500x500/top/smart/99designs-contests-attachments/128/128565/attachment_128565385',
-      href: 'https://99designs.com/logo-design/contests/cochelux-coches-de-lujo-ocasi%C3%B3n-1100034',
-      mode: 'contain', width: 500, height: 500
-    },
-    {
-      name: 'CocheLUX concept 05',
-      alt: 'CocheLUX luxury car logo concept by Oleh Hebel — version 05',
-      src: 'https://images-platform.99static.com/-BY4NWGHajsdVyuk9VZOjokGLXA%3D/213x0%3A992x779/500x500/top/smart/99designs-contests-attachments/128/128565/attachment_128565376',
-      href: 'https://99designs.com/logo-design/contests/cochelux-coches-de-lujo-ocasi%C3%B3n-1100034',
-      mode: 'contain', width: 500, height: 500
-    },
-    {
-      name: 'CocheLUX concept 06',
-      alt: 'CocheLUX luxury car logo concept by Oleh Hebel — version 06',
-      src: 'https://images-platform.99static.com/JEpr0IHLmobI1SBbkXXxBQXv8Zs%3D/33x0%3A1966x1933/500x500/top/smart/99designs-contests-attachments/128/128509/attachment_128509568',
       href: 'https://99designs.com/logo-design/contests/cochelux-coches-de-lujo-ocasi%C3%B3n-1100034',
       mode: 'contain', width: 500, height: 500
     },
