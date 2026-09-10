@@ -22,6 +22,16 @@
     heading.replaceChildren(link);
   });
 
+  ['brayn', 'neoversity'].forEach(id => {
+    const meta = document.querySelector(`#${id} .work-meta`);
+    if (!meta || meta.querySelector('.work-confidentiality')) return;
+
+    const note = document.createElement('p');
+    note.className = 'work-confidentiality';
+    note.textContent = 'Confidentiality note — this work is subject to NDA. Only public, high-level information is shown.';
+    meta.appendChild(note);
+  });
+
   const toggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.mobile-menu');
   if (!toggle || !menu) return;
