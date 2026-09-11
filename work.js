@@ -32,19 +32,80 @@
     meta.appendChild(note);
   });
 
+  // Original raster artwork only. No reconstructed or generated logos are used here.
   const conceptLogos = [
-    { name: 'Trä', alt: 'Trä Scandinavian spa logo concept by Oleh Hebel', src: '/assets/work/concepts/tra.svg', href: '#tra' },
-    { name: 'Yads', alt: 'Yads fresh food delivery logo and identity by Oleh Hebel', src: '/assets/work/concepts/yads.svg', href: '#yads' },
-    { name: 'ERP. Smartproject', alt: 'ERP Smartproject software logo concept by Oleh Hebel', src: '/assets/work/concepts/erp-smartproject.svg', href: '#smartproject' },
-    { name: 'Thrive Well', alt: 'Thrive Well nutrition labs logo by Oleh Hebel', src: '/assets/work/concepts/thrive-well.svg', href: '#thrive-well' },
-    { name: 'Maison', alt: 'Maison Flooring logo by Oleh Hebel', src: '/assets/work/concepts/maison.svg', href: '#maison' },
-    { name: 'Muse', alt: 'Muse real estate and mortgage logo by Oleh Hebel', src: '/assets/work/concepts/muse.svg', href: '#muse' },
-    { name: 'Autumn Hills', alt: 'Autumn Hills Orchard logo by Oleh Hebel', src: '/assets/work/concepts/autumn-hills.svg', href: '#autumn-hills' },
-    { name: 'FuelUp', alt: 'FuelUp stacked wordmark concept by Oleh Hebel', src: '/assets/work/concepts/fuelup.svg', href: '#fuelup' },
-    { name: 'Terra', alt: 'Terra identity logo concept by Oleh Hebel', src: '/assets/work/concepts/terra.svg', href: 'https://freelance.ru/portfolio/project/view/863253' },
-    { name: 'Predi', alt: 'Predi technology logo concept by Oleh Hebel', src: '/assets/work/concepts/predi.svg', href: 'https://dribbble.com/shots/17859463-Predi' },
-    { name: 'Lushnikova', alt: 'Lushnikova fashion logo concept by Oleh Hebel', src: '/assets/work/concepts/lushnikova.svg', href: 'https://dribbble.com/shots/17859837-Lushnikova-logo' },
-    { name: 'CocheLUX', alt: 'CocheLUX luxury automotive logo concept by Oleh Hebel', src: '/assets/work/concepts/cochelux.svg', href: 'https://99designs.com/logo-design/contests/cochelux-coches-de-lujo-ocasi%C3%B3n-1100034' }
+    {
+      name: 'Trä',
+      alt: 'Trä logo by Oleh Hebel',
+      src: '/assets/work/concepts/original/tra-logo-by-oleh-hebel.png',
+      href: '#tra'
+    },
+    {
+      name: 'Yads',
+      alt: 'Yads logo by Oleh Hebel',
+      src: '/assets/work/concepts/original/yads-logo-by-oleh-hebel.png',
+      href: '#yads'
+    },
+    {
+      name: 'ERP. Smartproject',
+      alt: 'ERP Smartproject logo by Oleh Hebel',
+      src: '/assets/work/concepts/original/erp-smartproject-logo-by-oleh-hebel.png',
+      href: '#smartproject'
+    },
+    {
+      name: 'Thrive Well',
+      alt: 'Thrive Well logo by Oleh Hebel',
+      src: '/assets/work/concepts/original/thrive-well-logo-by-oleh-hebel.png',
+      href: '#thrive-well'
+    },
+    {
+      name: 'Maison',
+      alt: 'Maison Flooring logo by Oleh Hebel',
+      src: '/assets/work/concepts/original/maison-logo-by-oleh-hebel.png',
+      href: '#maison'
+    },
+    {
+      name: 'Muse',
+      alt: 'Muse logo by Oleh Hebel',
+      src: '/assets/work/concepts/original/muse-logo-by-oleh-hebel.png',
+      href: '#muse'
+    },
+    {
+      name: 'Autumn Hills',
+      alt: 'Autumn Hills Orchard logo by Oleh Hebel',
+      src: '/assets/work/concepts/original/autumn-hills-logo-by-oleh-hebel.png',
+      href: '#autumn-hills'
+    },
+    {
+      name: 'FuelUp',
+      alt: 'FuelUp logo by Oleh Hebel',
+      src: '/assets/work/concepts/original/fuelup-logo-by-oleh-hebel.png',
+      href: '#fuelup'
+    },
+    {
+      name: 'Terra',
+      alt: 'Terra logo concept by Oleh Hebel',
+      src: '/assets/work/concepts/original/terra-logo-by-oleh-hebel.png',
+      href: 'https://freelance.ru/portfolio/project/view/863253'
+    },
+    {
+      name: 'Tivona',
+      alt: 'Tivona identity logo by Oleh Hebel',
+      src: '/assets/work/concepts/original/tivona-logo-by-oleh-hebel.png',
+      href: 'https://dribbble.com/olehhebel'
+    },
+    {
+      name: 'Атомлайн',
+      alt: 'Atomline logo concept by Oleh Hebel',
+      src: '/assets/work/concepts/original/atomline-logo-concept-by-oleh-hebel.png',
+      href: 'https://freelance.boutique/contest/view/1463'
+    },
+    {
+      name: 'ARION',
+      alt: 'ARION logo concept by Oleh Hebel',
+      src: '/assets/work/concepts/original/arion-logo-concept-by-oleh-hebel.png',
+      href: 'https://freelance.boutique/contest/view/504'
+    }
   ];
 
   const absoluteUrl = value => {
@@ -66,7 +127,7 @@
 
     const viewport = document.createElement('div');
     viewport.className = 'work-concepts-viewport';
-    viewport.setAttribute('aria-label', 'Logo and identity concepts by Oleh Hebel');
+    viewport.setAttribute('aria-label', 'Original logo and identity work by Oleh Hebel');
 
     const track = document.createElement('div');
     track.className = 'work-concepts-track';
@@ -92,9 +153,9 @@
         image.alt = hidden ? '' : concept.alt;
         image.width = 600;
         image.height = 320;
-        image.loading = 'lazy';
+        image.loading = hidden ? 'lazy' : 'eager';
         image.decoding = 'async';
-        image.fetchPriority = 'low';
+        image.fetchPriority = hidden ? 'low' : 'auto';
         image.addEventListener('error', () => {
           link.hidden = true;
         }, { once: true });
@@ -118,8 +179,8 @@
       schema.textContent = JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        name: 'Logo and identity concepts by Oleh Hebel',
-        description: 'Selected logo, wordmark and visual identity concepts by product and graphic designer Oleh Hebel.',
+        name: 'Original logo and identity work by Oleh Hebel',
+        description: 'Original logo and identity artwork created by Oleh Hebel and shown from source portfolio and contest files.',
         numberOfItems: conceptLogos.length,
         itemListElement: conceptLogos.map((concept, index) => ({
           '@type': 'ListItem',
@@ -128,7 +189,11 @@
             '@type': 'CreativeWork',
             name: concept.name,
             description: concept.alt,
-            image: absoluteUrl(concept.src),
+            image: {
+              '@type': 'ImageObject',
+              contentUrl: absoluteUrl(concept.src),
+              encodingFormat: 'image/png'
+            },
             url: absoluteUrl(concept.href),
             creator: {
               '@type': 'Person',
