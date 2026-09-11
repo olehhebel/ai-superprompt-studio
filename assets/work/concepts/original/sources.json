@@ -1,0 +1,40 @@
+[
+  {
+    "file": "terra-logo-by-oleh-hebel.png",
+    "source": "https://cdn.freelance.ru/download/3857263/pic2816090.jpg",
+    "ok": true
+  },
+  {
+    "file": "tivona-logo-by-oleh-hebel.png",
+    "source": "https://cdn.dribbble.com/userupload/36706773/file/original-7798c7e0007efd547ede4241eeadac10.jpg?resize=1200x0",
+    "ok": true
+  },
+  {
+    "file": "atomline-logo-concept-by-oleh-hebel.png",
+    "source": "https://storage.yandexcloud.net/boutique-private/contest-v2/2017/03/1463/r2-0.08994000_1491143838.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YCAJEfImC5XjTXoVzh1iactm7%2F20260911%2Fru-central1%2Fs3%2Faws4_request&X-Amz-Date=20260911T062307Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=9299a0d3fe2d678f1e4ce72ba047fdbf2e07cabfbf30ab31173802245cba5c5d",
+    "ok": true
+  },
+  {
+    "file": "arion-logo-concept-by-oleh-hebel.png",
+    "source": "https://storage.yandexcloud.net/boutique-private/contest-v2/2016/01/504/r2-0.92505900_1454502288.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=YCAJEfImC5XjTXoVzh1iactm7%2F20260911%2Fru-central1%2Fs3%2Faws4_request&X-Amz-Date=20260911T062308Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=f1bff6a5b5b90624310fddc05d72d10b226893067b39d969d95987ac653023ac",
+    "ok": true
+  },
+  {
+    "file": "ciucas-rescue-race-logo-by-oleh-hebel.png",
+    "source": "https://images-platform.99static.com/eSMZUFJ47mbG4p3xYlB_l6TH6iM%3D/0x1374%3A1440x2814/500x500/top/smart/99designs-contests-attachments/138/138862/attachment_138862605",
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://images-platform.99static.com/eSMZUFJ47mbG4p3xYlB_l6TH6iM%3D/0x1374%3A1440x2814/500x500/top/smart/99designs-contests-attachments/138/138862/attachment_138862605"
+  },
+  {
+    "file": "cochelux-logo-concept-by-oleh-hebel.png",
+    "source": "https://images-platform.99static.com/CFJKFxSunwcI3H-S0aaSEPEEAsM%3D/0x0%3A1509x1509/500x500/top/smart/99designs-contests-attachments/128/128567/attachment_128567111",
+    "ok": false,
+    "error": "403 Client Error: Forbidden for url: https://images-platform.99static.com/CFJKFxSunwcI3H-S0aaSEPEEAsM%3D/0x0%3A1509x1509/500x500/top/smart/99designs-contests-attachments/128/128567/attachment_128567111"
+  },
+  {
+    "file": "lushnikova-logo-by-oleh-hebel.png",
+    "source": "https://dribbble.com/shots/17859837-Lushnikova-logo",
+    "ok": false,
+    "error": "original upload URL not found"
+  }
+]
