@@ -48,11 +48,15 @@ export default {
       const source = await resolveSource(item);
       const response = await fetch(source, { headers: { 'User-Agent': 'Mozilla/5.0', Accept: 'image/avif,image/webp,image/*,*/*;q=0.8', Referer: item.page || 'https://superprompt.pro/' }, redirect: 'follow' });
       if (!response.ok) throw new Error(`image_${response.status}`);
+      const contentType = response.headers.get('content-type') || 'application/octet-stream';
       const bytes = Buffer.from(await response.arrayBuffer());
+      if (url.searchParams.get('raw') === '1') {
+        return new Response(bytes, { status: 200, headers: { 'content-type': contentType, 'cache-control': 'no-store', 'x-original-source': source } });
+      }
       const b64 = bytes.toString('base64');
       const offset = Math.max(0, Number(url.searchParams.get('offset') || 0));
       const size = Math.min(24000, Math.max(1000, Number(url.searchParams.get('size') || 20000)));
-      return new Response(JSON.stringify({ ok: true, id, source, contentType: response.headers.get('content-type') || 'application/octet-stream', bytes: bytes.length, base64Length: b64.length, offset, chunk: b64.slice(offset, offset + size), done: offset + size >= b64.length }), { status: 200, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
+      return new Response(JSON.stringify({ ok: true, id, source, contentType, bytes: bytes.length, base64Length: b64.length, offset, chunk: b64.slice(offset, offset + size), done: offset + size >= b64.length }), { status: 200, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
     } catch (error) {
       return new Response(JSON.stringify({ ok: false, error: String(error?.message || error) }), { status: 500, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
     }
