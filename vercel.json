@@ -2,80 +2,21 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.superprompt.pro"
-        }
-      ],
-      "destination": "https://superprompt.pro/:path*",
-      "permanent": true
-    }
+    {"source":"/:path*","has":[{"type":"host","value":"www.superprompt.pro"}],"destination":"https://superprompt.pro/:path*","permanent":true},
+    {"source":"/ai-product-design","destination":"/services","permanent":true},
+    {"source":"/product-design-for-ai-startups","destination":"/services","permanent":true},
+    {"source":"/ai-ux-design","destination":"/ai-agent-ux-design","permanent":true},
+    {"source":"/human-ai-ux-design","destination":"/ai-agent-ux-design","permanent":true},
+    {"source":"/saas-design-rescue","destination":"/vibe-coded-product-rescue","permanent":true},
+    {"source":"/vibe-coded-mvp-audit","destination":"/ai-product-readiness-scorecard","permanent":true},
+    {"source":"/ai-product-ux-audit","destination":"/ai-product-readiness-scorecard","permanent":true}
   ],
   "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
-      ]
-    },
-    {
-      "source": "/ai-landing-page-design",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, follow"
-        }
-      ]
-    },
-    {
-      "source": "/json-prompt-engineering",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, follow"
-        }
-      ]
-    },
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        }
-      ]
-    },
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400, stale-while-revalidate=604800"
-        }
-      ]
-    },
-    {
-      "source": "/og-image.jpg",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=604800, stale-while-revalidate=2592000"
-        }
-      ]
-    }
+    {"source":"/(.*)","headers":[{"key":"X-Content-Type-Options","value":"nosniff"},{"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"}]},
+    {"source":"/ai-landing-page-design","headers":[{"key":"X-Robots-Tag","value":"noindex, follow"}]},
+    {"source":"/json-prompt-engineering","headers":[{"key":"X-Robots-Tag","value":"noindex, follow"}]},
+    {"source":"/api/(.*)","headers":[{"key":"X-Robots-Tag","value":"noindex, nofollow"},{"key":"Cache-Control","value":"no-store"}]},
+    {"source":"/assets/(.*)","headers":[{"key":"Cache-Control","value":"public, max-age=86400, stale-while-revalidate=604800"}]},
+    {"source":"/og-image.jpg","headers":[{"key":"Cache-Control","value":"public, max-age=604800, stale-while-revalidate=2592000"}]}
   ]
 }
