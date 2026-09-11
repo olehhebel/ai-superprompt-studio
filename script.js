@@ -334,4 +334,48 @@
       }
     }
   });
+
+  const installInterfaceReportPromo = () => {
+    if (document.querySelector('[data-interface-report-promo]')) return;
+    const footer = document.querySelector('.site-footer');
+    if (!footer) return;
+
+    const style = document.createElement('style');
+    style.textContent = `
+      .ir-promo{background:#050505;color:#fff;padding:clamp(72px,9vw,144px) 24px;border-top:1px solid rgba(255,255,255,.12)}
+      .ir-promo__inner{max-width:1440px;margin:0 auto}.ir-promo__eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.58;margin-bottom:18px}
+      .ir-promo__head{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:40px;align-items:end;margin-bottom:44px}.ir-promo h2{font-size:clamp(42px,6vw,94px);line-height:.95;letter-spacing:-.055em;margin:0;max-width:980px}.ir-promo__head p{font-size:18px;line-height:1.45;max-width:560px;margin:0;opacity:.74}
+      .ir-promo__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.ir-promo__card{min-height:420px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;border:1px solid rgba(255,255,255,.15);transition:transform .25s ease,border-color .25s ease}.ir-promo__card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.55)}
+      .ir-promo__card:nth-child(1){background:#0b0b0d;color:#fff}.ir-promo__card:nth-child(2){background:#065dff;color:#fff}.ir-promo__card:nth-child(3){background:#f4f4ef;color:#050505}.ir-promo__num{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.7}.ir-promo__card strong{font-size:clamp(28px,3vw,46px);line-height:1.02;letter-spacing:-.035em;font-weight:500}.ir-promo__card span:last-child{font-size:15px;line-height:1.35;opacity:.78}.ir-promo__disclosure{margin-top:18px;font-size:12px;line-height:1.5;opacity:.48;max-width:900px}
+      @media (max-width:900px){.ir-promo__head{grid-template-columns:1fr}.ir-promo__grid{grid-template-columns:1fr}.ir-promo__card{min-height:300px}}
+    `;
+    document.head.appendChild(style);
+
+    const section = document.createElement('section');
+    section.className = 'ir-promo';
+    section.dataset.interfaceReportPromo = '';
+    section.setAttribute('aria-labelledby', 'ir-promo-title');
+    section.innerHTML = `
+      <div class="ir-promo__inner">
+        <div class="ir-promo__eyebrow">Independent media · Interface Report</div>
+        <div class="ir-promo__head">
+          <h2 id="ir-promo-title">Want your product seen by people who build products?</h2>
+          <p>Interface Report is our independent publication about AI products, agents, design and engineering. Commercial placements are clearly labeled and kept separate from editorial decisions.</p>
+        </div>
+        <div class="ir-promo__grid">
+          <a class="ir-promo__card" href="https://interfacereport.com/advertise/?utm_source=superprompt.pro&utm_medium=referral&utm_campaign=network_crosspromo&utm_content=sponsored_story">
+            <span class="ir-promo__num">01 · Sponsored Story</span><strong>Place a clearly labeled product story.</strong><span>Permanent URL · editorial review · publication metadata ↗</span>
+          </a>
+          <a class="ir-promo__card" href="https://interfacereport.com/advertise/?utm_source=superprompt.pro&utm_medium=referral&utm_campaign=network_crosspromo&utm_content=founder_feature">
+            <span class="ir-promo__num">02 · Founder / Product Feature</span><strong>Turn evidence into a credible commercial feature.</strong><span>Editor-led structure · substantiation · sponsor disclosure ↗</span>
+          </a>
+          <a class="ir-promo__card" href="https://interfacereport.com/advertise/?utm_source=superprompt.pro&utm_medium=referral&utm_campaign=network_crosspromo&utm_content=feature_distribution">
+            <span class="ir-promo__num">03 · Feature + Distribution</span><strong>Publish and extend the reach when inventory exists.</strong><span>Feature · selected homepage/newsletter/social distribution ↗</span>
+          </a>
+        </div>
+        <p class="ir-promo__disclosure">Commercial cross-promotion. Interface Report editorial coverage is not sold, guaranteed or influenced by SuperPrompt client relationships.</p>
+      </div>`;
+    footer.parentNode.insertBefore(section, footer);
+  };
+  installInterfaceReportPromo();
 })();
