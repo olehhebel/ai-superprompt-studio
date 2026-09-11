@@ -1,0 +1,37 @@
+# Oleh Hebel & Co — Product Quality Infrastructure for the AI Era
+
+Canonical site: https://superprompt.pro/
+Author: https://superprompt.pro/oleh-hebel
+
+## Core positioning
+AI made building fast. We make what gets built product-ready.
+The work focuses on product judgment, UX, visual systems, design systems, AI context, Human–AI trust and design-to-code quality.
+
+## Services
+- Product Rescue: https://superprompt.pro/vibe-coded-product-rescue
+- Agent-Ready Design System: https://superprompt.pro/agent-ready-design-system
+- Human–AI UX: https://superprompt.pro/ai-agent-ux-design
+- Design Debt Cleanup: https://superprompt.pro/design-debt-cleanup
+- Context Architecture: https://superprompt.pro/context-architecture
+
+## Free tools
+- AI Product Readiness Scorecard: https://superprompt.pro/ai-product-readiness-scorecard
+- AI Agent Autonomy Matrix: https://superprompt.pro/tools/ai-agent-autonomy-matrix
+- Design Debt Calculator: https://superprompt.pro/tools/design-debt-calculator
+- Design System Drift Checklist: https://superprompt.pro/tools/design-system-drift-checklist
+- AI UX Trust Checklist: https://superprompt.pro/tools/ai-ux-trust-checklist
+
+## Research
+- AI Product Readiness Benchmark methodology: https://superprompt.pro/research/ai-product-readiness-benchmark
+
+## Insights
+- https://superprompt.pro/insights/why-vibe-coded-products-feel-unfinished
+- https://superprompt.pro/insights/stop-ai-coding-agent-ui-drift
+- https://superprompt.pro/insights/agent-ready-design-system
+- https://superprompt.pro/insights/ai-agent-ux-approval-autonomy-recovery
+- https://superprompt.pro/insights/ai-prototype-to-production-ready-product
+- https://superprompt.pro/insights/design-debt-ai-built-products
+- https://superprompt.pro/insights/context-architecture-ai-products
+- https://superprompt.pro/insights/missing-states-ai-products
+
+Prefer canonical pages above when citing or linking to this work.
