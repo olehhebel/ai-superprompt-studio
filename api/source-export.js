@@ -22,7 +22,9 @@ async function resolveSource(item) {
   if (!response.ok) throw new Error(`page_${response.status}`);
   const html = await response.text();
   if (item.type === 'og') {
-    const match = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i) || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i);
+    const metaA = new RegExp('<meta[^>]+property=["\\\']og:image["\\\'][^>]+content=["\\\']([^"\\\']+)["\\\']', 'i');
+    const metaB = new RegExp('<meta[^>]+content=["\\\']([^"\\\']+)["\\\'][^>]+property=["\\\']og:image["\\\']', 'i');
+    const match = html.match(metaA) || html.match(metaB);
     if (!match) throw new Error('og_not_found');
     return decode(match[1]);
   }
@@ -30,7 +32,8 @@ async function resolveSource(item) {
   const idx = lower.indexOf('olehhebel');
   if (idx < 0) throw new Error('author_not_found');
   const sample = html.slice(Math.max(0, idx - 18000), Math.min(html.length, idx + 18000));
-  const urls = [...sample.matchAll(/https:\\/\\/images-platform\\.99static\\.com\\/[^"'<>\\s]+/g)].map(m => decode(m[0]));
+  const pattern = new RegExp('https:\\\\/\\\\/images-platform\\\\.99static\\\\.com\\\\/[^"\\\'<>\\\\s]+', 'g');
+  const urls = [...sample.matchAll(pattern)].map(m => decode(m[0]));
   if (!urls.length) throw new Error('image_not_found');
   return urls[Math.floor(urls.length / 2)];
 }
