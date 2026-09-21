@@ -3,7 +3,7 @@
 .project-strip__viewport{overflow:hidden;width:100%}
 .project-strip__track{display:flex;width:max-content;animation:home-project-strip 54s linear infinite;will-change:transform}
 .project-strip__group{display:flex;align-items:center;gap:16px;padding-right:16px}
-.project-strip__item{display:grid;place-items:center;flex:0 0 190px;width:190px;height:104px;border:1px solid rgba(0,0,0,.1);background:#fff;text-decoration:none;overflow:hidden}
+.project-strip__item{position:relative;display:grid;place-items:center;flex:0 0 190px;width:190px;height:104px;border:1px solid rgba(0,0,0,.1);background:#fff;text-decoration:none;overflow:hidden}
 .project-strip__item img{position:absolute;inset:10px;display:block;width:calc(100% - 20px);height:calc(100% - 20px);min-width:0;min-height:0;object-fit:contain;object-position:50% 50%;filter:grayscale(1);transition:transform .3s var(--ease),filter .3s ease,opacity .3s ease}
 .project-strip__item--word{font-size:17px;font-weight:600;letter-spacing:-.02em;color:#111;text-align:center;padding:18px}
 @keyframes home-project-strip{to{transform:translate3d(-50%,0,0)}}
