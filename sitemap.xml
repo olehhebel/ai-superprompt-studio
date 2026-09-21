@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url><loc>https://superprompt.pro/</loc><lastmod>2026-09-11</lastmod><image:image><image:loc>https://superprompt.pro/assets/brand/oleh-hebel-co-logo.svg</image:loc></image:image></url>
+  <url><loc>https://superprompt.pro/</loc><lastmod>2026-09-21</lastmod><image:image><image:loc>https://superprompt.pro/assets/brand/oleh-hebel-co-logo.svg</image:loc></image:image></url>
   <url><loc>https://superprompt.pro/services</loc><lastmod>2026-09-11</lastmod></url>
   <url><loc>https://superprompt.pro/vibe-coded-product-rescue</loc><lastmod>2026-09-11</lastmod></url>
   <url><loc>https://superprompt.pro/agent-ready-design-system</loc><lastmod>2026-09-11</lastmod></url>
@@ -25,4 +25,11 @@
   <url><loc>https://superprompt.pro/insights/context-architecture-ai-products</loc><lastmod>2026-09-11</lastmod><image:image><image:loc>https://superprompt.pro/assets/insights/ai-agent-ux-approval-autonomy-recovery.webp</image:loc></image:image></url>
   <url><loc>https://superprompt.pro/insights/missing-states-ai-products</loc><lastmod>2026-09-11</lastmod><image:image><image:loc>https://superprompt.pro/assets/insights/ai-prototype-to-production-ready-product.webp</image:loc></image:image></url>
   <url><loc>https://superprompt.pro/work</loc><lastmod>2026-09-11</lastmod></url>
+  <url><loc>https://superprompt.pro/projects/tra</loc><lastmod>2026-09-21</lastmod><image:image><image:loc>https://superprompt.pro/assets/work/tra-cover.webp</image:loc></image:image></url>
+  <url><loc>https://superprompt.pro/projects/yads</loc><lastmod>2026-09-21</lastmod><image:image><image:loc>https://superprompt.pro/assets/work/yads-cover.webp</image:loc></image:image></url>
+  <url><loc>https://superprompt.pro/projects/smartproject</loc><lastmod>2026-09-21</lastmod><image:image><image:loc>https://superprompt.pro/assets/work/smartproject-cover.webp</image:loc></image:image></url>
+  <url><loc>https://superprompt.pro/projects/muse</loc><lastmod>2026-09-21</lastmod><image:image><image:loc>https://superprompt.pro/assets/work/muse-cover.webp</image:loc></image:image></url>
+  <url><loc>https://superprompt.pro/projects/autumn-hills</loc><lastmod>2026-09-21</lastmod><image:image><image:loc>https://superprompt.pro/assets/work/autumn-hills-cover.webp</image:loc></image:image></url>
+  <url><loc>https://superprompt.pro/projects/mentorium</loc><lastmod>2026-09-21</lastmod><image:image><image:loc>https://superprompt.pro/assets/work/mentorium-cover.webp</image:loc></image:image></url>
+  <url><loc>https://superprompt.pro/projects/fuelup</loc><lastmod>2026-09-21</lastmod><image:image><image:loc>https://superprompt.pro/assets/work/fuelup-cover.webp</image:loc></image:image></url>
 </urlset>
