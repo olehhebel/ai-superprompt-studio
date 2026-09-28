@@ -1,0 +1,1 @@
+document.querySelectorAll('[data-strip-step]').forEach(button => {button.addEventListener('click', () => {const strip=document.querySelector('.project-strip__viewport');const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;strip.scrollBy({left:Number(button.dataset.stripStep)*Math.min(strip.clientWidth*.8,640),behavior:reduced?'instant':'smooth'});});});
