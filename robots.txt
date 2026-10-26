@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://superprompt.pro/sitemap.xml
+Sitemap: https://olehhebel.top/sitemap.xml

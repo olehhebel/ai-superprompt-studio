@@ -43,19 +43,19 @@
             <p>Interface Report is an independent publication covering AI products, agents, design, engineering, startups and SaaS. Companies can submit stories for editorial review or choose a clearly labelled sponsored package.</p>
           </div>
           <div class="interface-report-promo__grid">
-            <a class="interface-report-promo__frame" href="https://interfacereport.com/advertise/?utm_source=superprompt.pro&utm_medium=referral&utm_campaign=network_crosspromo">
+            <a class="interface-report-promo__frame" href="https://interfacereport.com/advertise/?utm_source=olehhebel.top&utm_medium=referral&utm_campaign=network_crosspromo">
               <span class="interface-report-promo__label">01 · Sponsored Article</span>
               <strong>Tell the full product story in a curated technology publication.</strong>
               <small>Editorial review · clear disclosure · AI / product / startup relevance</small>
               <b>From $99 · View package ↗</b>
             </a>
-            <a class="interface-report-promo__frame" href="https://interfacereport.com/advertise/?utm_source=superprompt.pro&utm_medium=referral&utm_campaign=network_crosspromo">
+            <a class="interface-report-promo__frame" href="https://interfacereport.com/advertise/?utm_source=olehhebel.top&utm_medium=referral&utm_campaign=network_crosspromo">
               <span class="interface-report-promo__label">02 · Editorial Feature</span>
               <strong>Turn a launch, founder story or product shift into a stronger editorial feature.</strong>
               <small>Editorial shaping · source review · publication-ready structure</small>
               <b>From $149 · See options ↗</b>
             </a>
-            <a class="interface-report-promo__frame" href="https://interfacereport.com/advertise/?utm_source=superprompt.pro&utm_medium=referral&utm_campaign=network_crosspromo">
+            <a class="interface-report-promo__frame" href="https://interfacereport.com/advertise/?utm_source=olehhebel.top&utm_medium=referral&utm_campaign=network_crosspromo">
               <span class="interface-report-promo__label">03 · Feature + Distribution</span>
               <strong>Publish the story and extend it beyond the article page.</strong>
               <small>Featured placement · editorial package · distribution options</small>

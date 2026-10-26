@@ -6,18 +6,18 @@
   <title>AI Product Readiness Scorecard | Free 3-Minute UX Audit</title>
   <meta name="description" content="Score your AI-built MVP across flow, states, system consistency, AI trust and recovery. A free 15-point product-readiness check for startups and SaaS teams." />
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-  <link rel="canonical" href="https://superprompt.pro/ai-product-readiness-scorecard" />
+  <link rel="canonical" href="https://olehhebel.top/ai-product-readiness-scorecard" />
   <meta name="theme-color" content="#ffffff" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Oleh Hebel & Co" />
   <meta property="og:title" content="AI Product Readiness Scorecard" />
   <meta property="og:description" content="A free 3-minute check for AI-built MVPs: flow, states, system consistency, AI trust and recovery." />
-  <meta property="og:url" content="https://superprompt.pro/ai-product-readiness-scorecard" />
-  <meta property="og:image" content="https://superprompt.pro/assets/insights/ai-prototype-to-production-ready-product.webp" />
+  <meta property="og:url" content="https://olehhebel.top/ai-product-readiness-scorecard" />
+  <meta property="og:image" content="https://olehhebel.top/assets/insights/ai-prototype-to-production-ready-product.webp" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AI Product Readiness Scorecard" />
   <meta name="twitter:description" content="15 checks. Five product-quality layers. One score." />
-  <meta name="twitter:image" content="https://superprompt.pro/assets/insights/ai-prototype-to-production-ready-product.webp" />
+  <meta name="twitter:image" content="https://olehhebel.top/assets/insights/ai-prototype-to-production-ready-product.webp" />
   <link rel="stylesheet" href="/insight-page.css" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
@@ -28,20 +28,20 @@
     "@graph":[
       {
         "@type":"WebPage",
-        "@id":"https://superprompt.pro/ai-product-readiness-scorecard#page",
-        "url":"https://superprompt.pro/ai-product-readiness-scorecard",
+        "@id":"https://olehhebel.top/ai-product-readiness-scorecard#page",
+        "url":"https://olehhebel.top/ai-product-readiness-scorecard",
         "name":"AI Product Readiness Scorecard",
         "description":"A free 15-point product-readiness check for AI-built MVPs and SaaS products.",
-        "isPartOf":{"@id":"https://superprompt.pro/#website"},
+        "isPartOf":{"@id":"https://olehhebel.top/#website"},
         "about":["AI product design","Product readiness","Human-AI UX","Design systems","AI-built MVPs"],
-        "author":{"@id":"https://superprompt.pro/#oleh-hebel"},
-        "publisher":{"@id":"https://superprompt.pro/#organization"}
+        "author":{"@id":"https://olehhebel.top/#oleh-hebel"},
+        "publisher":{"@id":"https://olehhebel.top/#organization"}
       },
       {
         "@type":"WebApplication",
-        "@id":"https://superprompt.pro/ai-product-readiness-scorecard#tool",
+        "@id":"https://olehhebel.top/ai-product-readiness-scorecard#tool",
         "name":"AI Product Readiness Scorecard",
-        "url":"https://superprompt.pro/ai-product-readiness-scorecard",
+        "url":"https://olehhebel.top/ai-product-readiness-scorecard",
         "applicationCategory":"BusinessApplication",
         "operatingSystem":"Any",
         "isAccessibleForFree":true,
@@ -183,7 +183,7 @@
         const done=checks.filter(c=>c.checked).length;
         const score=Math.round(done/checks.length*100);
         const missing=checks.filter(c=>!c.checked).map(c=>c.dataset.label);
-        const text=`AI Product Readiness Score: ${score}/100\nMissing: ${missing.length?missing.join(', '):'None marked'}\nhttps://superprompt.pro/ai-product-readiness-scorecard`;
+        const text=`AI Product Readiness Score: ${score}/100\nMissing: ${missing.length?missing.join(', '):'None marked'}\nhttps://olehhebel.top/ai-product-readiness-scorecard`;
         try{await navigator.clipboard.writeText(text);copyBtn.textContent='Copied';setTimeout(()=>copyBtn.textContent='Copy score',1600)}catch(e){copyBtn.textContent='Copy unavailable'}
       });
       update();
