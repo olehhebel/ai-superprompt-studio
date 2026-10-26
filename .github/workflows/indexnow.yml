@@ -34,7 +34,7 @@ jobs:
           node <<'NODE'
           const fs = require('node:fs');
 
-          const host = 'superprompt.pro';
+          const host = 'olehhebel.top';
           const keyFile = fs.readdirSync('.').find((name) => /^[A-Za-z0-9-]{8,128}\.txt$/.test(name) && fs.readFileSync(name, 'utf8').trim() === name.replace(/\.txt$/, ''));
           if (!keyFile) throw new Error('IndexNow key file not found');
 

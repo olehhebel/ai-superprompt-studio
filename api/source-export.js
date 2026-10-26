@@ -46,7 +46,7 @@ export default {
       const item = SOURCES[id];
       if (!item) return new Response(JSON.stringify({ ok: false, error: 'not_found' }), { status: 404, headers: { 'content-type': 'application/json' } });
       const source = await resolveSource(item);
-      const response = await fetch(source, { headers: { 'User-Agent': 'Mozilla/5.0', Accept: 'image/avif,image/webp,image/*,*/*;q=0.8', Referer: item.page || 'https://superprompt.pro/' }, redirect: 'follow' });
+      const response = await fetch(source, { headers: { 'User-Agent': 'Mozilla/5.0', Accept: 'image/avif,image/webp,image/*,*/*;q=0.8', Referer: item.page || 'https://olehhebel.top/' }, redirect: 'follow' });
       if (!response.ok) throw new Error(`image_${response.status}`);
       const contentType = response.headers.get('content-type') || 'application/octet-stream';
       const bytes = Buffer.from(await response.arrayBuffer());

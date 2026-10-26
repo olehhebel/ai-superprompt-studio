@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "redirects": [
-    {"source":"/:path*","has":[{"type":"host","value":"www.superprompt.pro"}],"destination":"https://superprompt.pro/:path*","permanent":true},
+    {"source":"/:path*","has":[{"type":"host","value":"www.olehhebel.top"}],"destination":"https://olehhebel.top/:path*","permanent":true},
     {"source":"/ai-product-design","destination":"/services","permanent":true},
     {"source":"/product-design-for-ai-startups","destination":"/services","permanent":true},
     {"source":"/ai-ux-design","destination":"/ai-agent-ux-design","permanent":true},
