@@ -12,3 +12,8 @@ html[lang="uk"] .hero-title{font-size:clamp(38px,6vw,88px)}html[lang="uk"] .hero
 .site-header{height:auto;min-height:44px;padding:10px 14px;margin:-10px -14px;background:rgba(255,255,255,.95);border:1px solid #00000012;border-radius:4px;color:#111!important;backdrop-filter:blur(12px)}
 .site-header[data-theme] .desktop-nav a,.site-header[data-theme] .menu-toggle{color:#333}.site-header[data-theme] .nav-cta,.site-header[data-theme] .mobile-cta{color:#123ee6}.site-header[data-theme] .language-switch{color:#111}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Original project CTA and proof animation, relocated together into the offer. */
+.offer-banner .offer-banner__actions{display:block}.offer-banner .hero-actions{display:grid;grid-template-columns:max-content minmax(180px,392px);grid-template-rows:auto;align-items:center;gap:32px;margin:0;width:100%}
+.offer-banner .hero-actions .primary-cta{grid-column:1;grid-row:1;align-self:center;background:#fff;color:#123ee6;margin:0!important;max-width:100%}.offer-banner .hero-actions .primary-cta:hover{background:#edf1ff;color:#123ee6}.offer-banner .primary-cta:focus-visible{outline:3px solid #d4ff6b;outline-offset:5px}.offer-banner .hero-marquee{grid-column:2;grid-row:1;align-self:center;width:100%!important;color:#fff!important}.offer-banner .offer-banner__more{margin-top:18px}
+@media(max-width:820px){.offer-banner .hero-actions{grid-template-columns:minmax(0,1fr);gap:14px}.offer-banner .hero-actions .primary-cta{grid-column:1;grid-row:1;justify-self:start}.offer-banner .hero-marquee{grid-column:1;grid-row:2;height:56px}.offer-banner .hero-actions .primary-cta{padding:20px 24px;font-size:17px}}
