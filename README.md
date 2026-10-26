@@ -38,3 +38,21 @@ The [AI Product Readiness Benchmark methodology](https://olehhebel.top/research/
 ## Author
 
 [Oleh Hebel](https://olehhebel.top/oleh-hebel) · [LinkedIn](https://www.linkedin.com/in/olehhebel/) · [Hashnode](https://olehhebel.hashnode.dev/)
+
+## Bilingual site and service offer
+
+English lives at `/`; Ukrainian lives at `/uk/`. The compact EN / УКР control preserves the page identity. Ukrainian services and editorial pages are adapted Ukrainian editions; the editorial pages link to their full English originals. Galleries and interactive tools retain their functionality.
+
+The homepage offer connects product design, brand identity and web delivery with the original headline **Make the next click a clear yes.** Contact actions open an email to `theolehhebel@gmail.com`; GitHub Pages does not run the repository's server API, so these actions no longer pretend to submit the demo form.
+
+Source material: `i18n/uk.txt` for preserved-layout strings and tool results; `i18n/pages-uk.json` for authored Ukrainian service/editorial pages. After editing English HTML or locale content, run:
+
+```sh
+python -m pip install beautifulsoup4
+python scripts/build-locales.py
+python scripts/verify-locales.py
+```
+
+The build emits static HTML, reciprocal hreflang links, localized canonical/OG metadata and a sitemap for indexable pages. No runtime translation service is required.
+
+Research informed the offer structure, not copied wording: [Chermayeff & Geismar & Haviv](https://cghnyc.com/about), [COLLINS](https://wearecollins.com/programs/), [Instrument](https://www.instrument.com/services/), [Pentagram](https://www.pentagram.com/about), [Hey](https://heystudio.es/). The positioning emphasizes a clear benefit, specific disciplines, real project evidence and direct designer involvement. No competitor clients, awards or outcomes are presented as Oleh's.
