@@ -109,8 +109,8 @@
   ];
 
   const absoluteUrl = value => {
-    if (value.startsWith('/')) return `https://superprompt.pro${value}`;
-    if (value.startsWith('#')) return `https://superprompt.pro/work${value}`;
+    if (value.startsWith('/')) return `https://olehhebel.top${value}`;
+    if (value.startsWith('#')) return `https://olehhebel.top/work${value}`;
     return value;
   };
 
@@ -198,7 +198,7 @@
             creator: {
               '@type': 'Person',
               name: 'Oleh Hebel',
-              url: 'https://superprompt.pro/'
+              url: 'https://olehhebel.top/'
             }
           }
         }))

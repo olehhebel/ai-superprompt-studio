@@ -3,12 +3,12 @@
   if (!root) return;
 
   const brands = {
-    superprompt: {
+    olehhebel: {
       name: 'OLEH HEBEL & CO', kind: 'PRODUCT DESIGN / SERVICES',
       kicker: 'PRODUCT DESIGN · UX/UI · BRAND SYSTEMS',
       title: 'Your product works.<br><em>I make it worth choosing.</em>',
       copy: 'Clear, coherent experiences people understand, trust and remember.',
-      link: 'https://superprompt.pro/', label: 'Explore Superprompt', foot: 'ONE PROBLEM · ONE SPRINT'
+      link: 'https://olehhebel.top/', label: 'Explore Oleh Hebel & Co', foot: 'ONE PROBLEM · ONE SPRINT'
     },
     ship: {
       name: 'SHIP INDEX GROW', kind: 'EDUCATION / PRODUCT LAUNCH',

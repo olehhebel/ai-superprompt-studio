@@ -363,17 +363,17 @@
           <p>Interface Report is our independent publication about AI products, agents, design and engineering. Commercial placements are clearly labeled and kept separate from editorial decisions.</p>
         </div>
         <div class="ir-promo__grid">
-          <a class="ir-promo__card" href="https://interfacereport.com/advertise/?utm_source=superprompt.pro&utm_medium=referral&utm_campaign=network_crosspromo&utm_content=sponsored_story">
+          <a class="ir-promo__card" href="https://interfacereport.com/advertise/?utm_source=olehhebel.top&utm_medium=referral&utm_campaign=network_crosspromo&utm_content=sponsored_story">
             <span class="ir-promo__num">01 · Sponsored Story</span><strong>Place a clearly labeled product story.</strong><span>Permanent URL · editorial review · publication metadata ↗</span>
           </a>
-          <a class="ir-promo__card" href="https://interfacereport.com/advertise/?utm_source=superprompt.pro&utm_medium=referral&utm_campaign=network_crosspromo&utm_content=founder_feature">
+          <a class="ir-promo__card" href="https://interfacereport.com/advertise/?utm_source=olehhebel.top&utm_medium=referral&utm_campaign=network_crosspromo&utm_content=founder_feature">
             <span class="ir-promo__num">02 · Founder / Product Feature</span><strong>Turn evidence into a credible commercial feature.</strong><span>Editor-led structure · substantiation · sponsor disclosure ↗</span>
           </a>
-          <a class="ir-promo__card" href="https://interfacereport.com/advertise/?utm_source=superprompt.pro&utm_medium=referral&utm_campaign=network_crosspromo&utm_content=feature_distribution">
+          <a class="ir-promo__card" href="https://interfacereport.com/advertise/?utm_source=olehhebel.top&utm_medium=referral&utm_campaign=network_crosspromo&utm_content=feature_distribution">
             <span class="ir-promo__num">03 · Feature + Distribution</span><strong>Publish and extend the reach when inventory exists.</strong><span>Feature · selected homepage/newsletter/social distribution ↗</span>
           </a>
         </div>
-        <p class="ir-promo__disclosure">Commercial cross-promotion. Interface Report editorial coverage is not sold, guaranteed or influenced by SuperPrompt client relationships.</p>
+        <p class="ir-promo__disclosure">Commercial cross-promotion. Interface Report editorial coverage is not sold, guaranteed or influenced by Oleh Hebel & Co client relationships.</p>
       </div>`;
     footer.parentNode.insertBefore(section, footer);
   };
