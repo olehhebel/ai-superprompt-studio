@@ -95,6 +95,7 @@
 
   const dialog = document.querySelector('#project-dialog');
   const projectForm = document.querySelector('#project-form');
+  if (projectForm) {
   const defaultState = projectForm.querySelector('[data-form-state="default"]');
   const successState = projectForm.querySelector('[data-form-state="success"]');
   const productInputs = projectForm.querySelector('[data-product-inputs]');
@@ -334,6 +335,8 @@
       }
     }
   });
+
+  } // Legacy product/file form; the original project brief has its own controller.
 
   const installInterfaceReportPromo = () => {
     if (document.querySelector('[data-interface-report-promo]')) return;

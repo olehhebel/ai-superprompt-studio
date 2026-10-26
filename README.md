@@ -43,7 +43,7 @@ The [AI Product Readiness Benchmark methodology](https://olehhebel.top/research/
 
 English lives at `/`; Ukrainian lives at `/uk/`. The compact EN / УКР control preserves the page identity. Ukrainian services and editorial pages are adapted Ukrainian editions; the editorial pages link to their full English originals. Galleries and interactive tools retain their functionality.
 
-The homepage offer connects product design, brand identity and web delivery with the original headline **Make the next click a clear yes.** Contact actions open an email to `theolehhebel@gmail.com`; GitHub Pages does not run the repository's server API, so these actions no longer pretend to submit the demo form.
+The homepage offer connects product design, brand identity and web delivery with the original headline **Make the next click a clear yes.** Homepage contact buttons open the original Project Brief dialog (email, project description and reference links). It uses the existing Web3Forms configuration from `partials/brief-inner.html`, which works from a static GitHub Pages site. Confirmation is shown only after the service reports success. Email links remain available elsewhere as a fallback.
 
 Source material: `i18n/uk.txt` for preserved-layout strings and tool results; `i18n/pages-uk.json` for authored Ukrainian service/editorial pages. After editing English HTML or locale content, run:
 

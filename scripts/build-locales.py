@@ -30,7 +30,7 @@ def metadata(s,slug,uk):
  for n in s.select('meta[property="og:locale"]'):n.decompose()
  s.head.append(s.new_tag('meta',attrs={'property':'og:locale','content':'uk_UA' if uk else 'en_US'}))
  s.head.append(s.new_tag('meta',attrs={'property':'og:locale:alternate','content':'en_US' if uk else 'uk_UA'}))
- if not s.select_one('link[href="/services-offer.css"]'):s.head.append(s.new_tag('link',rel='stylesheet',href='/services-offer.css'))
+ if not s.select_one('link[href^="/services-offer.css"]'):s.head.append(s.new_tag('link',rel='stylesheet',href='/services-offer.css'))
  for n in s.select('script[src^="/_vercel/"]'):n.decompose()
  # Normalize local references for nested locale routes.
  for n in s.find_all(True):
@@ -44,10 +44,6 @@ def metadata(s,slug,uk):
  if not header:
   header=s.new_tag('header',attrs={'class':'service-header'});header.append(BeautifulSoup('<a class="brand" href="/">OLEH HEBEL &amp; Co</a>','html.parser'));s.body.insert(0,header)
  header.append(BeautifulSoup(switch(slug,uk),'html.parser'))
- # Demo forms cannot receive enquiries on GitHub Pages: use a real email handoff.
- for n in s.select('[data-open-form]'):
-  n.name='a'; n['href']='mailto:theolehhebel@gmail.com?subject='+('Проєкт%20для%20Oleh%20Hebel' if uk else 'Project%20for%20Oleh%20Hebel')
-  for a in ['type','data-open-form','data-source','data-sprint']:n.attrs.pop(a,None)
  if uk:
   s.html['lang']='uk'
   for n in s.find_all(['a','form']):

@@ -489,3 +489,11 @@ From $199 · Explore package ↗|||Від $199 · Деталі пакета ↗
 Interface Report controls editorial acceptance and labelling. Paid placements do not buy ranking guarantees, dofollow links or editorial conclusions.|||Interface Report самостійно вирішує питання прийняття й маркування матеріалів. Оплата не гарантує позицій у пошуку, dofollow-посилань або редакційних висновків.
 Confidentiality note — this work is subject to NDA. Only public, high-level information is shown.|||Конфіденційність: робота підпадає під NDA. Показана лише загальна публічна інформація.
 CONCEPTS|||КОНЦЕПЦІЇ
+Tell me about your project.|||Розкажи про свій проєкт.
+Project description|||Опис проєкту
+References (Figma, Notion, links)|||Посилання на матеріали (Figma, Notion тощо)
+Submit brief|||Надіслати бриф
+Brief sent.|||Бриф надіслано.
+Thank you! I’ll review the materials and reply by email.|||Дякую! Перегляну матеріали та відповім на твій email.
+Describe your project or idea in a few sentences — messy is fine.|||Опиши задум кількома реченнями — ідеальний бриф не потрібен.
+Paste one or several links.|||Встав одне або кілька посилань.
