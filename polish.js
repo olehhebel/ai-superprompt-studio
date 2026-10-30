@@ -5,7 +5,7 @@
     document.documentElement.classList.remove('story-mode');
 
     // Cross-network promotion: clear commercial offer, visually prominent, never disguised as editorial.
-    if (!document.querySelector('.interface-report-promo')) {
+    if (!document.querySelector('#interface-report, .interface-report-promo, [data-interface-report-promo]')) {
       const promoStyle = document.createElement('style');
       promoStyle.textContent = `
         .interface-report-promo{background:#080a0d;color:#fff;padding:clamp(72px,8vw,128px) 0;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)}

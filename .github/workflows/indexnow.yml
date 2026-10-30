@@ -5,13 +5,7 @@ on:
     branches:
       - index.html
     paths:
-      - index.html
-      - vibe-coded-product-rescue.html
-      - agent-ready-design-system.html
-      - ai-agent-ux-design.html
-      - work.html
-      - insights.html
-      - insights/**/*.html
+      - '**/*.html'
       - sitemap.xml
 
 permissions:

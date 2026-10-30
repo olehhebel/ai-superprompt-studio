@@ -339,7 +339,7 @@
   } // Legacy product/file form; the original project brief has its own controller.
 
   const installInterfaceReportPromo = () => {
-    if (document.querySelector('[data-interface-report-promo]')) return;
+    if (document.querySelector('#interface-report, .interface-report-promo, [data-interface-report-promo]')) return;
     const footer = document.querySelector('.site-footer');
     if (!footer) return;
 
