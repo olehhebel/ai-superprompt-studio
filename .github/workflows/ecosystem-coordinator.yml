@@ -1,0 +1,55 @@
+name: Ecosystem Coordinator
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 6 * * *'
+  push:
+    paths:
+      - '.github/ecosystem/**'
+      - '.github/workflows/ecosystem-coordinator.yml'
+permissions:
+  contents: read
+concurrency:
+  group: ecosystem-coordinator
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Load coordinator
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Load portfolio
+        uses: actions/checkout@v4
+        with:
+          repository: olehhebel/ai-superprompt-studio
+          ref: index.html
+          path: sources/portfolio
+          persist-credentials: false
+      - name: Load school
+        uses: actions/checkout@v4
+        with:
+          repository: olehhebel/ship-index-grow
+          ref: main
+          path: sources/school
+          persist-credentials: false
+      - name: Load media
+        uses: actions/checkout@v4
+        with:
+          repository: olehhebel/interface-report-media
+          ref: main
+          path: sources/media
+          persist-credentials: false
+      - name: Audit all projects
+        run: python3 .github/ecosystem/audit.py
+      - name: Publish run summary
+        run: cat ecosystem-report/report.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Save complete report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecosystem-report
+          path: ecosystem-report/
+          retention-days: 30
+          if-no-files-found: error
