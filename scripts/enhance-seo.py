@@ -3,7 +3,7 @@ Run after build-locales.py. Idempotent; does not generate performance claims.
 """
 from pathlib import Path
 from bs4 import BeautifulSoup
-import json
+import json,re
 ROOT=Path(__file__).resolve().parents[1]
 DOMAIN='https://olehhebel.top'
 COPY={
@@ -29,7 +29,7 @@ count=0
 for p in sorted(ROOT.rglob('*.html')):
  rel=p.relative_to(ROOT)
  if any(x in rel.parts for x in ['.git','partials']) or p.name.startswith('google'):continue
- raw=p.read_text();s=BeautifulSoup(raw,'html.parser')
+ raw=p.read_text();normalized=re.sub(r'^\s*html\s*(?=<html)', '<!DOCTYPE html>\n', raw);s=BeautifulSoup(normalized,'html.parser')
  if not s.body or not s.head:continue
  uk=rel.parts[0]=='uk';lang='uk' if uk else 'en';key=rel.with_suffix('').as_posix()
  # One value per singleton metadata field. Preserve different alternate locales.
@@ -51,6 +51,11 @@ for p in sorted(ROOT.rglob('*.html')):
  canonical=s.select_one('link[rel=canonical]')
  if canonical:meta('og:url',canonical['href'],'property')
  meta('og:locale','uk_UA' if uk else 'en_US','property')
+ for n in s.select('meta[property="og:locale:alternate"]'):
+  if n.get('content')==('uk_UA' if uk else 'en_US'):n.decompose()
+ if uk:
+  for n in s.select('[aria-label]'):
+   n['aria-label']=re.sub(r'^View (.+) case study$',r'Переглянути кейс \1',n['aria-label'])
  # Fix inconsistent social image left by the locale generator.
  for n in s.select('meta[property="og:image"],meta[name="twitter:image"]'):
   n['content']=DOMAIN+'/og-image.jpg'
