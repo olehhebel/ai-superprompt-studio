@@ -27,7 +27,7 @@ def metadata(s,slug,uk):
   n=s.new_tag('link',rel='alternate',hreflang=lang,href=DOMAIN+url);s.head.append(n)
  s.head.append(s.new_tag('link',rel='canonical',href=DOMAIN+(ukurl(slug) if uk else enurl(slug))))
  for n in s.select('meta[property="og:url"]'):n['content']=DOMAIN+(ukurl(slug) if uk else enurl(slug))
- for n in s.select('meta[property="og:locale"]'):n.decompose()
+ for n in s.select('meta[property="og:locale"],meta[property="og:locale:alternate"]'):n.decompose()
  s.head.append(s.new_tag('meta',attrs={'property':'og:locale','content':'uk_UA' if uk else 'en_US'}))
  s.head.append(s.new_tag('meta',attrs={'property':'og:locale:alternate','content':'en_US' if uk else 'uk_UA'}))
  if not s.select_one('link[href^="/services-offer.css"]'):s.head.append(s.new_tag('link',rel='stylesheet',href='/services-offer.css'))
@@ -161,3 +161,7 @@ for slug in SLUGS:
 ET.ElementTree(root).write(ROOT/'sitemap.xml',encoding='utf-8',xml_declaration=True)
 print('Built',len(SLUGS),'Ukrainian pages; untranslated text candidates:',len(missing))
 for row in missing:print(*row,sep=': ')
+
+# Keep search metadata and service content consistent after regeneration.
+import runpy
+runpy.run_path(str(ROOT / "scripts/enhance-seo.py"))
